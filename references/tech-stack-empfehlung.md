@@ -1,8 +1,15 @@
-# Website-AIOS — Tech-Stack-Empfehlung (Build-Schicht)
+# Website-AIOS — Tech-Stack (Build-Schicht)
 
-> **Status:** Empfehlung, keine finale Entscheidung · Stand 2026-06-22
-> Pascal entscheidet. Dieses Dokument legt die Optionen begründet auf den Tisch und nennt einen klaren Favoriten.
-> Bezug: Schicht A (Build) aus `website-aios-architektur.md`. Tracking-Default: Matomo + Google-Ads-Conversion. ICP: lokale B2C-Dienstleister mit physischem Standort.
+> ## ✅ ENTSCHIEDEN (2026-06-23): Astro + Tailwind
+> **Status:** Entschieden. Gilt als **OS-Default für alle Klone** — keine offene Frage mehr.
+> Build-Stack ist **Astro** (statisch-first) + **Tailwind CSS** mit Design-Tokens.
+> **Begründung in einem Satz:** Astro liefert statisch-first die beste Core-Web-Vitals-Baseline und eine ruhige, git-native, dateibasierte Oberfläche, die Coding-Agents zuverlässig bauen und pflegen — exakt das Profil "viele kleine, schnelle, content-lastige lokale Dienstleister-Seiten, pro Kunde geklont".
+> Der Optionen-Vergleich (Astro vs. Next.js vs. CMS) unten bleibt als **Historie** stehen.
+> Bezug: Schicht A (Build) aus `website-aios-architektur.md`. Tracking-Default: Matomo + Google-Ads-Conversion + Meta Pixel (kein GA4). ICP: lokale B2C-Dienstleister mit physischem Standort.
+
+---
+
+> Hinweis: Abschnitte 1–4 dokumentieren die Entscheidungsgrundlage (Historie). Die Entscheidung selbst steht im Status-Block oben.
 
 ---
 
@@ -97,9 +104,9 @@ Der Branchenstandard für lokale Dienstleister-Seiten — meist WordPress.
 
 ---
 
-## 4. Empfehlung: **Astro**
+## 4. Entscheidung: **Astro** (entschieden 2026-06-23)
 
-Für das Website-AIOS und seinen ICP ist **Astro** der klare Favorit.
+Für das Website-AIOS und seinen ICP ist **Astro** gesetzt — OS-Default für alle Klone.
 
 **Begründung in einem Satz:** Astro ist statisch-first und damit genau auf das Profil "viele kleine, schnelle, content-lastige lokale Dienstleister-Seiten, von Coding-Agents gebaut, in Git verwaltet, auf Hetzner statisch deployt" zugeschnitten — bei der besten Core-Web-Vitals-Baseline ohne Extraarbeit.
 
@@ -113,14 +120,14 @@ Konkret deckt Astro alle Pflichtkriterien am saubersten ab:
 - Wenn ein Großteil der Kunden **Kunden-Selbstpflege** im Browser fordert → Headless-CMS (z. B. Statamic flat-file, bleibt Git-nah) vor Astro setzen, oder Astro + leichtes Git-basiertes CMS (Decap/TinaCMS) kombinieren.
 - Wenn echte **App-Funktionalität** (Login, Dashboards, viel Dynamik) zum Standard wird → Next.js. Für den aktuellen ICP nicht der Fall.
 
-**Vorgeschlagene Defaults für die Build-Schicht (zur Konkretisierung in Phase 0):**
+**Festgelegte Defaults für die Build-Schicht:**
 - Framework: **Astro**
 - Styling: **Tailwind CSS** mit Design-Tokens (Farben/Schriften/Abstände aus dem CI-Manual) → konsistente Komponenten-Bibliothek.
 - Content: **Content Collections** (Markdown/MDX) für Leistungs-, City- und Ratgeber-Seiten.
 - Interaktive Inseln nur wo nötig (Formular, ggf. Slider) — sonst statisch.
-- Tracking: **Matomo** + **Google-Ads-Conversion** via consent-gesteuertem Skript (Partytown optional, um den Main-Thread frei zu halten).
+- Tracking: **Matomo** + **Google-Ads-Conversion** + **Meta Pixel** via consent-gesteuertem Skript (kein GA4; Partytown optional, um den Main-Thread frei zu halten).
 - Schema: LocalBusiness/FAQ/Service als JSON-LD-Komponenten im Design-System (siehe `playbooks/schema-structured-data.md`).
 - Hosting: **Hetzner**, statischer Output über Nginx oder Coolify; Deploy via Git-Push/CI.
 - Optional, falls Kunden-Selbstpflege gefragt: Git-basiertes CMS (Decap/Tina) on top.
 
-> Nächster Schritt nach Pascals Freigabe: Entscheidung in `decisions/log.md` loggen, dann Phase 0 (Repo + Astro-Grundgerüst + Design-System v1 + `build-page`) starten.
+> Nächster Schritt: Phase 0 pro Klon (Repo + Astro-Grundgerüst + Design-System v1 + `build-page`) starten. Entscheidung ist getroffen und im `decisions/log.md` des Klons verankert.

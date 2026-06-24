@@ -1,116 +1,169 @@
 # Workflow: onboarding-pipeline
 
-> **Typ:** Deterministischer Mehr-Schritt-Ablauf (Spezifikation, kein lauffähiges Skript)
-> **Zweck:** Roh-Inputs eines Kunden (Assets + Fragebogen + Transkripte) einlesen, das Brand-Profil destillieren, Inhalte strukturieren und die `context/`-Dateien schreiben — die Wissensgrundlage, aus der `new-site-build` später baut.
-> **Läuft:** einmal pro Klon, am Anfang. Re-run nach Korrekturen in `intake/` ist idempotent (überschreibt `context/` neu).
-> **Verwandter Skill:** `/onboard` (interaktive Variante). Dieser Workflow ist der deterministische Unterbau.
+> **Typ:** Deterministischer Mehr-Stufen-Ablauf (Spezifikation, kein lauffähiges Skript)
+> **Zweck:** Eine Kundenwebsite gestaffelt von Null bis Bau bringen — mit minimalem manuellem Input. Das OS erarbeitet sich Kontext selbst, generiert den Fragebogen, schreibt Strategie/Struktur/Texte, holt Freigaben und übergibt an den Bau.
+> **Prinzip:** Gestaffelt statt alles-auf-einmal. Jede Stufe hat **Input → Tun → Output → Gate**. Inputs werden erst verlangt, wenn sie gebraucht werden. Gate FAIL = Stopp, nachfassen, Stufe wiederholen. Gate PASS = nächste Stufe.
+> **Quelle:** Verbindliche Fassung von `references/onboarding-flow.md`. Ersetzt das alte „Kunde füllt großen Fragebogen vorne aus"-Modell.
+> **Verwandte Skills:** `onboard` (Stufe 0/1), `generate-questionnaire` (Stufe 2), `generate-content` (Stufe 4/5), `new-site-build` (Stufe 6).
 
 ---
 
 ## Voraussetzungen
 
-- Inputs liegen vor (siehe Stufe 1). Fehlt etwas, wird es in der Lücken-Liste (Output Stufe 5) markiert, nicht erfunden.
-- ICP-Annahme: lokaler B2C-Dienstleister mit physischem Standort (Handwerk/Haustechnik, Makler, Kosmetik/Aesthetik, Versicherungs-/Finanzberater, Coaches). Steuert, was als Pflichtfeld gilt (z. B. Einzugsgebiet, NAP, Conversion-Definition).
+- Zum Start reicht **Transcript + Branche** (+ ggf. Ist-URL). Alles Schwere (CI, Recht, Zugänge) kommt erst bei Stufe 6.
+- ICP-Annahme: lokaler B2C-Dienstleister mit physischem Standort. Steuert die Pflichtfelder (Einzugsgebiet/NAP, Conversion-Definition).
+- Fehlende Fakten werden in Lücken-Listen markiert, nie erfunden.
 
 ---
 
-## Stufe 1 — Inputs einlesen (Ingest)
+## Stufe 0 — Start-Inputs erfassen
 
 **Input:**
-- `assets/logo/`, `assets/ci/`, `assets/images/` — Logo-Varianten, CI-Manual, Bilder `[K]`
-- `intake/` — ausgefüllter `website-intake.md` / Fragebogen-Antworten `[K]`
-- `intake/` — Transkripte aus Erstgespräch/Discovery `[K]`
-- optional: bestehende Website-URL, Social-Profile, Google Business Profile
+- `transcript` (Pflicht) — Erstgespräch-Mitschnitt/Notiz
+- `branche` (Pflicht) — Vertical/Branche des Kunden
+- `ist_url` (optional) — bestehende Website-URL
 
 **Tun:**
-1. Alle Dateien in `assets/` und `intake/` auflisten und nach Typ klassifizieren (Bild, CI-Dokument, Fragebogen, Transkript).
-2. CI-Dokumente und Fragebögen volltextlich lesen. PDF/DOCX bei Bedarf über die passenden Skills (`pdf`, `docx`) extrahieren.
-3. Transkripte lesen — verbatim-Zitate für Voice und Schmerzpunkte markieren.
-4. Bestehende Website (falls vorhanden) crawlen/lesen für migrierbare Inhalte und IST-Stand.
+1. Transcript ablegen unter `intake/transcripts/`.
+2. `branche` und `ist_url` in `intake/start-inputs.md` notieren.
+3. Keine weiteren Inputs anfragen.
 
-**Output:**
-- Interne Roh-Inventarliste: was liegt vor, welcher Typ, welche Qualität.
-- Verbatim-Sammlung echter Kundentexte (Quelle für `voice.md`).
+**Output:** `intake/transcripts/{datei}`, `intake/start-inputs.md`
+
+**Gate:** Transcript liegt vor UND `branche` gesetzt. → sonst STOPP (fehlende Pflicht-Inputs einfordern).
 
 ---
 
-## Stufe 2 — Brand-Profil extrahieren
+## Stufe 1 — Deep Research + Ist-Analyse + Transcript-Auswertung
 
-**Input:** CI-Dokumente, Logo-Dateien, Bilder, verbatim-Sammlung aus Stufe 1.
+> OS arbeitet autonom, Kunde wartet. Kein Kunden-Input nötig. Skill: `onboard`.
+
+**Input:** `intake/transcripts/{datei}`, `branche`, `ist_url` (falls vorhanden)
 
 **Tun:**
-1. Design-Token destillieren: Farben (Hex), Schriften, Abstände, Bildsprache, Do/Don'ts.
-2. Logo-Varianten zuordnen (hell/dunkel, Icon, Favicon) und Lücken benennen.
-3. Tonalität ableiten: Register, Satzlänge, typische Wörter/Phrasen, Tabus — aus den verbatim-Zitaten, nicht erfunden.
+1. **Deep Research** via Skill `deep-research` → Branchen-Report: Markt, Wettbewerb, Kundenpsychologie, konversionsstarke digitale Positionierung für `branche` + Region.
+2. **Ist-Website-Analyse** (nur falls `ist_url`): crawlen, Stärken/Schwächen, migrierbare Inhalte, technischer Stand. Ohne URL: Schritt überspringen, im Output vermerken.
+3. **Transcript-Auswertung:** Ziele, Schmerzen, Wunschkunde, Einwände, Voice-Anker (verbatim zitieren).
 
 **Output:**
-- `context/brand-profile.md` — Farben, Schriften, Logo-Inventar, Bildsprache, visuelle Do/Don'ts.
-- `context/voice.md` — Tonalität, Register, Beispielsätze (verbatim als Anker), Don'ts. Externe Texte immer als Draft zeigen, nie ungeprüft im Kundennamen.
+- `intake/research/branchen-report.md`
+- `intake/research/ist-website-analyse.md` (oder Skip-Vermerk „keine Ist-URL")
+- `context/gespraechs-insights.md`
+
+**Gate:** Alle drei Output-Dateien existieren (Ist-Analyse ggf. als Skip-Vermerk). → sonst Stufe 1 wiederholen.
 
 ---
 
-## Stufe 3 — Inhalte strukturieren
+## Stufe 2 — Maßgeschneiderten Fragebogen generieren
 
-**Input:** Fragebogen-Antworten, Transkripte, bestehende Website-Inhalte.
+> Skill: `generate-questionnaire`.
+
+**Input:** `intake/research/branchen-report.md`, `intake/research/ist-website-analyse.md`, `context/gespraechs-insights.md`, `references/questionnaire-base.md`
 
 **Tun:**
-1. Unternehmensinfos ordnen: was, USP, Historie, Team, Zertifikate.
-2. Leistungen/Angebote als Liste mit je Kurzbeschreibung, Nutzen, Conversion-Ziel.
-3. Zielgruppe schärfen: Wunschkunde, Schmerzen, Einwände, Trigger (aus Transkripten).
-4. Trust-Material sammeln: Referenzen, Bewertungen, Testimonials, Case Studies.
-5. Local-Daten konsolidieren: NAP (Name/Adresse/Telefon), Einzugsgebiet, Standorte, GBP.
-6. Conversion-Definition festhalten: Was ist ein Lead (Formular / Anruf / WhatsApp / Buchung)? — steuert später das Tracking.
-7. Wettbewerber-Liste für Positionierung/SEO-Gap.
+1. Pflicht-Rahmen aus `references/questionnaire-base.md` laden (sichert Abdeckung: Leistungen, USP, Zielgruppe, Einzugsgebiet/NAP, Referenzen, Conversion-Definition).
+2. Abgleich gegen Research + Insights: Nur Fragen behalten, die noch NICHT beantwortet sind. Kein generisches 60-Fragen-Monster.
+3. Kunden-spezifischen Fragebogen schreiben und an den Kunden schicken.
 
-**Output:** strukturierte Zwischenobjekte je Bereich (Unternehmen, Services, Audience, Trust, Local, Conversion, Wettbewerb) — Eingang für Stufe 4.
+**Output:** `intake/fragebogen-{kunde}.md`
+
+**Gate:** Fragebogen geschrieben UND an Kunden rausgeschickt. → sonst STOPP.
 
 ---
 
-## Stufe 4 — `context/`-Dateien schreiben
+## Stufe 3 — Antworten einlesen
 
-**Input:** Brand-Profil (Stufe 2) + strukturierte Inhalte (Stufe 3).
+> Wartet auf Kunden-Input.
 
-**Tun:** Schreibe/aktualisiere die `context/`-Dateien. Jede Datei knapp, faktentreu, mit Quellenmarkierung bei Unsicherheit.
+**Input:** Ausgefüllte Fragebogen-Antworten vom Kunden
 
-**Output:**
-| Datei | Inhalt |
-|---|---|
-| `context/about-site.md` | Was die Seite ist, Unternehmen, USP, Historie, Team, Zertifikate |
-| `context/brand-profile.md` | (aus Stufe 2) Farben, Schriften, Logo, Bildsprache, Do/Don'ts |
-| `context/voice.md` | (aus Stufe 2) Tonalität + verbatim-Anker |
-| `context/audience.md` | Wunschkunde, Schmerzen, Einwände, Trigger |
-| `context/services.md` | Leistungen mit Nutzen + Conversion-Ziel je Leistung |
-| `context/goals.md` | Conversion-Definition, KPIs, Quartalsziel; Wettbewerber; Einzugsgebiet/NAP/GBP für Local SEO |
-| `context/legal.md` | Impressum-Daten, Datenschutz, AGB, Handelsregister |
+**Tun:**
+1. Antworten ablegen unter `intake/antworten-{kunde}.md`.
+2. Pflichtfelder prüfen: Leistungen, USP, Zielgruppe, Einzugsgebiet/NAP, Referenzen, Conversion-Definition.
+3. Lücken gezielt nachfassen (nur fehlende Felder, nicht den ganzen Bogen).
+
+**Output:** `intake/antworten-{kunde}.md`
+
+**Gate:** Alle Pflichtfelder ausreichend gefüllt. → sonst nachfassen und Stufe 3 wiederholen.
 
 ---
 
-## Stufe 5 — Validierung & Übergabe
+## Stufe 4 — Strategie + Struktur + Texte generieren
 
-**Input:** geschriebene `context/`-Dateien.
+> Skill: `generate-content`.
+
+**Input:** `intake/antworten-{kunde}.md`, `intake/research/branchen-report.md`, `context/gespraechs-insights.md`
 
 **Tun:**
-1. Pflichtfelder für lokalen B2C-Dienstleister prüfen: NAP vollständig? Einzugsgebiet? Conversion-Definition? Impressum-Daten? Trust-Material vorhanden?
-2. Lücken-Liste erstellen: was fehlt vom Kunden, was muss `[W]` noch holen.
-3. Monitor-Zugänge (GSC, Google Ads, Matomo, GBP) in `connections.md` vermerken — Default-Tracking: Matomo + Google-Ads-Conversion statt GA.
+1. **Strategie** → `context/strategie.md`: Positionierung, Conversion-Strategie, SEO/GEO-Winkel, Wettbewerbsabgrenzung.
+2. **Seitenstruktur/Sitemap** nach `references/playbooks/page-structure.md` → `context/sitemap.md`.
+3. **Texte je Seite** nach `references/playbooks/copywriting.md` + `seo-onpage.md` + `geo.md` → Entwurf in `intake/texte/v1/`.
 
 **Output:**
-- Befüllte `context/`-Dateien, bereit für `new-site-build`.
-- Lücken-Liste (offene Inputs) an den Operator.
-- Aktualisierte `connections.md`-Einträge.
+- `context/strategie.md`
+- `context/sitemap.md`
+- `intake/texte/v1/` (Entwurf-Texte) → an den Kunden
+
+**Gate:** Strategie + Sitemap + Text-Entwurf existieren und sind an Kunden raus. → sonst Stufe 4 wiederholen.
+
+---
+
+## Stufe 5 — Freigabe-Schleife
+
+> Iterativ. Wiederholt sich, bis Freigabe. Skill: `generate-content`.
+
+**Input:** Kunden-Korrekturen zum aktuellen Text-Stand
+
+**Tun:**
+1. Korrekturen einarbeiten.
+2. Neue Version versionieren: `intake/texte/v2/`, `v3/`, … (alten Stand nie überschreiben).
+3. Überarbeiteten Stand an Kunden zur Prüfung.
+4. Bei weiteren Korrekturen: zurück zu Schritt 1.
+
+**Output:** Versionierte Text-Stände in `intake/texte/`, finaler Stand markiert als freigegeben (`intake/texte/FINAL/`).
+
+**Gate:** Kunde hat Texte ausdrücklich freigegeben. → sonst Schleife fortsetzen. ERST dann Übergabe an Stufe 6.
+
+---
+
+## Stufe 6 — Bauen (Übergabe an `new-site-build`)
+
+> Erst jetzt werden die schweren Inputs (CI, Recht, Zugänge) verlangt.
+
+**Input (jetzt erst!):**
+- Freigegebene Texte aus `intake/texte/FINAL/`
+- CI-Manual / Farben / Fonts
+- Logo-Varianten
+- Echte Bilder
+- Recht: Impressum, Datenschutz, AGB, Handelsregister
+- Zugänge: Domain, Hosting, GSC, Google Ads, Matomo, GBP
+
+**Tun:**
+1. CI destillieren via `onboard` → `context/brand-profile.md`.
+2. Übergabe an `new-site-build`: Design-System aus CI, Seiten aus freigegebenen Texten (Astro + Tailwind), Schema, Tracking (Matomo + Google-Ads-Conversion + Meta Pixel, KEIN GA4), Launch-Checkliste.
+
+**Output:** Gebaute Site + `context/brand-profile.md` + Launch-Checkliste
+
+**Gate:** Tracking verifiziert, Recht vorhanden, Performance ok. → erst dann Launch.
 
 ---
 
 ## Datenfluss (kompakt)
 
 ```
-assets/ + intake/  →  [1 Ingest]  →  Roh-Inventar + Verbatim
-                                          │
-              ┌───────────────────────────┴───────────────────┐
-        [2 Brand-Profil]                              [3 Inhalte strukturieren]
-        brand-profile.md, voice.md                    Zwischenobjekte je Bereich
-              └───────────────────────────┬───────────────────┘
-                                  [4 context/ schreiben]
-                                          │
-                                  [5 Validierung] → Lücken-Liste + connections.md
+[0] Transcript + Branche + (Ist-URL)
+        ↓  Gate: Transcript + Branche vorhanden
+[1] Deep Research + Ist-Analyse + Transcript-Auswertung  → research/ + insights
+        ↓  Gate: 3 Output-Dateien existieren
+[2] Fragebogen generieren (nur offene Fragen)            → intake/fragebogen-{kunde}.md
+        ↓  Gate: rausgeschickt
+[3] Antworten einlesen                                   → intake/antworten-{kunde}.md
+        ↓  Gate: Pflichtfelder gefüllt
+[4] Strategie + Sitemap + Texte                          → context/ + intake/texte/v1/
+        ↓  Gate: an Kunde raus
+[5] Freigabe-Schleife (versioniert)                      → intake/texte/FINAL/
+        ↓  Gate: Texte freigegeben
+[6] CI + Logo + Recht + Zugänge  →  new-site-build       → Site + Launch
+        ↓  Gate: Tracking/Recht/Performance ok
+    Launch
 ```

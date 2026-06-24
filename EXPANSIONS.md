@@ -1,30 +1,36 @@
 # Expansions
 
-Das Kit startet bewusst dünn: `onboard` + `weekly-review`, eine Datenquelle (Sistrix). Hier sind die nächsten Ausbaustufen — füge sie hinzu, wenn der dünne Kreislauf einmal rund läuft.
+Das Kit ist über den dünnen Start hinaus. Der gestaffelte Onboarding-Flow (`references/onboarding-flow.md`) läuft, dazu Bau, Visuals und OS-Sync. Hier steht, was schon drin ist und welche Ausbaustufen als Nächstes kommen.
 
-## Skills
+## Schon drin (done)
 
-- **`build-page`** — eine Seite aus dem Design-System bauen (Input: Copy + Seitentyp → Output: Komponenten-Komposition, Commit).
+- **Gestaffeltes Onboarding** — `onboard` (Phase 0/1) → `generate-questionnaire` (2) → `generate-content` (4+5) → Bau → `weekly-review` (7).
+- **`build-page`** — eine Seite aus dem Design-System bauen (Copy + Seitentyp → Komponenten-Komposition, SEO-/Schema-getaggt, Commit).
+- **`generate-visuals`** — Visuals je Slot: gecodete Infografik, Gemini-Bild (`scripts/generate-image.mjs`), Higgsfield-Video oder echtes Foto. Playbooks: `image-generation.md`, `video-generation.md`.
+- **OS-Sync** — `promote-to-os` (Klon → Template) und `update-from-os` (Template → Klon). Regeln: `references/os-sync.md`.
+- **Build-Stack entschieden** — Astro + Tailwind, Default für jeden Klon.
+- **Tracking entschieden** — Matomo + Google-Ads-Conversion + Meta Pixel, kein GA4.
+- **Design-System** — Tokens + Kern-Komponenten als Basis für `build-page` (`references/playbooks/design-system-usage.md`).
+
+## Nächste Skills
+
 - **`seo-task`** — On-Page-Optimierung einer Unterseite (Title/Meta/H-Struktur/interne Links) auf Basis von GSC/Sistrix.
-- **`content-task`** — Blog-/Landingpage-Content schreiben/optimieren in Brand Voice.
-- **`conversion-task`** — Conversion-Element ändern + (später) A/B-Test vorbereiten.
+- **`content-task`** — Blog-/Ratgeber-/Landingpage-Content schreiben/optimieren in Brand Voice (Playbooks `blog-ratgeber.md`, `landingpage.md`).
+- **`conversion-task`** — Conversion-Element ändern + A/B-Test vorbereiten (`conversion-optimization.md`).
 - **`audit`** — technischer SEO-/Performance-Crawl, Lücken-Report.
+- **`client-report`** — Kunden-Report im festen Rhythmus aus den Monitor-Daten (`reporting.md`).
 
 ## Monitore (Reihenfolge nach Sistrix)
 
 1. **Google Search Console** — kostenlos, SEO-Kern. Skript oder MCP.
-2. **Google Ads** — wenn Ads laufen. API/Export.
-3. **Meta Ads** — wenn Ads laufen. API/Export.
-4. **Matomo** — Privacy-first Traffic/Conversions.
+2. **Google Ads** — wenn Ads laufen. API/Export (auch für Conversion-Tracking).
+3. **Meta Ads** — wenn Ads laufen. API/Export (Meta Pixel ist gesetzt).
+4. **Matomo** — Privacy-first Traffic/Conversions (Tracking-Default).
 
 Je Monitor: `references/{tool}-api.md` anlegen (Endpoints, Auth, häufige Queries).
-
-## Build-Schicht
-
-- Tech-Stack-Entscheidung dokumentieren (`decisions/log.md`).
-- Design-System v1: Tokens (Farben, Typo, Spacing) + Kern-Komponenten + Komponenten-Doku in `references/design-system.md`.
 
 ## Automatisierung
 
 - `weekly-review` per Cron/Schedule wöchentlich anstoßen, Ergebnis als Entwurf.
 - Anomalie-Alerts bei KPI-Abweichungen.
+- `update-from-os` regelmäßig laufen lassen, damit Klone nicht von der OS-Ebene abdriften.

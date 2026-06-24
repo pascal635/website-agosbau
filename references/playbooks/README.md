@@ -21,10 +21,13 @@ Skills und Workflows nutzen diese Playbooks als Wissensbasis: Statt Regeln neu z
 - `conversion-tracking.md` — Jede Lead-Aktion DSGVO-konform in Matomo und Google Ads erfassen.
 - `conversion-optimization.md` — Aus vorhandenem Traffic per Test-Loop messbar mehr Anfragen holen.
 
-## Bild/Design
+## Bild/Video/Design
 
-- `image-generation.md` — Konsistente, schnelle, rechtssichere Bilder; echte Fotos wo Vertrauen zählt, generierte nur als Lückenfüller.
+- `image-generation.md` — Konsistente, schnelle, rechtssichere Stills (Gemini Imagen 4 via `scripts/generate-image.mjs`); echte Fotos wo Vertrauen zählt, generierte nur als Lückenfüller.
+- `video-generation.md` — Sparsam eingesetztes, CI-konformes Bewegtbild (Higgsfield via MCP): Motion-Hero, B-Roll. Performance zuerst; im Zweifel kein Video.
 - `design-system-usage.md` — Seiten aus vorhandenen Komponenten und Tokens des Design-Systems zusammenbauen.
+
+Entscheidungs-Reihenfolge je Slot: Text/Infografik → Standbild → Video. Beide Generatoren steuert die `generate-visuals`-Skill.
 
 ## Betrieb
 

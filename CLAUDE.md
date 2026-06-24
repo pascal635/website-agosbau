@@ -11,10 +11,22 @@ You are the operating brain for **{{Site Name}}** ({{domain}}). Your job: build 
 
 Alle Änderungen, Erweiterungen und Aktualisierungen laufen über das Gespräch mit diesem AIOS — nicht an ihm vorbei.
 
+## Onboarding-Flow (Standard)
+
+Das Onboarding läuft **gestaffelt** in 7 Phasen — nicht alles-auf-einmal. Jede Phase hat klare Inputs, ein Output und ein Gate; Inputs werden erst verlangt, wenn sie gebraucht werden. Verbindlicher Ablauf: `references/onboarding-flow.md`.
+
+Kurz: **[0]** Transcript + Branche (+ alte URL) → **[1]** Deep Research + Ist-Analyse + Transcript-Auswertung → **[2]** maßgeschneiderter Fragebogen → **[3]** Kunde füllt aus → **[4]** Strategie + Seitenstruktur + Texte → **[5]** Text-Freigabe-Schleife → **[6]** CI/Logo/Recht/Zugänge liefern + Bauen → **[7]** Messen bis zum ersten Lead (= erste Fallstudie).
+
 ## Skills
 
-- `/onboard` — schon gelaufen, wenn das hier ausgefüllt ist. Jederzeit re-runbar nach Edit an `website-intake.md`.
+- `/onboard` — Phase 0/1: Start-Inputs erfassen, Deep Research zur Branche, Ist-Website-Analyse, Transcript-Auswertung. Idempotent — re-runbar nach neuen Inputs.
+- `/generate-questionnaire` — Phase 2: erzeugt den kunden-spezifischen Fragebogen (fragt nur, was Research + Transcript offen lassen).
+- `/generate-content` — Phase 4+5: schreibt Strategie, Seitenstruktur und Texte, fährt die Freigabe-Schleife bis zum OK.
+- `/build-page` — baut EINE Seite aus dem Design-System (Design-System-konform, SEO- und Schema-getaggt).
+- `/generate-visuals` — erzeugt Visuals je Slot: gecodete Infografik, Gemini-Bild, Higgsfield-Video oder angefordertes echtes Foto.
 - `/weekly-review` — wöchentlich. Zieht die Daten, fasst zusammen, schlägt nächste Tasks vor, loggt Entscheidungen.
+- `/promote-to-os` — hebt generische Verbesserungen aus diesem Klon zurück ins Quell-OS und pusht sie.
+- `/update-from-os` — zieht die neueste OS-Ebene (Skills, References, Playbooks, Scripts, Config) aus dem Quell-OS in diesen Klon. Siehe `references/os-sync.md`.
 
 ## Knowledge base
 
@@ -30,11 +42,15 @@ Match the register in `references/voice.md` (von `/onboard` gefüllt). Brand Voi
 
 ## Build layer
 
-{{Filled by /onboard — Tech-Stack, Repo-Pfad, Design-System-Quelle, Hosting.}} Baue Seiten nur aus den Design-System-Komponenten — Konsistenz vor Kreativität im Einzelfall.
+**Build-Stack (entschieden): Astro + Tailwind.** Keine Empfehlung mehr — Default für jeden Klon. Seiten laufen über Git, ausschließlich aus dem Design-System. {{Filled by /onboard — Repo-Pfad, Design-System-Quelle, Hosting.}} Baue Seiten nur aus den Design-System-Komponenten — Konsistenz vor Kreativität im Einzelfall.
+
+**Visuals:** Stills via Gemini Imagen 4 (`scripts/generate-image.mjs`, `GEMINI_API_KEY` in `.env`). Video/Cinematic/Audio/3D via Higgsfield (MCP, `.mcp.json`). Entscheidungs-Reihenfolge je Slot: Text/Infografik → Standbild → Video. Playbooks: `references/playbooks/image-generation.md`, `references/playbooks/video-generation.md`. Skill: `/generate-visuals`.
 
 ## Connections
 
-{{Filled by /onboard — die Monitore (GSC, Sistrix, Google Ads, Meta Ads, Matomo) + Git + Hosting. Siehe `connections.md` für Mechanismus und Stand.}} Hinweis: Sistrix ist als MCP-Tool in der Umgebung verfügbar. Tracking-Default in diesem Setup: Matomo + Google-Ads-Conversion statt Google Analytics.
+{{Filled by /onboard — die Monitore (GSC, Sistrix, Google Ads, Meta Ads, Matomo) + Git + Hosting. Siehe `connections.md` für Mechanismus und Stand.}} Hinweis: Sistrix ist als MCP-Tool in der Umgebung verfügbar.
+
+**Tracking-Default (entschieden): Matomo + Google-Ads-Conversion + Meta Pixel. KEIN GA4.**
 
 ## How you work with me
 

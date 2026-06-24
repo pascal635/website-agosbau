@@ -1,11 +1,13 @@
-# Bildgenerierung & Bildoptimierung
+# Bildvisualisierung: Infografik, KI-Bild & Foto
 
-> Zweck: Liefert konsistente, schnelle, rechtssichere Bilder für Kundenwebsites — echte Fotos wo Vertrauen zählt, generierte Bilder nur als Lückenfüller, immer im CI und immer WebP-optimiert.
+> Zweck: Liefert konsistente, schnelle, rechtssichere Visuals für Kundenwebsites. Drei Werkzeuge, klar getrennt: **gecodete Infografiken** für abstrakte Konzepte, **KI-Bilder** für atmosphärische/konzeptionelle Motive, **echte Fotos** wo Vertrauen zählt. Immer im CI, immer performance-optimiert.
 
 ## Prinzipien
 
-- Echte Fotos schlagen generierte Bilder immer dort, wo es um Vertrauen geht: Inhaber, Team, Standort, echte Arbeiten/Projekte, Produkte. Lokale B2C-Dienstleister verkaufen über Nähe und Beweis — KI-Gesichter zerstören genau das.
-- Generierte Bilder nur für Hintergründe, abstrakte Konzepte, Hero-Texturen, Icons/Illustrationen, Platzhalter bis echtes Material da ist. Nie als gefakte Person, gefaktes Team, gefakter Vorher/Nachher.
+- **Infografik-First für Abstraktes.** Wo eine abstrakte Idee (Ablauf, Ergebnis, Vergleich, Zahl, System) erklärt werden soll, ist eine **gecodete Infografik (SVG/HTML aus Design-Tokens) die erste Wahl** — nicht ein KI-Bild. Vorteil: gestochen scharf in jeder Größe, winzige Dateigröße, editierbar, barrierefrei (`role="img"` + `<title>/<desc>`), perfekte Core Web Vitals, 100 % markenkonform. Faustregel: enthält das Visual Text, Daten oder exakte Formen → **coden, nicht generieren** (KI-Bildmodelle rendern Text und exakte Layouts unzuverlässig). „Ein Bild sagt mehr als 1000 Wörter" gilt — eine gute Infografik oft noch mehr.
+- **KI-Bild für Emotion, Atmosphäre & Konzept.** Stimmungsvolle, fotoreal/illustrative Motive — Hintergründe, Szenen, Brand-Visuals UND **generische Menschen, die Emotion erzeugen** (z. B. ein:e zufriedene:r Betriebsinhaber:in, eine Beratungssituation) — sind eine echte, finale Option. **Menschen-Bilder ausdrücklich erwünscht, wo sie Emotion bringen** (ein Mensch wirkt stärker als jede Grafik). Wichtig: generisch, kein Anspruch auf eine bestimmte Identität, authentisch statt Stock-Klischee (kein aufgesetztes Lächeln, kein Plastik-Look). Blick möglichst Richtung CTA/Headline (Witnessing).
+- **Spezifische Identität = immer echtes Foto, nie generiert.** Inhaber:in/Team, namentliche Kund:innen, echte Projekte/Vorher-Nachher, Bewertungen/Zertifikate: **immer echt** (E-E-A-T, Ehrlichkeit). Ein KI-Bild darf nie als reale benannte Person oder als realer benannter Kunde ausgegeben werden. Fehlt echtes Material → anfordern, im Build-Log vermerken.
+- **Infografik nur für Abstraktes.** Gecodete Infografiken sind für die *Erklärung abstrakter Dinge* (Daten, Ablauf, Vergleich, Zahl) — nicht als Ersatz für ein emotionales Bild. Wo ein Mensch/Szene mehr Emotion bringt, gewinnt das Bild.
 - Jedes Bild folgt dem CI aus `context/brand-profile.md` (Farben als Hex, Bildsprache, Stimmung, Do/Don'ts). Kein Bild ohne CI-Abgleich.
 - Konsistenz vor Einzel-Wow: Eine Seite wirkt durch einheitliche Lichtstimmung, Farbtemperatur und Perspektive — nicht durch zehn verschiedene Stile.
 - Performance ist Pflicht, nicht Kür: Jedes Bild geht als WebP raus, responsiv ausgespielt, komprimiert. Bilder sind der häufigste Grund für langsame Seiten und schlechte Core Web Vitals.
@@ -28,7 +30,8 @@
 ## Checkliste
 
 - [ ] `context/brand-profile.md` gelesen, Stil-Anker + Hex-Farben notiert
-- [ ] Pro Bild-Slot entschieden: echtes Foto vs. generiert (Entscheidungsbaum befolgt)
+- [ ] Pro Slot entschieden: Infografik (coden) vs. KI-Bild vs. echtes Foto (Entscheidungsbaum befolgt)
+- [ ] Abstrakte Konzepte mit Daten/Text als gecodete Infografik gelöst, nicht als KI-Bild
 - [ ] Kein KI-generiertes Bild von echten Personen, Team, Standort, Projekten, Vorher/Nachher
 - [ ] Fehlende echte Fotos beim Kunden angefordert + im Build-Log vermerkt
 - [ ] Alle Bilder einer Seite konsistent (Licht, Farbtemperatur, Sättigung)
@@ -43,17 +46,37 @@
 
 ## Vorlagen & Beispiele
 
-### Entscheidungsbaum: echtes Foto vs. generiert
+### Entscheidungsbaum: Infografik vs. KI-Bild vs. echtes Foto
 
 ```
-Zeigt das Bild eine reale Person, Team, den Standort,
-echte Arbeit/Projekt, ein echtes Produkt oder einen Beweis (Bewertung, Zertifikat)?
-  JA  -> echtes Foto. Liegt keins vor -> beim Kunden anfordern. NIE generieren.
+Stellt das Visual eine SPEZIFISCHE reale Identität dar
+(Inhaber:in/Team, namentliche:r Kunde:in, echtes Projekt, Beweis/Zertifikat)?
+  JA  -> ECHTES FOTO. Liegt keins vor -> anfordern. NIE generieren.
   NEIN ->
-    Ist es Hintergrund / Textur / abstraktes Konzept / Illustration / Icon?
-      JA  -> generieren erlaubt (CI-Prompt nutzen).
-      NEIN -> im Zweifel echtes Foto / lizenziertes Stock anfordern.
+    Erklärt es ein abstraktes Konzept (Ablauf, Ergebnis, Vergleich, Zahl, System / Daten/Text)?
+      JA  -> GECODETE INFOGRAFIK (SVG/HTML aus Tokens). Vorbild: ein gecodetes Hero-Visual
+             (z. B. eine HeroVisual-Komponente).
+      NEIN ->
+        Emotionales/atmosphärisches Motiv — Szene, Hintergrund ODER generische Menschen
+        (Inhaber:in, Beratung, Team-Stimmung) ohne Identitätsanspruch?
+          -> KI-BILD (Gemini) — finales Asset, kein Platzhalter. Menschen für Emotion erwünscht,
+             authentisch, Blick Richtung CTA. (Echtes/lizenziertes Foto ist gleichwertig erlaubt.)
 ```
+
+### Werkzeuge — womit wird erzeugt?
+
+| Bedarf | Werkzeug | Warum |
+|---|---|---|
+| **Infografik / Diagramm / Konzept-Visual** | **Coden** (Astro/SVG aus Design-Tokens), z. B. eine gecodete HeroVisual-Komponente | Scharf, winzig, editierbar, barrierefrei, markenkonform. KI-Bildmodelle scheitern an Text/exakten Layouts. |
+| **Stand-/Atmosphärenbild (fotoreal/illustrativ)** | **Gemini Imagen 4** (`imagen-4.0-generate-001`) via `scripts/generate-image.mjs` | Beste Prompt-Treue, aspectRatio-Steuerung, Stil-Konsistenz. Erste Wahl für Web-Stills. Alternativen: `-ultra-` (max. Qualität), `-fast-` (schnell). |
+| **Cinematic / Bewegtbild / Hero-Video / Audio / 3D** | **Higgsfield** (via MCP) | Stark bei Video, Kamerafahrten, dramatischen/stilisierten Szenen. Für Motion-Hero, nicht für statische Web-Bilder. Details im Bewegtbild-Playbook `video-generation.md`. |
+
+**Gemini-Stills erzeugen** (Skript liegt bereit):
+```bash
+node scripts/generate-image.mjs --prompt "<CI-Prompt>" --out public/images/<name>.png --aspect 16:9
+cwebp -q 80 public/images/<name>.png -o public/images/<name>.webp   # dann responsive Varianten + Alt-Text
+```
+Setup: `GEMINI_API_KEY` in `.env` (siehe `.env.example`). **Higgsfield** ist in `.mcp.json` registriert — nach Claude-Code-Neustart + ggf. OAuth nutzbar (für Video/Cinematic/Audio/3D). Stand & Auth in `connections.md`. Infografiken brauchen keins von beidem — die coden wir.
 
 ### Prompt-Vorlage (CI-Stil) — Platzhalter aus brand-profile.md füllen
 
@@ -69,7 +92,7 @@ Negativ: Logos, Wasserzeichen, verzerrte Hände, deformierte Gesichter,
 KI-Artefakte, Stockfoto-Lächeln, Plastik-Look, übersättigt, Text, Schrift.
 ```
 
-### Branchen-Beispiel-Prompts (ICP)
+### Branchen-Beispiel-Prompts (typische lokale B2C-Branchen)
 
 - Handwerk/Haustechnik (Hero-Hintergrund): `moderner Werkzeugkasten und saubere Kupferrohre auf Holzwerkbank, weiches Tageslicht, warme Farbstimmung passend zu {{Primärfarbe}}, fotorealistisch, 16:9, kein Text`
 - Kosmetik/Aesthetik (Konzept): `ruhige Spa-Atmosphäre, weiche Pastelltöne, sanftes Licht, abstrakte Wellness-Stimmung, hochwertig, minimalistisch, 16:9, keine Personen`
@@ -136,7 +159,7 @@ team-portrait-mueller.webp
 
 ## Bezug
 
-- Skill `generate-images` — führt dieses Playbook wörtlich aus (CI-konforme Bilder erzeugen + optimieren).
+- Skill `generate-visuals` — führt dieses Playbook wörtlich aus (CI-konforme Bilder erzeugen + optimieren). Für Bewegtbild (Video/Cinematic/Audio/3D) siehe das Schwester-Playbook `references/playbooks/video-generation.md`.
 - Workflow `build-page` — Schritt "Bilder" zwischen SEO und Komposition.
 - Workflow `new-site-build` — Bild-Slots je Seite aus Sitemap.
 - Workflow `content-pipeline` — Bilder vor Publish.
