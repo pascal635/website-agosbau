@@ -101,3 +101,17 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Vor Go-live offen:** Web3Forms-Access-Key (Funnel → info@agosbau.de), Tracking-IDs (Matomo/Google-Ads/Meta), echte Rechtstexte, echte Vorher/Nachher-Fotos, Hosting + Domain.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-06-25 — Go-live Phase 6: Deploy-Pipeline + Rechtstexte
+
+**Decision:** AGOS-Seite auf den Hetzner-Webspace deployt. **Eigenes GitHub-Repo `pascal635/website-agosbau`** (privat) angelegt, `origin` von Template (`Website-AIOS`) dorthin umgehängt. **Deploy via GitHub Actions** (`.github/workflows/deploy.yml`): Push auf `main` → `npm ci` + `astro build` + **FTPS-Upload via lftp** auf `dedi1145.your-server.de`. FTP-Creds als GitHub Secrets. Apache → `public/.htaccess` (301-Redirects `/leistungen/`→Fliesenverlegung, `/fliesenleger-kosten/`→Badsanierung; 404; Caching). 404-Seite ergänzt.
+
+**Rechtstexte:** Impressum 1:1 von Live-Seite übernommen (USt-IdNr. nicht vorhanden). Datenschutz: Rahmen (I–VII) verbatim, Dienst-Abschnitte **auf tatsächlich genutzte reduziert** (Google Ads, Meta Pixel, Matomo) statt der 30+ WP-Dienste der Altseite.
+
+**Why:** Webspace war leer → kein Risiko fürs alte WP (läuft noch unter agosbau.de). JS-FTP-Action scheiterte an Hetzner-FTPS (ECONNRESET data socket), lftp läuft. Datenschutz darf keine ungenutzten Dienste deklarieren.
+
+**Offen:** (1) DNS-Cutover agosbau.de → Webspace (Registrar). (2) Tracking-Einbau Matomo/Ads/Pixel + Consent — nach Live. (3) Datenschutz anwaltlich/Generator gegen reale Tool-Liste prüfen. (4) Web3Forms-Key fürs Leadformular.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
