@@ -1,0 +1,70 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import CrossLinks from "../components/CrossLinks.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Barrierefreies Bad in Bremen – bodengleich | AGOS BAU";
+const description = "Barrierefreies Bad in Bremen: bodengleiche Dusche, rutschhemmende Fliesen, normgerechte Abdichtung. Modern, sicher, förderfähig. Jetzt kostenloses Angebot anfragen.";
+
+const technik = [
+  "Richtige Aufbauhöhe im Boden, damit Ablauf und Gefälle funktionieren",
+  "Bodengleiche Dusche ohne Stolperkante",
+  "Normgerechte Abdichtung gegen Feuchtigkeit",
+  "Rutschhemmende Fliesen für den Nassbereich",
+  "Genügend Bewegungsfläche und saubere Anschlüsse",
+];
+const faq = [
+  { q: "Was kostet ein barrierefreies Bad in Bremen?", a: "Ein barrierefreies Komfortbad liegt meist zwischen 25.000 und 40.000 Euro, je nach Ausstattung. Sie bekommen vorab einen Festpreis. Über Förderprogramme wie die KfW lässt sich ein Teil der Kosten reduzieren." },
+  { q: "Kann jedes Bad barrierefrei umgebaut werden?", a: "In den meisten Fällen ja. Entscheidend ist die Aufbauhöhe im Boden. Wir prüfen das beim Aufmaß vor Ort und sagen Ihnen ehrlich, was machbar ist." },
+  { q: "Gibt es eine Förderung für ein barrierefreies Bad?", a: "Für altersgerechte Umbauten wie eine bodengleiche Dusche gibt es Förderprogramme, zum Beispiel der KfW. Wir bauen technisch korrekt und förderfähig; die Antragstellung läuft über Sie bzw. Ihre Bank." },
+];
+const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Barrierefreies Bad", areaServed: "Bremen, Achim und Umland", provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" } };
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]} ogImage="/images/Barrierefreie-baeder-nach-din-18040-2.webp">
+  <Hero
+    eyebrow="Komfort, der bleibt · Bremen & Achim"
+    title="Barrierefreies Bad in Bremen."
+    accent="Sicher, modern, bodengleich."
+    subline="Bodengleiche Dusche, rutschhemmende Fliesen, saubere Abdichtung. Modern gestaltet, technisch korrekt gebaut."
+    image="Barrierefreie-baeder-nach-din-18040-2.webp"
+    imageAlt="Barrierefreies Bad mit bodengleicher Dusche von AGOS BAU"
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Was bedeutet das?</span><h2>Ein Bad, das heute schön ist und morgen sicher.</h2></div>
+      <p>Ein barrierefreies Bad ist so geplant, dass Dusche und Badbereich ohne Stolperkanten und möglichst bequem nutzbar sind. Entscheidend ist die richtige Aufbauhöhe im Boden, damit Ablauf, Gefälle und die bodengleiche Dusche technisch funktionieren – dazu eine normgerechte Abdichtung, rutschhemmende Fliesen und genügend Bewegungsfläche.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Worauf es ankommt</span><h2>Technisch korrekt, kein Kompromiss</h2></div>
+      <ul class="checklist">{technik.map((t) => <li>{t}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">03 · Förderung</span><h2>Förderfähig gebaut</h2></div>
+      <p>Für altersgerechte Umbauten wie eine bodengleiche Dusche gibt es Förderprogramme, zum Beispiel der KfW. Wir bauen Ihr Bad technisch korrekt und förderfähig. Die Antragstellung selbst läuft über Sie bzw. Ihre Bank – wir liefern die fachgerechte Ausführung.</p>
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden sagen" items={[
+    { name: "Irina und Peter", text: "Unser kleines Bad wurde komplett erneuert. Nach 2 Jahren kann ich sagen: Es ist immer noch der Hammer! Das tolle Ergebnis hält, was es verspricht." },
+    { name: "Google-Bewertung", text: "Der Chef persönlich war sowohl zum Aufnahmegespräch als auch bei den Arbeiten sehr kompetent. Er versteht sein Handwerk und hat uns nicht zu viel versprochen." },
+  ]} limit={2} />
+
+  <Faq title="Häufige Fragen zum barrierefreien Bad" items={faq} />
+  <CrossLinks current="/barrierefreies-bad-bremen/" />
+  <CtaBlock title="Denken Sie an später – oder brauchen es jetzt?" text="Lassen Sie uns Ihr barrierefreies Bad gemeinsam planen." ctaHref="/kontakt/" />
+</Base>

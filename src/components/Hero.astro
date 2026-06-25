@@ -1,0 +1,62 @@
+---
+import { site } from "../data/site";
+interface Props {
+  eyebrow?: string;
+  title: string;
+  accent?: string;       // in Copper an den Titel gehängt
+  subline: string;
+  ctaText?: string;
+  ctaHref?: string;
+  image: string;         // Dateiname in /images/
+  imageAlt: string;
+  badge?: boolean;       // Bewertungs-Badge einblenden
+}
+const { eyebrow, title, accent, subline, ctaText = site.cta, ctaHref = "/kontakt/", image, imageAlt, badge = false } = Astro.props;
+---
+<section class="hero2">
+  <div class="wrap hero2__grid">
+    <div class="hero2__text">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1>{title}{accent && <><br /><em class="copper">{accent}</em></>}</h1>
+      <p class="lead hero2__lead">{subline}</p>
+      <div class="hero2__cta">
+        <a class="btn btn--primary" href={ctaHref} data-track="lead" data-lead="cta">{ctaText} →</a>
+        <a class="hero2__phone" href={site.phoneHref} data-track="lead" data-lead="anruf">oder anrufen: {site.phone}</a>
+      </div>
+      <p class="hero2__re">{site.reassurance}</p>
+    </div>
+    <div class="hero2__media">
+      <div class="hero2__imgwrap">
+        <img src={`/images/${image}`} alt={imageAlt} width="1240" height="930" fetchpriority="high" decoding="async" />
+      </div>
+      {badge && (
+        <div class="hero2__badge">
+          <span class="hero2__stars">★★★★★</span>
+          <strong>{site.rating.value}</strong>
+          <span class="hero2__badgelabel">{site.rating.count} Bewertungen bei Google</span>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero2 { padding-block: var(--space-16) var(--space-12); overflow: hidden; }
+  .hero2__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: center; }
+  .hero2 h1 { margin-block: var(--space-4) 0; }
+  .hero2__lead { margin-block: var(--space-6); max-width: 32rem; }
+  .hero2__cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); }
+  .hero2__phone { font-size: 0.9rem; color: var(--color-anthrazit); border-bottom: 1px solid var(--color-hellgrau); }
+  .hero2__phone:hover { color: var(--color-copper); }
+  .hero2__re { margin-top: var(--space-4); font-size: 0.85rem; color: var(--color-fg-muted); }
+  .hero2__media { position: relative; }
+  .hero2__imgwrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+  .hero2__imgwrap::before { content: ""; position: absolute; top: 18px; left: 18px; width: 28px; height: 28px; border-top: 2px solid var(--color-copper); border-left: 2px solid var(--color-copper); z-index: 2; }
+  .hero2__imgwrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .hero2__media::after { content: ""; position: absolute; right: -22px; bottom: -22px; width: 55%; height: 55%; background: var(--color-copper-tint); border-radius: var(--radius-lg); z-index: -1; }
+  .hero2__badge { position: absolute; left: -10px; bottom: 24px; background: var(--color-weiss); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: 2px; }
+  .hero2__stars { color: var(--color-accent-text); letter-spacing: 2px; font-size: 0.8rem; }
+  .hero2__badge strong { font-family: var(--font-head); font-size: 2rem; line-height: 1; color: var(--color-anthrazit); }
+  .hero2__badgelabel { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); }
+  @media (min-width: 1024px) { .hero2__grid { grid-template-columns: 1.05fr 1fr; gap: var(--space-16); } }
+</style>

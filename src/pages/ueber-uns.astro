@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Über uns – AGOS BAU, Ihr Fliesenleger aus Achim";
+const description = "André Gostomczyk und sein Team: vom Zimmermann zum Fliesen-Perfektionisten. Seit 2019, über 100 Bäder, persönlich auf jeder Baustelle. Lernen Sie uns kennen.";
+
+const werte = [
+  ["„Wer günstig baut, baut zweimal.“", "Wir machen es beim ersten Mal richtig."],
+  ["Perfektion & Sauberkeit", "Wir arbeiten präzise und übergeben ein bezugsfertiges Bad."],
+  ["Klare Kommunikation", "Wir reden mit Ihnen, vor und während des Projekts."],
+  ["Ehrliche Preise", "Festpreis, kein Kleingedrucktes."],
+  ["Verantwortung", "Bei Problemen finden wir mit unserem Netzwerk schnell eine Lösung."],
+  ["Persönlicher Chefkontakt", "André ist erreichbar, kein Callcenter."],
+];
+const personSchema = { "@context": "https://schema.org", "@type": "Person", name: "André Paul Gostomczyk", jobTitle: "Inhaber", worksFor: { "@type": "LocalBusiness", name: site.name } };
+---
+<Base title={title} description={description} schema={[personSchema]} ogImage="/images/agos-leistung.webp">
+  <Hero
+    eyebrow="Über uns"
+    title="Wir sind AGOS BAU."
+    accent="Kein anonymer Betrieb."
+    subline="Hinter jedem Projekt steht ein Name: André Gostomczyk. Persönlich, perfektionistisch, mit Handschlagqualität."
+    image="agos-leistung.webp"
+    imageAlt="André Gostomczyk, Inhaber von AGOS BAU"
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Der Inhaber</span><h2>André, Perfektionist aus Überzeugung.</h2></div>
+      <p>André Paul Gostomczyk hat zuerst Zimmermann gelernt und seine Gesellenjahre gemacht. Dann kam die Umschulung zum Fliesenleger – und mit ihr die Überzeugung: „Der Beruf hat mich überzeugt, dem Kunden eine Fliesen-Oase zu zaubern, weil ich Perfektionist bin.“ 2019 hat er AGOS BAU gegründet. Allein gestartet, heute mit einem festen Team. Auf der Baustelle ist er selbst dabei und ansprechbar.</p>
+      <p class="prose-quote">„Der Chef persönlich war sowohl zum Aufnahmegespräch als auch bei den Arbeiten sehr kompetent. Er hat uns nicht zu viel versprochen.“</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Das Team & unsere Werte</span><h2>Vier feste Mitarbeiter, ein Anspruch</h2><p class="lead">Saubere, präzise Arbeit – und gute Stimmung auf der Baustelle.</p></div>
+      <div class="grid3">
+        {werte.map(([t, d]) => <div class="lcard"><h3>{t}</h3><p>{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials title="Auch Partnerbetriebe vertrauen uns" items={[
+    { name: "Plissee-Welt Team", text: "Als Partnerbetrieb der Plissee-Welt sind wir mit der Zusammenarbeit mit Agos Bau sehr zufrieden. Die Zuverlässigkeit, Qualität und professionelle Ausführung sind hervorragend – auf Augenhöhe." },
+    { name: "physioWERK Schwachhausen", text: "Top Arbeit – absolut empfehlenswert! Die Jungs waren pünktlich, freundlich und haben äußerst sauber gearbeitet. Man merkt sofort, dass hier echte Profis am Werk sind." },
+    { name: "Pascal Schichtel", text: "André und sein Team sind schnell, zuverlässig und haben immer eine gute Idee parat. Danke für deinen Einsatz und bis zum nächsten gemeinsamen Projekt!" },
+  ]} />
+
+  <CtaBlock title="Lernen Sie uns kennen." text="Erzählen Sie uns von Ihrem Projekt – wir melden uns persönlich." ctaHref="/kontakt/" />
+</Base>

@@ -1,0 +1,70 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import BeforeAfter from "../components/BeforeAfter.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+
+const title = "Referenzen – Bäder & Projekte | AGOS BAU Bremen";
+const description = "Echte Projekte von AGOS BAU: Badsanierungen, Großformatfliesen und Außenbereiche im Raum Bremen & Achim. Vorher/Nachher und 5,0★-Kundenstimmen. Jetzt ansehen.";
+
+const projekte = [
+  { img: "badsanierung-bremen-agos-bau.webp", ort: "Bremen", leistung: "Badsanierung, Großformat" },
+  { img: "badsanierung-nacher-agos-bau-bremen-3ewf.webp", ort: "Bremen", leistung: "Komplettsanierung Bad" },
+  { img: "grossformat-fliesen-bremen.webp", ort: "Raum Bremen", leistung: "Großformatfliesen" },
+  { img: "terasse-und-pool-fliesen.webp", ort: "Oberneuland", leistung: "Terrasse & Pool" },
+  { img: "badsanierung-agosbao-32refwefd3.webp", ort: "Achim", leistung: "Designbad" },
+  { img: "fliesenverlegen-bremen-agos-bau.webp", ort: "Raum Bremen", leistung: "Fliesenverlegung" },
+];
+---
+<Base title={title} description={description}>
+  <Hero
+    eyebrow="Referenzen"
+    title="Unsere Arbeit,"
+    accent="in echt."
+    subline="Über 100 abgeschlossene Projekte seit 2019 im Raum Bremen und Achim. Hier sehen Sie, was „einmal richtig gemacht“ bedeutet."
+    image="badsanierung-bremen-1243e3.webp"
+    imageAlt="Referenz-Badezimmer von AGOS BAU in Bremen"
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01 · Vorher / Nachher</span><h2>Vom alten Bad zur Wohlfühl-Oase</h2></div>
+      <BeforeAfter
+        before="bad-vorher-alt.webp" after="bad-modern-hero.webp"
+        beforeAlt="Bad vor der Sanierung" afterAlt="Bad nach der Sanierung durch AGOS BAU"
+        note="Beispiel-Darstellung – echte Vorher/Nachher-Projektbilder folgen."
+      />
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Projekte</span><h2>Ausgewählte Arbeiten</h2></div>
+      <div class="gal">
+        {projekte.map((p) => (
+          <figure class="gal__item">
+            <img src={`/images/${p.img}`} alt={`${p.leistung} in ${p.ort} – AGOS BAU`} width="800" height="600" loading="lazy" decoding="async" />
+            <figcaption><strong>{p.ort}</strong> · {p.leistung}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials title="5,0 ★ bei Google – die Stimmen dahinter" limit={5} />
+  <CtaBlock title="Soll Ihr Projekt das nächste hier sein?" ctaHref="/kontakt/" />
+</Base>
+
+<style>
+  .gal { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+  .gal__item { position: relative; border-radius: var(--radius-md); overflow: hidden; }
+  .gal__item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .4s; }
+  .gal__item:hover img { transform: scale(1.04); }
+  .gal__item figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-3) var(--space-4); background: linear-gradient(transparent, rgba(38,51,61,.8)); color: var(--color-weiss); font-size: 0.85rem; }
+  @media (min-width: 640px) { .gal { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .gal { grid-template-columns: repeat(3, 1fr); } }
+</style>

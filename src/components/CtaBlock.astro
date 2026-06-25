@@ -1,0 +1,30 @@
+---
+import { site } from "../data/site";
+interface Props { title?: string; text?: string; ctaText?: string; ctaHref?: string; }
+const {
+  title = "Planen Sie Ihr Projekt?",
+  text = "Erzählen Sie uns kurz, worum es geht – Sie bekommen ein ehrliches, kostenloses Angebot.",
+  ctaText = site.cta,
+  ctaHref = "/kontakt/",
+} = Astro.props;
+---
+<section class="cta">
+  <div class="wrap cta__inner">
+    <span class="eyebrow">Kostenlos & unverbindlich</span>
+    <h2>{title}</h2>
+    <p class="lead">{text}</p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href={ctaHref} data-track="lead" data-lead="cta">{ctaText} →</a>
+      <a class="btn btn--secondary" href={site.phoneHref} data-track="lead" data-lead="anruf">{site.phone}</a>
+    </div>
+    <p class="cta__re">{site.reassurance}</p>
+  </div>
+</section>
+<style>
+  .cta { background: var(--color-copper-tint); border-block: 1px solid var(--color-border); }
+  .cta__inner { padding-block: var(--space-16); text-align: center; max-width: 720px; }
+  .wrap.cta__inner { margin-inline: auto; }
+  .cta h2 { margin-block: var(--space-3) var(--space-4); }
+  .cta__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-top: var(--space-8); }
+  .cta__re { margin-top: var(--space-4); font-size: 0.85rem; color: var(--color-dunkelgrau); }
+</style>

@@ -5,3 +5,5 @@
 node_modules/
 archives/
 *.local
+dist/
+.astro/

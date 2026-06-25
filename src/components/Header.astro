@@ -1,0 +1,59 @@
+---
+import { site, nav } from "../data/site";
+---
+<header class="hdr">
+  <div class="wrap hdr__inner">
+    <a href="/" class="hdr__logo" aria-label="AGOS BAU Startseite">
+      <img src="/logo/AGOS_Bau_Logo-1.svg" alt="AGOS BAU – Ihr Fachbetrieb" width="118" height="50" />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Hauptnavigation">
+      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    </nav>
+
+    <div class="hdr__actions">
+      <a class="hdr__phone" href={site.phoneHref} data-track="lead" data-lead="anruf">{site.phone}</a>
+      <a class="btn btn--primary hdr__cta" href="/kontakt/">Angebot anfragen</a>
+    </div>
+
+    <details class="hdr__burger">
+      <summary aria-label="Menü öffnen"><span></span><span></span><span></span></summary>
+      <nav class="hdr__mobilenav" aria-label="Mobile Navigation">
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+        <a href={site.phoneHref} data-track="lead" data-lead="anruf">Anrufen: {site.phone}</a>
+        <a class="btn btn--primary" href="/kontakt/">Angebot anfragen</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--color-offwhite) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hdr__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: 0.8rem; }
+  .hdr__logo { display: flex; align-items: center; }
+  .hdr__logo img { height: 46px; width: auto; display: block; }
+  .hdr__nav { display: none; gap: 1.6rem; }
+  .hdr__nav a { font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-mittelgrau); transition: color .2s; }
+  .hdr__nav a:hover { color: var(--color-anthrazit); }
+  .hdr__actions { display: none; align-items: center; gap: 1.2rem; }
+  .hdr__phone { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-anthrazit); font-weight: 500; }
+  .hdr__cta { font-size: 0.78rem; padding: 0.7rem 1.1rem; }
+
+  /* Burger (mobil) */
+  .hdr__burger summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 8px; }
+  .hdr__burger summary::-webkit-details-marker { display: none; }
+  .hdr__burger summary span { width: 26px; height: 2px; background: var(--color-anthrazit); display: block; }
+  .hdr__mobilenav { position: absolute; left: 0; right: 0; top: 100%; background: var(--color-weiss); border-bottom: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 0.2rem; padding: var(--space-4) var(--space-6); box-shadow: var(--shadow-md); }
+  .hdr__mobilenav a { padding: 0.7rem 0; font-family: var(--font-sans); font-weight: 600; color: var(--color-anthrazit); border-bottom: 1px solid var(--color-border); }
+  .hdr__mobilenav a.btn { border: none; justify-content: center; margin-top: 0.6rem; }
+
+  @media (min-width: 1024px) {
+    .hdr__nav, .hdr__actions { display: flex; }
+    .hdr__burger { display: none; }
+  }
+</style>

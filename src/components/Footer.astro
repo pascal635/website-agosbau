@@ -1,0 +1,72 @@
+---
+import { site, nav, services } from "../data/site";
+const stadtteile = [
+  { label: "Bremen-Oberneuland", href: "/fliesenleger-bremen-oberneuland/" },
+  { label: "Bremen-Schwachhausen", href: "/fliesenleger-bremen-schwachhausen/" },
+  { label: "Bremen-Borgfeld", href: "/fliesenleger-bremen-borgfeld/" },
+  { label: "Bremen-Horn-Lehe", href: "/fliesenleger-bremen-horn-lehe/" },
+  { label: "Lilienthal", href: "/fliesenleger-bremen-lilienthal/" },
+  { label: "Achim", href: "/fliesenleger-achim/" },
+  { label: "Oyten", href: "/fliesenleger-oyten/" },
+  { label: "Stuhr", href: "/fliesenleger-stuhr/" },
+  { label: "Verden", href: "/fliesenleger-verden/" },
+];
+const year = 2026;
+---
+<footer class="ft">
+  <div class="wrap ft__grid">
+    <div>
+      <img class="ft__logo" src="/logo/AGOS_Bau_Logo-1.svg" alt="AGOS BAU" width="150" height="63" />
+      <p class="ft__claim">Ihr Fachbetrieb für Badsanierung und Fliesenarbeiten in Achim, Bremen und Umland. Festpreis, sauber, persönlich vom Chef betreut.</p>
+      <p class="ft__rating">★ {site.rating.value} · {site.rating.count} Bewertungen bei Google</p>
+    </div>
+
+    <div>
+      <div class="ft__col-title">Leistungen</div>
+      <ul>{services.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+    </div>
+
+    <div>
+      <div class="ft__col-title">Gebiete</div>
+      <ul>{stadtteile.map((s) => <li><a href={s.href}>{s.label}</a></li>)}</ul>
+    </div>
+
+    <div>
+      <div class="ft__col-title">Kontakt</div>
+      <ul class="ft__contact">
+        <li>{site.name}</li>
+        <li>{site.street}</li>
+        <li>{site.zip} {site.city}</li>
+        <li><a href={site.phoneHref} data-track="lead" data-lead="anruf">{site.phone}</a></li>
+        <li><a href={site.whatsappHref} data-track="lead" data-lead="whatsapp">WhatsApp: {site.whatsapp}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li>{site.hours}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap ft__meta">
+    <span>© {year} {site.name}</span>
+    <span class="ft__legal">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+      <a href={site.instagramHref}>Instagram</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .ft { background: var(--color-anthrazit); color: var(--color-hellgrau); padding-block: var(--space-24) var(--space-8); margin-top: var(--space-16); }
+  .ft__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-8); margin-bottom: var(--space-12); }
+  .ft__logo { height: 54px; width: auto; filter: brightness(0) invert(1); margin-bottom: var(--space-4); }
+  .ft__claim { font-size: 0.9rem; line-height: 1.6; max-width: 400px; }
+  .ft__rating { font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-copper); margin-top: var(--space-4); }
+  .ft__col-title { font-family: var(--font-sans); font-weight: 600; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-weiss); margin-bottom: var(--space-4); }
+  .ft ul { list-style: none; }
+  .ft li { padding: 0.3rem 0; font-size: 0.85rem; }
+  .ft a:hover { color: var(--color-copper); }
+  .ft__contact li { font-family: var(--font-mono); font-size: 0.8rem; }
+  .ft__meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); padding-top: var(--space-8); border-top: 1px solid rgba(255,255,255,.1); font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-mittelgrau); }
+  .ft__legal { display: flex; gap: var(--space-6); }
+  @media (min-width: 768px) { .ft__grid { grid-template-columns: 2fr 1fr 1fr 1.2fr; } }
+</style>

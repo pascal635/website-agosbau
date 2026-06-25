@@ -1,0 +1,19 @@
+---
+import { site } from "../data/site";
+const items = [
+  `★ ${site.rating.value} · ${site.rating.count} Bewertungen`,
+  `${site.projects} Projekte`,
+  `seit ${site.founded}`,
+  "Handwerkskammer-eingetragen",
+];
+---
+<div class="trust">
+  <div class="wrap trust__inner">
+    {items.map((i) => <span class="trust__item">{i}</span>)}
+  </div>
+</div>
+<style>
+  .trust { background: var(--color-anthrazit); color: var(--color-hellgrau); }
+  .trust__inner { display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); justify-content: center; padding-block: var(--space-3); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .trust__item:first-child { color: var(--color-copper); }
+</style>

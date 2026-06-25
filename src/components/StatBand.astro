@@ -1,0 +1,28 @@
+---
+interface Props { items?: { n: string; l: string }[]; }
+const def = [
+  { n: "seit 2019", l: "Fachbetrieb" },
+  { n: "100+", l: "Projekte" },
+  { n: "5,0 ★", l: "25 Google-Bewertungen" },
+  { n: "DIN 18534", l: "normgerechte Abdichtung" },
+];
+const { items = def } = Astro.props;
+---
+<section class="statband">
+  <div class="wrap statband__grid">
+    {items.map((s) => (
+      <div class="statband__item">
+        <span class="statband__n">{s.n}</span>
+        <span class="statband__l">{s.l}</span>
+      </div>
+    ))}
+  </div>
+</section>
+<style>
+  .statband { background: var(--color-anthrazit); }
+  .statband__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8) var(--space-4); padding-block: var(--space-12); }
+  .statband__item { display: flex; flex-direction: column; gap: var(--space-1); border-left: 2px solid var(--color-copper); padding-left: var(--space-4); }
+  .statband__n { font-family: var(--font-head); font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--color-weiss); line-height: 1; }
+  .statband__l { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-hellgrau); }
+  @media (min-width: 768px) { .statband__grid { grid-template-columns: repeat(4, 1fr); } }
+</style>

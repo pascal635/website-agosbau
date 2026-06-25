@@ -1,0 +1,28 @@
+---
+import { reviews as allReviews } from "../data/site";
+interface Props { title?: string; limit?: number; items?: { name: string; text: string }[]; }
+const { title = "Was Kunden über uns sagen", limit = 3, items } = Astro.props;
+const list = (items ?? allReviews).slice(0, limit);
+---
+<section class="section section--card">
+  <div class="wrap">
+    <span class="eyebrow">Bewertungen · ★ 5,0</span>
+    <h2 class="ts__h">{title}</h2>
+    <div class="ts__grid">
+      {list.map((r) => (
+        <figure class="ts__card">
+          <blockquote>{r.text}</blockquote>
+          <figcaption>{r.name} · Google-Bewertung</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .ts__h { margin-block: var(--space-3) var(--space-8); }
+  .ts__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+  .ts__card { border-left: 3px solid var(--color-copper); padding-left: var(--space-6); }
+  .ts__card blockquote { font-style: italic; font-size: 1.05rem; line-height: 1.6; color: var(--color-fg); font-weight: 500; }
+  .ts__card figcaption { margin-top: var(--space-4); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--color-fg-muted); }
+  @media (min-width: 768px) { .ts__grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

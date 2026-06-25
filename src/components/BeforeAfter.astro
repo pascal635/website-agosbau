@@ -1,0 +1,43 @@
+---
+interface Props {
+  before: string; after: string; beforeAlt: string; afterAlt: string;
+  note?: string;
+}
+const { before, after, beforeAlt, afterAlt, note } = Astro.props;
+---
+<div class="ba" data-ba>
+  <img class="ba__after" src={`/images/${after}`} alt={afterAlt} width="1200" height="675" loading="lazy" decoding="async" />
+  <div class="ba__before">
+    <img src={`/images/${before}`} alt={beforeAlt} width="1200" height="675" loading="lazy" decoding="async" />
+  </div>
+  <div class="ba__divider"><span class="ba__handle">↔</span></div>
+  <span class="ba__label ba__label--before">Vorher</span>
+  <span class="ba__label ba__label--after">Nachher</span>
+  <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Vorher/Nachher-Vergleich" />
+</div>
+{note && <p class="ba__note">{note}</p>}
+
+<style>
+  .ba { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: var(--radius-md); user-select: none; }
+  .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ba__before { position: absolute; inset: 0; width: 50%; overflow: hidden; border-right: 2px solid var(--color-weiss); }
+  .ba__before img { width: 100vw; max-width: none; }
+  .ba__divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--color-weiss); transform: translateX(-1px); pointer-events: none; }
+  .ba__handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 50%; background: var(--color-copper); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md); font-size: 1rem; }
+  .ba__label { position: absolute; bottom: var(--space-3); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.45); padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); }
+  .ba__label--before { left: var(--space-3); }
+  .ba__label--after { right: var(--space-3); }
+  .ba__range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba__note { margin-top: var(--space-3); font-size: 0.8rem; color: var(--color-mittelgrau); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-ba]").forEach((ba) => {
+    const before = ba.querySelector<HTMLElement>(".ba__before")!;
+    const divider = ba.querySelector<HTMLElement>(".ba__divider")!;
+    const range = ba.querySelector<HTMLInputElement>(".ba__range")!;
+    const set = (v: number) => { before.style.width = `${v}%`; divider.style.left = `${v}%`; };
+    range.addEventListener("input", () => set(Number(range.value)));
+    set(50);
+  });
+</script>

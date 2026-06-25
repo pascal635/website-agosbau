@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import CrossLinks from "../components/CrossLinks.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Fliesen verlegen lassen in Bremen & Achim | AGOS BAU";
+const description = "Fliesen verlegen lassen in Bremen & Achim: Wand, Boden, innen und außen. Sauber, präzise, langlebig – vom Fachbetrieb mit über 100 Projekten. Jetzt anfragen.";
+
+const bereiche = [
+  ["Vollverfliesung", "Boden bis Decke, innen und außen – ein durchgehendes, ruhiges Fliesenbild."],
+  ["Wand- & Bodenfliesen", "Bad, Küche, Wohnbereich und Gewerbe, präzise verlegt."],
+  ["Fliesen-Erneuerung", "Austausch veralteter Fliesen, inklusive ehrlicher Beratung."],
+  ["Einzelfliesen-Austausch", "Gezielte Reparatur, ohne das Gesamtbild zu stören."],
+  ["Wandreparaturen", "Innen- und Außenbereich, sauber angearbeitet."],
+  ["Naturstein, Feinsteinzeug, Mosaik", "Auch anspruchsvolle Materialien fachgerecht verlegt."],
+];
+const faq = [
+  { q: "Was kostet das Fliesenlegen in Bremen?", a: "Der Preis hängt von Fläche, Material und Untergrund ab. Nach einem kurzen Aufmaß bekommen Sie von uns einen Festpreis, ohne versteckte Kosten." },
+  { q: "Verlegen Sie auch einzelne Räume oder kleine Flächen?", a: "Ja. Vom einzelnen ausgetauschten Fliesenfeld bis zur kompletten Vollverfliesung übernehmen wir beides." },
+  { q: "Welche Fliesen eignen sich für mein Projekt?", a: "Wir beraten Sie ehrlich nach Raum, Nutzung und Budget – Keramik, Feinsteinzeug, Naturstein oder Mosaik. Bevorzugte Systemmarken: Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde." },
+];
+const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Fliesenverlegung", serviceType: "Fliesen verlegen", areaServed: "Bremen, Achim und Umland", provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" } };
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]} ogImage="/images/fliesenverlegen-bremen-agos-bau.webp">
+  <Hero
+    eyebrow="Fliesenleger · Bremen & Achim"
+    title="Fliesen verlegen lassen in Bremen."
+    accent="Sauber, präzise, langlebig."
+    subline="Wand, Boden, innen und außen – vom Fachbetrieb, der den Untergrund genauso ernst nimmt wie die Optik."
+    image="fliesenverlegen-bremen-agos-bau.webp"
+    imageAlt="Fliesenverlegung von AGOS BAU in Bremen"
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Anspruch</span><h2>Eine gute Fliese ist nur so gut wie der Untergrund.</h2></div>
+      <p>Deshalb fangen wir nicht beim Kleber an, sondern bei der Vorbereitung: prüfen, ausgleichen, begradigen. So bekommen Sie ein Fliesenbild, das gleichmäßig liegt und Jahrzehnte hält – statt bröckelnder Fugen und schiefer Kanten.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Leistungen</span><h2>Was wir für Sie verlegen</h2></div>
+      <div class="grid3">
+        {bereiche.map(([t, d]) => (
+          <div class="lcard"><h3>{t}</h3><p>{d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden über unsere Fliesenarbeit sagen" items={[
+    { name: "Lars D.", text: "Wir können AGOS für jeden empfehlen, der Wert auf hochwertige Fliesenlegearbeiten legt. Die Leidenschaft fürs Handwerk sieht man dem jungen Chef an. Klare Empfehlung." },
+    { name: "Sven Herde", text: "Super und sehr genaues Arbeiten steht bei dieser Firma absolut im Vordergrund! Sollte ich nochmal eine Fliesenfirma brauchen, würde ich immer wieder hier anfragen!" },
+    { name: "Florian Repty", text: "Vielen Dank für die fantastische Arbeit! Von der Beratung bis zur fertiggestellten Arbeit stimmte einfach alles. Für das nächste Projekt komme ich gerne auf euch zurück!" },
+  ]} />
+
+  <Faq title="Häufige Fragen zur Fliesenverlegung" items={faq} />
+  <CrossLinks current="/fliesenverlegung-bremen/" />
+  <CtaBlock title="Sie wissen, was Sie wollen?" text="Schicken Sie uns die Eckdaten – wir machen Ihnen ein faires Festpreis-Angebot." ctaHref="/kontakt/" />
+</Base>
+
+<style>
+  .grid3 { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+  .lcard { padding: var(--space-6); border-top: 2px solid var(--color-copper); background: var(--color-bg); border-radius: 0 0 var(--radius-md) var(--radius-md); }
+  .lcard h3 { margin-bottom: var(--space-2); }
+  @media (min-width: 768px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+</style>

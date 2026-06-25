@@ -1,0 +1,48 @@
+---
+import Base from "../layouts/Base.astro";
+import LeadFunnel from "../components/LeadFunnel.astro";
+import { site } from "../data/site";
+const title = "Kontakt & Angebot – AGOS BAU Achim & Bremen";
+const description = "Kostenloses Angebot für Badsanierung & Fliesen anfragen. Telefon, WhatsApp oder Formular – André ruft persönlich zurück. AGOS BAU, Achim & Raum Bremen.";
+---
+<Base title={title} description={description}>
+  <section class="section">
+    <div class="wrap k__head">
+      <span class="eyebrow">Kontakt</span>
+      <h1>Lassen Sie uns über Ihr Projekt sprechen.</h1>
+      <p class="lead">Schreiben Sie uns kurz, worum es geht – Sie bekommen ein kostenloses, ehrliches Angebot. André meldet sich persönlich, meist am selben Werktag.</p>
+    </div>
+  </section>
+
+  <LeadFunnel variant="bad" id="angebot" />
+
+  <section class="section">
+    <div class="wrap k__grid">
+      <div>
+        <h2>Direkt erreichen</h2>
+        <ul class="k__list">
+          <li><span>Telefon</span><a href={site.phoneHref} data-track="lead" data-lead="anruf">{site.phone}</a></li>
+          <li><span>WhatsApp</span><a href={site.whatsappHref} data-track="lead" data-lead="whatsapp">{site.whatsapp}</a></li>
+          <li><span>E-Mail</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><span>Instagram</span><a href={site.instagramHref}>{site.instagram}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Standort & Zeiten</h2>
+        <p class="k__nap">{site.name}<br />{site.street}<br />{site.zip} {site.city}</p>
+        <p class="k__hours">Mo–Do: 08:00–17:00 Uhr<br />Fr: 08:00–14:00 Uhr<br />Sa & So: geschlossen</p>
+        <p class="muted">Einzugsgebiet: Achim, Bremen und Umland (40–60 km).</p>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .k__head { max-width: 760px; }
+  .k__head h1 { margin-block: var(--space-3) var(--space-4); }
+  .k__grid { display: grid; gap: var(--space-12); grid-template-columns: 1fr; }
+  .k__list { list-style: none; margin-top: var(--space-4); }
+  .k__list li { display: flex; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .k__list span { color: var(--color-mittelgrau); font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .k__nap, .k__hours { margin-block: var(--space-4); line-height: 1.7; }
+  @media (min-width: 768px) { .k__grid { grid-template-columns: 1fr 1fr; } }
+</style>

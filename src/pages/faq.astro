@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import Faq from "../components/Faq.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+
+const title = "Häufige Fragen zu Badsanierung & Fliesen | AGOS BAU";
+const description = "Antworten zu Badsanierung in Bremen: Dauer, Kosten, Festpreis, Abdichtung, Gewerke und Förderung – vom Fachbetrieb AGOS BAU. Jetzt Angebot anfragen.";
+
+const faq = [
+  { q: "Wie lange dauert eine Badsanierung?", a: "Ein durchschnittliches Bad sanieren wir meist in zwei bis drei Wochen. Die genaue Dauer hängt von Größe, Zustand und den nötigen Gewerken ab. Den Zeitrahmen nennen wir Ihnen verbindlich im Angebot und halten Sie während der Arbeiten auf dem Laufenden." },
+  { q: "Was kostet eine Badsanierung in Bremen?", a: "Eine komplette Badsanierung kostet je nach Ausstattung meist zwischen 15.000 und 55.000 Euro. Eine Standard-Modernisierung startet bei rund 15.000 Euro, ein barrierefreies Komfortbad bei etwa 25.000 Euro. Sie bekommen vorab einen Festpreis ohne versteckte Kosten." },
+  { q: "Wann können Sie mit dem Projekt anfangen?", a: "Das hängt von der aktuellen Auslastung ab. Fragen Sie unverbindlich an – wir nennen Ihnen ehrlich den nächstmöglichen Starttermin und planen verlässlich mit Ihnen." },
+  { q: "Kümmern Sie sich auch um Sanitär und Elektriker?", a: "Ja. Auf Wunsch koordinieren wir konzessionierte Fachbetriebe für Dusche, WC, Waschtisch, Armaturen, Licht, Steckdosen und Fußbodenheizung. Sie haben trotzdem nur einen Ansprechpartner – uns." },
+  { q: "Haben Sie Festpreise?", a: "Ja. Sie erhalten vorab einen Festpreis. Bekommen Sie ein vergleichbares Angebot, das bei gleicher Leistung deutlich günstiger ist, prüfen wir es gemeinsam und bieten eine faire Anpassung an, sofern technisch und wirtschaftlich darstellbar." },
+  { q: "Was ist eine normgerechte Abdichtung nach DIN 18534?", a: "Die Abdichtung im Nassbereich ist einer der wichtigsten Schritte einer Badsanierung. DIN 18534 regelt, wie Böden und Wände vor Feuchtigkeit geschützt werden. Korrekt ausgeführt verhindert sie Wasserschäden – genau hier wird bei Billigsanierungen am häufigsten gespart." },
+  { q: "Verarbeiten Sie auch Großformatfliesen?", a: "Ja, regelmäßig – bis zu Formaten von 120×270 cm. Großformat braucht Spezialwerkzeug, Erfahrung und mehrere Monteure. Wir verlegen es vollflächig im Buttering-Floating-Verfahren." },
+  { q: "Kann ich für ein barrierefreies Bad eine KfW-Förderung bekommen?", a: "Für altersgerechte Umbauten wie eine bodengleiche Dusche gibt es Förderprogramme, zum Beispiel der KfW. Wir bauen Ihr Bad technisch korrekt und förderfähig. Die Antragstellung läuft über Sie bzw. Ihre Bank." },
+  { q: "In welchen Regionen sind Sie tätig?", a: "Wir arbeiten von Achim aus im Umkreis von 40 bis 60 Kilometern – in ganz Bremen und im niedersächsischen Umland. Größere Projekte auf Mallorca übernehmen wir auf Anfrage." },
+  { q: "Was passiert, wenn es zu Verzögerungen kommt?", a: "Wir suchen sofort das Gespräch und erklären genau, warum und wie lange. Sollte es Probleme geben, haben wir ein großes Netzwerk im Rücken, um schnell und fachmännisch eine Lösung zu finden." },
+];
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+<Base title={title} description={description} schema={[faqSchema]}>
+  <section class="section">
+    <div class="wrap narrow">
+      <span class="eyebrow">FAQ</span>
+      <h1>Häufige Fragen</h1>
+      <p class="lead" style="margin-top: var(--space-4)">Ehrliche Antworten auf die Fragen, die uns am häufigsten gestellt werden. Ist Ihre Frage nicht dabei, rufen Sie uns an oder schreiben Sie uns.</p>
+    </div>
+  </section>
+  <Faq title="Rund um Badsanierung & Fliesen" items={faq} />
+  <CtaBlock title="Ihre Frage ist nicht dabei?" text="Fragen Sie uns direkt – persönlich und unverbindlich." ctaHref="/kontakt/" />
+</Base>

@@ -1,0 +1,132 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import BeforeAfter from "../components/BeforeAfter.astro";
+import LeadFunnel from "../components/LeadFunnel.astro";
+import { site } from "../data/site";
+
+const title = "Badsanierung Bremen – Festpreis vom Fachbetrieb | AGOS BAU";
+const description = "Badsanierung in Bremen aus einer Hand: Festpreis, normgerechte Abdichtung, über 100 Bäder. Persönlich vom Chef betreut. Jetzt kostenloses Angebot anfragen.";
+
+const steps = [
+  ["Persönliches Erstgespräch vor Ort", "Wir schauen uns alles an, besprechen Wünsche, Budget und Stil. Danach: ein transparentes Angebot."],
+  ["Rückbau & Vorbereitung", "Altes Bad fachgerecht demontiert und entsorgt."],
+  ["Technische Vorarbeiten", "Untergründe prüfen, Wände begradigen, Gefälle herstellen, Leitungen vorbereiten."],
+  ["Abdichtung nach DIN 18534", "Der wichtigste Schritt im Nassbereich. Er entscheidet, ob Ihr Bad dicht bleibt."],
+  ["Fliesenarbeiten", "Wand und Boden, Nischen, saubere Schnitte, auch mit Großformaten."],
+  ["Sanitär & Elektro", "Über unsere festen, konzessionierten Partnerbetriebe koordiniert."],
+  ["Endmontage & Übergabe", "Alles geprüft, gereinigt, bezugsfertig."],
+];
+const preise = [
+  ["Standard-Modernisierung", "15.000 – 20.000 €"],
+  ["Gehobenes Designbad", "20.000 – 30.000 €"],
+  ["Barrierefreies Komfortbad", "25.000 – 40.000 €"],
+  ["Exklusives Wellnessbad", "35.000 – 55.000 €"],
+];
+const faq = [
+  { q: "Wie lange dauert eine Badsanierung?", a: "Ein durchschnittliches Bad sanieren wir in der Regel in zwei bis drei Wochen – abhängig von Größe und Gewerken. Den genauen Zeitrahmen nennen wir Ihnen im Angebot und halten Sie währenddessen auf dem Laufenden." },
+  { q: "Was kostet eine Badsanierung in Bremen?", a: "Eine komplette Badsanierung kostet je nach Ausstattung meist zwischen 15.000 und 55.000 Euro. Eine Standard-Modernisierung startet bei rund 15.000 Euro, ein barrierefreies Komfortbad bei etwa 25.000 Euro. Sie bekommen vorab einen Festpreis." },
+  { q: "Wann können Sie anfangen?", a: "Das hängt von der aktuellen Auslastung ab. Fragen Sie unverbindlich an – wir nennen Ihnen ehrlich den nächstmöglichen Starttermin." },
+  { q: "Kümmern Sie sich auch um Sanitär und Elektriker?", a: "Ja. Auf Wunsch koordinieren wir konzessionierte Fachbetriebe für Dusche, WC, Waschtisch, Armaturen, Licht und Strom – Sie haben trotzdem nur einen Ansprechpartner." },
+  { q: "Haben Sie Festpreise?", a: "Ja. Sie bekommen vorab einen Festpreis. Erhalten Sie ein vergleichbares, deutlich günstigeres Angebot, prüfen wir es gemeinsam und passen fair an, wo es technisch und wirtschaftlich darstellbar ist." },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org", "@type": "Service",
+  name: "Badsanierung", serviceType: "Badsanierung",
+  areaServed: "Bremen, Achim und Umland",
+  provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" },
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]}>
+  <Hero
+    eyebrow="Badsanierung Bremen"
+    title="Ihr neues Bad in Bremen –"
+    accent="einmal richtig, zum Festpreis."
+    subline="Komplette Badsanierung vom Fachbetrieb aus Achim – Planung, Abdichtung, Fliesen und Gewerke-Koordination. Sie haben einen Ansprechpartner und einen festen Preis."
+    ctaHref="#angebot"
+    image="badsanierung-bremen-agos-bau.webp"
+    imageAlt="Sanierte Badezimmer in Bremen mit bodengleicher Dusche"
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="wrap bs__narrow">
+      <span class="eyebrow">Warum die Sorge berechtigt ist</span>
+      <h2>Vom Pfusch zur Sorglos-Sanierung.</h2>
+      <p class="lead">Wird die Baustelle zur Dauerbaustelle? Kommt am Ende eine Rechnung, mit der niemand gerechnet hat? Zieht in zwei Jahren Wasser in die Wand? Diese Sorgen sind berechtigt – wir sehen die Folgen von Pfusch regelmäßig, wenn wir alte Bäder öffnen. Bei uns ist Ihr Bad Chefsache: Festpreis, klarer Ablauf, ein Ansprechpartner.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <span class="eyebrow">So läuft Ihre Badsanierung</span>
+      <h2 class="bs__h">In 7 Schritten zum fertigen Bad</h2>
+      <ol class="bs__steps">
+        {steps.map(([t, d], i) => (
+          <li><span class="bs__num">{String(i + 1).padStart(2, "0")}</span><div><h3>{t}</h3><p>{d}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap bs__narrow">
+      <span class="eyebrow">Kosten</span>
+      <h2>Was kostet eine Badsanierung in Bremen?</h2>
+      <p class="lead">Eine komplette Badsanierung in Bremen kostet je nach Größe und Ausstattung meist zwischen 15.000 und 55.000 Euro. Sie bekommen vorab einen Festpreis – ohne versteckte Kosten.</p>
+      <table class="bs__table">
+        <thead><tr><th>Bad-Typ</th><th>Richtwert 2026</th></tr></thead>
+        <tbody>{preise.map(([t, p]) => <tr><td>{t}</td><td class="bs__price">{p}</td></tr>)}</tbody>
+      </table>
+      <p class="muted bs__stand">Stand: Juni 2026. Endpreis nach Aufmaß und Besichtigung.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap bs__narrow">
+      <span class="eyebrow">Referenz</span>
+      <h2 class="bs__h">Vom alten Bad zur Wohlfühl-Oase</h2>
+      <BeforeAfter
+        before="bad-vorher-alt.webp" after="bad-modern-hero.webp"
+        beforeAlt="Bad vor der Sanierung" afterAlt="Bad nach der Sanierung durch AGOS BAU"
+        note="Beispiel-Darstellung – echte Vorher/Nachher-Projektbilder folgen."
+      />
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden über ihre Badsanierung sagen" limit={3} />
+
+  <section class="section section--card">
+    <div class="wrap bs__narrow">
+      <span class="eyebrow">Technik & Material</span>
+      <h2>Abdichtung nach DIN 18534 – Standard, nicht Aufpreis.</h2>
+      <p>Die Abdichtung im Nassbereich schützt Boden und Wände vor Feuchtigkeit. DIN 18534 legt fest, wie das fachgerecht ausgeführt wird – genau hier wird bei Billigsanierungen am häufigsten gespart. Wir verarbeiten Markensysteme: Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde. „Ein Bad muss nicht nur schön aussehen, es muss auch nach Jahren noch funktionieren.“</p>
+    </div>
+  </section>
+
+  <LeadFunnel variant="bad" id="angebot" />
+  <Faq title="Häufige Fragen zur Badsanierung" items={faq} />
+</Base>
+
+<style>
+  .bs__narrow { max-width: 820px; }
+  .bs__h { margin-block: var(--space-3) var(--space-8); }
+  .bs__steps { list-style: none; display: grid; gap: var(--space-6); counter-reset: s; }
+  .bs__steps li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); align-items: start; }
+  .bs__num { font-family: var(--font-mono); color: var(--color-copper); font-size: 0.9rem; padding-top: 0.2rem; border-top: 1px solid var(--color-copper); }
+  .bs__steps h3 { margin-bottom: var(--space-1); }
+  .bs__table { width: 100%; border-collapse: collapse; margin-top: var(--space-6); }
+  .bs__table th { text-align: left; font-family: var(--font-head); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mittelgrau); border-bottom: 1px solid var(--color-anthrazit); padding: var(--space-3) 0; }
+  .bs__table td { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .bs__price { font-family: var(--font-mono); color: var(--color-anthrazit); text-align: right; }
+  .bs__stand { margin-top: var(--space-4); font-size: 0.8rem; }
+  @media (min-width: 768px) { .bs__steps { grid-template-columns: 1fr 1fr; gap: var(--space-8); } }
+</style>

@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** zusätzliche JSON-LD-Objekte (werden mit LocalBusiness gemerged) */
+  schema?: Record<string, any>[];
+  ogImage?: string;
+}
+const { title, description, schema = [], ogImage = "/images/badsanierung-bremen-agos-bau.webp" } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  image: new URL("/images/agos-leistung.webp", site.url).href,
+  url: site.url,
+  telephone: "+4942025116131",
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.street,
+    postalCode: site.zip,
+    addressLocality: site.city,
+    addressCountry: "DE",
+  },
+  areaServed: "Achim, Bremen und Umland",
+  openingHours: ["Mo-Th 08:00-17:00", "Fr 08:00-14:00"],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: site.rating.value,
+    reviewCount: String(site.rating.count),
+    bestRating: "5",
+  },
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, site.url).href} />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

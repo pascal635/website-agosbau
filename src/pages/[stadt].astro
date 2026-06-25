@@ -1,0 +1,79 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Faq from "../components/Faq.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { cities } from "../data/cities";
+import { site, services } from "../data/site";
+
+export function getStaticPaths() {
+  return cities.map((c) => ({ params: { stadt: c.slug }, props: { city: c } }));
+}
+const { city } = Astro.props;
+const title = `${city.keyword} – Bad & Fliesen | AGOS BAU`;
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: city.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+const areaSchema = { "@context": "https://schema.org", "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131", areaServed: city.ort, address: { "@type": "PostalAddress", streetAddress: site.street, postalCode: site.zip, addressLocality: site.city, addressCountry: "DE" } };
+---
+<Base title={title} description={city.metaDesc} schema={[faqSchema, areaSchema]} ogImage={`/images/${city.heroImg}`}>
+  <Hero
+    eyebrow={`Fliesenleger · ${city.ort}`}
+    title={`Fliesenleger in ${city.ort}.`}
+    accent="Bad & Fliesen aus einer Hand."
+    subline={city.subline}
+    image={city.heroImg}
+    imageAlt={`${city.keyword} – AGOS BAU`}
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Vor Ort</span><h2>{city.ort}: Ihr Fachbetrieb aus der Region</h2></div>
+      <p>{city.context}</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Leistungen</span><h2>Was wir in {city.ort} übernehmen</h2></div>
+      <div class="city-svc">
+        {services.map((s) => (
+          <a class="city-svc__item" href={s.href}>
+            <span>{s.title}</span><span class="city-svc__arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {city.proof && (
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="sec-head"><span class="sec-num">03 · Lokaler Beweis</span><h2>Schon in {city.ort} gebaut</h2></div>
+        <blockquote class="cityquote">{city.proof.text}<cite>{city.proof.name}</cite></blockquote>
+      </div>
+    </section>
+  )}
+
+  <Faq title={`Häufige Fragen aus ${city.ort}`} items={city.faq} />
+
+  <section class="section section--card">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">Standort</span><h2>So erreichen Sie uns</h2></div>
+      <p>{site.name} · {site.street} · {site.zip} {site.city}. {city.ort} liegt in unserem Einzugsgebiet (Achim + 40–60 km). Telefon <a class="copper" href={site.phoneHref} data-track="lead" data-lead="anruf">{site.phone}</a>, Öffnungszeiten {site.hours}.</p>
+    </div>
+  </section>
+
+  <CtaBlock title={`Ihr Projekt in ${city.ort}?`} text="Erzählen Sie uns kurz davon – Sie bekommen ein kostenloses Festpreis-Angebot." ctaHref="/kontakt/" />
+</Base>
+
+<style>
+  .city-svc { display: grid; grid-template-columns: 1fr; gap: var(--space-2); }
+  .city-svc__item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) var(--space-6); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-head); font-size: 1.15rem; transition: border-color .2s, color .2s; }
+  .city-svc__item:hover { border-color: var(--color-copper); color: var(--color-copper); }
+  .city-svc__arrow { color: var(--color-copper); }
+  .cityquote { border-left: 3px solid var(--color-copper); padding-left: var(--space-6); font-family: var(--font-head); font-style: italic; font-size: 1.4rem; color: var(--color-fg); }
+  .cityquote cite { display: block; margin-top: var(--space-3); font-family: var(--font-sans); font-style: normal; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mittelgrau); }
+  @media (min-width: 768px) { .city-svc { grid-template-columns: 1fr 1fr; gap: var(--space-3); } }
+</style>

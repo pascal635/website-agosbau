@@ -1,0 +1,67 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import CrossLinks from "../components/CrossLinks.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Terrassen- & Poolfliesen verlegen Bremen | AGOS BAU";
+const description = "Terrasse, Pool und Außenbereich fliesen lassen in Bremen & Achim: frostsichere Materialien, saubere Abdichtung. Referenz: Villen mit Pool. Jetzt anfragen.";
+
+const bereiche = [
+  ["Terrassen", "Frostsichere Boden- und Wandfliesen für draußen."],
+  ["Poolbereiche", "Rund um den Pool – rutschhemmend und langlebig."],
+  ["Einfahrten & Außenflächen", "Belastbar verlegt, sauber abgedichtet."],
+  ["Naturstein außen", "Fachgerecht für den Außeneinsatz ausgewählt und verlegt."],
+];
+const faq = [
+  { q: "Welche Fliesen eignen sich für draußen?", a: "Außen brauchen Sie frostbeständige, rutschhemmende Fliesen und das passende Verlegesystem. Wir beraten Sie nach Nutzung und Lage und führen Untergrund und Abdichtung outdoor-gerecht aus." },
+  { q: "Machen Sie auch den Poolbereich?", a: "Ja. Rund um den Pool sind Rutschhemmung und Abdichtung besonders wichtig – beides setzen wir fachgerecht um." },
+];
+const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Terrassen- und Poolfliesen", areaServed: "Bremen, Achim und Umland", provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" } };
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]} ogImage="/images/terasse-und-pool-fliesen.webp">
+  <Hero
+    eyebrow="Außenbereich · Bremen & Achim"
+    title="Terrassen- und Poolfliesen in Bremen."
+    accent="Gemacht für draußen."
+    subline="Draußen gelten andere Regeln: Frost, Nässe, Temperaturwechsel. Wir verlegen mit den richtigen Materialien und der richtigen Abdichtung."
+    image="terasse-und-pool-fliesen.webp"
+    imageAlt="Terrassen- und Poolfliesen von AGOS BAU"
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Anspruch</span><h2>Außen hält nur, was zusammenpasst.</h2></div>
+      <p>Frostbeständige Fliesen, das passende Verlegesystem und eine saubere Fuge entscheiden darüber, ob Ihre Terrasse Jahre hält oder nach dem ersten Winter Risse zeigt. Wir führen Untergrund und Abdichtung outdoor-gerecht aus.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Leistungen</span><h2>Was wir draußen übernehmen</h2></div>
+      <div class="grid3">{bereiche.map(([t, d]) => <div class="lcard"><h3>{t}</h3><p>{d}</p></div>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">03 · Referenz</span><h2>Villen in Oberneuland – Pool inklusive</h2></div>
+      <p>Unsere Flaggschiff-Referenz verbindet genau diese Gewerke: zwei Villen in Oberneuland mit Poolbau, Terrassenfliesen und Bädern mit Großformat – alles aus einer Hand geplant und koordiniert.</p>
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden sagen" items={[
+    { name: "arautenhaus", text: "Auf unserem Grundstück wurde ein komplett neuer Garten angelegt, inkl. neuer Fliesenverlegung rund ums Haus sowie Pool (7×4 m). Die Firma können wir unbedingt weiterempfehlen! Sehr gute Qualität und saubere Arbeit." },
+  ]} limit={1} />
+
+  <Faq title="Häufige Fragen zum Außenbereich" items={faq} />
+  <CrossLinks current="/terrasse-pool-fliesen/" />
+  <CtaBlock title="Soll draußen etwas Neues entstehen?" text="Erzählen Sie uns von Ihrem Außenbereich – wir machen ein Festpreis-Angebot." ctaHref="/kontakt/" />
+</Base>

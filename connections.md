@@ -18,14 +18,16 @@ Platzhalter — Werte und Auth-Details trägt `/onboard` pro Kunde ein. Default-
 
 | # | Schicht | Quelle | Liefert | Mechanismus | Auth | Zuletzt geprüft |
 |---|---|---|---|---|---|---|
-| 4 | Build | Git-Repo | Single Source of Truth der Seite | git (lokal, dieses Repo) | — | — |
-| 5 | Build | Hosting | Auslieferung der Seite | not yet connected | → offen | — |
-| 6 | Build | Domain / Registrar | DNS, Go-Live-Records | not yet connected | → offen | — |
+| 4 | Build | Git-Repo | Single Source of Truth der Seite | git (lokal, Klon `agosbau-site`, Branch `main`) | — | 2026-06-24 |
+| 5 | Build | Hosting | Auslieferung der Seite | not yet connected (Default: Hetzner statisch) | → offen | — |
+| 6 | Build | Domain / Registrar | DNS, Go-Live-Records | **agosbau.de** (Bestand, aktuell WordPress) — Registrar/DNS-Zugang offen | → offen | — |
 | 7 | Monitor | Google Search Console | Impressions, Klicks, Rankings, Indexierung | not yet connected | → offen | — |
 | 8 | Monitor | Google Ads | Kosten, Conversions, Suchbegriffe | not yet connected | → offen | — |
 | 9 | Monitor | Meta Ads | Reichweite, Lead-Kosten, Creatives | not yet connected | → offen | — |
 | 10 | Monitor | Matomo | Traffic, Conversions (Privacy-first) | not yet connected | → offen (aufsetzen) | — |
-| 11 | Local | Google Business Profile (GBP) | Local-SEO, NAP, Bewertungen | not yet connected | → offen | — |
+| 11 | Local | Google Business Profile (GBP) | Local-SEO, NAP, Bewertungen | not yet connected (Ø 5,0, 6 Bewertungen vorhanden) | → offen | — |
+
+**NAP (für Schema + Verzeichnisse, NAP-Konsistenz):** AGOS BAU, André Paul Gostomczyk, Auf den Mehren 45, 28832 Achim · Tel 04202 511 61 31 · WhatsApp 0174 8842492 (`https://wa.me/491748842492`) · info@agosbau.de · Instagram @agos_bau · Öffnungszeiten Mo–Do 08–17, Fr 08–14 Uhr. **Lead-Routing: Formulare per E-Mail an info@agosbau.de.**
 
 **Mechanism-Optionen:** `mcp` (MCP-Server), `script` (Python/Node/Bash gegen eine API, in `scripts/`), `export` (CSV/JSON-Dump), `key+ref` (`.env`-Key + `references/{tool}-api.md`), `not yet connected`.
 

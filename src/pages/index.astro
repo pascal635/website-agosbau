@@ -1,0 +1,321 @@
+---
+import Base from "../layouts/Base.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site, services, usps } from "../data/site";
+
+const title = "Fliesenleger Bremen & Achim – Badsanierung | AGOS BAU";
+const description = "Fliesenleger aus Achim für Bremen & Umland: Badsanierung aus einer Hand, Festpreis, über 100 Projekte, 5,0★ bei Google. Jetzt kostenloses Angebot anfragen.";
+
+const stats = [
+  { n: "seit 2019", l: "Fachbetrieb" },
+  { n: "100+", l: "Projekte" },
+  { n: "5,0 ★", l: "25 Google-Bewertungen" },
+  { n: "DIN 18534", l: "normgerechte Abdichtung" },
+];
+const problems = [
+  { t: "Dauerbaustelle", q: "„Die Baustelle zieht sich ewig, und keiner sagt einem, wann es weitergeht.“" },
+  { t: "Versteckte Kosten", q: "„Am Ende kostet alles mehr als besprochen.“" },
+  { t: "Pfusch am Bau", q: "„Beim letzten Mal wurde gepfuscht, jetzt habe ich Angst vor Wasser in der Wand.“" },
+];
+const prozess = [
+  ["Erstgespräch", "Vor Ort, ehrliches Festpreis-Angebot."],
+  ["Abdichtung", "Normgerecht nach DIN 18534."],
+  ["Fliesen & Gewerke", "Sauber verlegt, alles koordiniert."],
+  ["Übergabe", "Geprüft, gereinigt, bezugsfertig."],
+];
+const orte = [
+  { label: "Oberneuland", href: "/fliesenleger-bremen-oberneuland/" },
+  { label: "Schwachhausen", href: "/fliesenleger-bremen-schwachhausen/" },
+  { label: "Borgfeld", href: "/fliesenleger-bremen-borgfeld/" },
+  { label: "Horn-Lehe", href: "/fliesenleger-bremen-horn-lehe/" },
+  { label: "Lilienthal", href: "/fliesenleger-bremen-lilienthal/" },
+  { label: "Achim", href: "/fliesenleger-achim/" },
+  { label: "Oyten", href: "/fliesenleger-oyten/" },
+  { label: "Stuhr", href: "/fliesenleger-stuhr/" },
+  { label: "Verden", href: "/fliesenleger-verden/" },
+];
+const faq = [
+  { q: "Was kostet eine Badsanierung in Bremen?", a: "Eine komplette Badsanierung in Bremen kostet je nach Ausstattung meist zwischen 15.000 und 55.000 Euro. Sie bekommen vorab einen Festpreis, ohne versteckte Kosten." },
+  { q: "Welche Gebiete deckt AGOS BAU als Fliesenleger ab?", a: "Wir arbeiten von Achim aus im Umkreis von 40 bis 60 Kilometern: in ganz Bremen, im niedersächsischen Umland und auf Anfrage auf Mallorca." },
+  { q: "Kümmern Sie sich auch um Sanitär und Elektriker?", a: "Ja. Auf Wunsch koordinieren wir konzessionierte Fachbetriebe für Dusche, WC, Waschtisch, Armaturen, Licht und Strom. Sie haben nur einen Ansprechpartner." },
+];
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<Base title={title} description={description} schema={[faqSchema]}>
+  <!-- ============ HERO (layered) ============ -->
+  <section class="hero2">
+    <div class="wrap hero2__grid">
+      <div class="hero2__text">
+        <span class="eyebrow">Fachbetrieb für Bad &amp; Fliesen · Achim &amp; Bremen</span>
+        <h1>Fliesenleger in Bremen &amp; Achim.<br /><em class="copper">Ihr Bad, einmal richtig gemacht.</em></h1>
+        <p class="lead hero2__lead">Badsanierung und Fliesenarbeiten vom Fachbetrieb aus Achim, für Bremen und das ganze Umland. Festpreis, saubere Ausführung, persönlich vom Chef betreut.</p>
+        <div class="hero2__cta">
+          <a class="btn btn--primary" href="/badsanierung-bremen/#angebot" data-track="lead" data-lead="cta">{site.cta} →</a>
+          <a class="hero2__phone" href={site.phoneHref} data-track="lead" data-lead="anruf">oder anrufen: {site.phone}</a>
+        </div>
+        <p class="hero2__re">{site.reassurance}</p>
+      </div>
+
+      <div class="hero2__media">
+        <div class="hero2__imgwrap">
+          <img src="/images/badsanierung-bremen-agos-bau.webp" alt="Saniertes Badezimmer in Bremen mit Fischgrätenfliesen und bodengleicher Dusche" width="1240" height="930" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="hero2__badge">
+          <span class="hero2__stars">★★★★★</span>
+          <strong>5,0</strong>
+          <span class="hero2__badgelabel">25 Bewertungen bei Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STAT-BAND ============ -->
+  <section class="stats">
+    <div class="wrap stats__grid">
+      {stats.map((s) => (
+        <div class="stats__item">
+          <span class="stats__n">{s.n}</span>
+          <span class="stats__l">{s.l}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM (PAS) ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">01 · Warum AGOS BAU</span>
+        <h2>Eine Badsanierung ist Vertrauenssache.</h2>
+        <p class="lead">Das hören wir immer wieder, bevor Menschen zu uns kommen:</p>
+      </div>
+      <div class="prob__grid">
+        {problems.map((p, i) => (
+          <div class="prob__card">
+            <span class="prob__idx">0{i + 1}</span>
+            <h3>{p.t}</h3>
+            <p>{p.q}</p>
+          </div>
+        ))}
+      </div>
+      <p class="prob__answer">Genau dafür machen wir es anders: <strong>ein Ansprechpartner, ein Festpreis, eine saubere Ausführung.</strong></p>
+    </div>
+  </section>
+
+  <!-- ============ POSITIONIERUNG (overlap) ============ -->
+  <section class="section section--card">
+    <div class="wrap pos__grid">
+      <div class="pos__media">
+        <img src="/images/badsanierung-nacher-agos-bau-bremen-3ewf.webp" alt="Fertige Badsanierung von AGOS BAU mit freistehender Wanne" width="1100" height="825" loading="lazy" decoding="async" />
+      </div>
+      <div class="pos__text">
+        <span class="sec-num">Was uns unterscheidet</span>
+        <h2>Andere verlegen Fliesen.<br />Wir verantworten das ganze Bad.</h2>
+        <p>Wir sind kein anonymer Großbetrieb. André Gostomczyk plant, koordiniert und steht mit seinem Namen für jedes Projekt, vom ersten Gespräch bis zur sauberen Übergabe.</p>
+        <ul class="pos__usps">
+          {usps.map((u) => (
+            <li><strong>{u.title}.</strong> {u.desc}</li>
+          ))}
+        </ul>
+        <a class="btn btn--secondary" href="/badsanierung-bremen/">Mehr zur Badsanierung</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEISTUNGEN (featured grid) ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">02 · Leistungen</span>
+        <h2>Ihr Fliesenleger für Bremen, Achim und das Umland</h2>
+      </div>
+      <div class="svc2">
+        {services.map((s, i) => (
+          <a class={`svc2__card${i === 0 ? " svc2__card--feat" : ""}`} href={s.href}>
+            <div class="svc2__img"><img src={`/images/${s.img}`} alt={`${s.title} – AGOS BAU`} width="800" height="600" loading="lazy" decoding="async" /></div>
+            <div class="svc2__body">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <span class="svc2__more">Mehr erfahren →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROZESS-TEASER ============ -->
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">03 · So läuft es</span>
+        <h2>In vier Schritten zum fertigen Bad</h2>
+      </div>
+      <ol class="proc">
+        {prozess.map(([t, d], i) => (
+          <li class="proc__step">
+            <span class="proc__num">0{i + 1}</span>
+            <h3>{t}</h3>
+            <p>{d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED QUOTE (full-bleed) ============ -->
+  <section class="quote" style="--bg: url('/images/bad-walkin-dusche.webp')">
+    <div class="wrap quote__inner">
+      <span class="eyebrow">★ 5,0 bei Google</span>
+      <blockquote>„Wir sind mit der Arbeit von AGOS Bau wirklich zu 100 Prozent zufrieden. Unser Badezimmer sieht klasse aus, mit den großen Fliesen.“</blockquote>
+      <cite>Christian Heinzl, Google-Bewertung</cite>
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden über uns sagen" limit={3} />
+
+  <!-- ============ ÜBER ANDRÉ (overlap + tan block) ============ -->
+  <section class="section section--card">
+    <div class="wrap about2">
+      <div class="about2__media">
+        <img src="/images/agos-leistung.webp" alt="André Gostomczyk, Inhaber von AGOS BAU" width="500" height="600" loading="lazy" decoding="async" />
+      </div>
+      <div class="about2__text">
+        <span class="sec-num">Hinter AGOS BAU</span>
+        <h2>André, Perfektionist aus Überzeugung.</h2>
+        <p>Gelernter Zimmermann, umgeschult zum Fliesenleger, 2019 selbstständig gemacht. „Der Beruf hat mich überzeugt, dem Kunden eine Fliesen-Oase zu zaubern, weil ich Perfektionist bin.“ Heute ist er mit vier festen Mitarbeitern auf Ihrer Baustelle.</p>
+        <a class="btn btn--secondary" href="/ueber-uns/">Lernen Sie uns kennen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EINZUGSGEBIET (interne Links → Local SEO) ============ -->
+  <section class="section">
+    <div class="wrap area">
+      <div class="sec-head">
+        <span class="sec-num">04 · Einzugsgebiet</span>
+        <h2>Vor Ort für Bremen und das Umland</h2>
+        <p class="lead">Von Achim aus sind wir im Umkreis von 40 bis 60 Kilometern für Sie da. Ihr Fliesenleger in:</p>
+      </div>
+      <div class="area__chips">
+        {orte.map((o) => <a class="area__chip" href={o.href}>{o.label}</a>)}
+      </div>
+    </div>
+  </section>
+
+  <Faq title="Häufige Fragen" items={faq} />
+  <CtaBlock title="Planen Sie Ihr neues Bad?" ctaHref="/badsanierung-bremen/#angebot" />
+</Base>
+
+<style>
+  /* ---- Section heads (editorial) ---- */
+  .sec-head { max-width: 760px; margin-bottom: var(--space-12); }
+  .sec-num { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-copper); display: inline-block; padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-copper); margin-bottom: var(--space-4); }
+  .sec-head h2 { margin-bottom: var(--space-3); }
+
+  /* ---- Hero (layered) ---- */
+  .hero2 { padding-block: var(--space-16) var(--space-12); overflow: hidden; }
+  .hero2__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: center; }
+  .hero2 h1 { margin-block: var(--space-4) 0; }
+  .hero2__lead { margin-block: var(--space-6); max-width: 32rem; }
+  .hero2__cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); }
+  .hero2__phone { font-size: 0.9rem; color: var(--color-anthrazit); border-bottom: 1px solid var(--color-hellgrau); }
+  .hero2__phone:hover { color: var(--color-copper); }
+  .hero2__re { margin-top: var(--space-4); font-size: 0.85rem; color: var(--color-mittelgrau); }
+  .hero2__media { position: relative; }
+  .hero2__imgwrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+  .hero2__imgwrap::before { content: ""; position: absolute; top: 18px; left: 18px; width: 28px; height: 28px; border-top: 2px solid var(--color-copper); border-left: 2px solid var(--color-copper); z-index: 2; }
+  .hero2__imgwrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .hero2__media::after { content: ""; position: absolute; right: -22px; bottom: -22px; width: 55%; height: 55%; background: var(--color-copper-tint); border-radius: var(--radius-lg); z-index: -1; }
+  .hero2__badge { position: absolute; left: -10px; bottom: 24px; background: var(--color-weiss); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: var(--space-4) var(--space-6); display: flex; flex-direction: column; gap: 2px; }
+  .hero2__stars { color: var(--color-copper); letter-spacing: 2px; font-size: 0.8rem; }
+  .hero2__badge strong { font-family: var(--font-head); font-size: 2rem; line-height: 1; color: var(--color-anthrazit); }
+  .hero2__badgelabel { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mittelgrau); }
+
+  /* ---- Stat-Band ---- */
+  .stats { background: var(--color-anthrazit); }
+  .stats__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8) var(--space-4); padding-block: var(--space-12); }
+  .stats__item { display: flex; flex-direction: column; gap: var(--space-1); border-left: 2px solid var(--color-copper); padding-left: var(--space-4); }
+  .stats__n { font-family: var(--font-head); font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--color-weiss); line-height: 1; }
+  .stats__l { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-hellgrau); }
+
+  /* ---- Problem ---- */
+  .prob__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+  .prob__card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-8); position: relative; }
+  .prob__idx { font-family: var(--font-head); font-size: 2.4rem; color: var(--color-copper-tint); position: absolute; top: var(--space-4); right: var(--space-6); }
+  .prob__card h3 { margin-bottom: var(--space-2); }
+  .prob__card p { font-style: italic; color: var(--color-dunkelgrau); }
+  .prob__answer { margin-top: var(--space-8); font-size: 1.3rem; font-family: var(--font-head); color: var(--color-anthrazit); max-width: 50ch; }
+  .prob__answer strong { color: var(--color-copper); font-weight: 600; }
+
+  /* ---- Positionierung ---- */
+  .pos__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: center; }
+  .pos__media img { border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .pos__text h2 { margin-block: var(--space-3) var(--space-6); }
+  .pos__usps { list-style: none; display: grid; gap: var(--space-3); margin-block: var(--space-6); }
+  .pos__usps li { padding-left: var(--space-6); position: relative; }
+  .pos__usps li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 14px; height: 2px; background: var(--color-copper); }
+  .pos__usps strong { color: var(--color-anthrazit); }
+
+  /* ---- Leistungen ---- */
+  .svc2 { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+  .svc2__card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .25s, transform .25s; }
+  .svc2__card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .svc2__img { overflow: hidden; }
+  .svc2__img img { width: 100%; aspect-ratio: 3/2; object-fit: cover; transition: transform .4s ease; }
+  .svc2__card:hover .svc2__img img { transform: scale(1.04); }
+  .svc2__body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); flex: 1; }
+  .svc2__more { margin-top: auto; padding-top: var(--space-4); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-copper); }
+
+  /* ---- Prozess ---- */
+  .proc { list-style: none; display: grid; grid-template-columns: 1fr; gap: var(--space-8); counter-reset: p; }
+  .proc__step { border-top: 1px solid var(--color-border); padding-top: var(--space-4); }
+  .proc__num { font-family: var(--font-head); font-size: 1.4rem; color: var(--color-copper); }
+  .proc__step h3 { margin-block: var(--space-2) var(--space-1); }
+  .proc__step p { font-size: 0.95rem; }
+
+  /* ---- Featured Quote (full-bleed) ---- */
+  .quote { position: relative; background: var(--color-anthrazit); color: var(--color-weiss); }
+  .quote::before { content: ""; position: absolute; inset: 0; background-image: var(--bg); background-size: cover; background-position: center; opacity: 0.22; }
+  .quote__inner { position: relative; padding-block: var(--space-24); text-align: center; max-width: 900px; }
+  .wrap.quote__inner { margin-inline: auto; }
+  .quote blockquote { font-family: var(--font-head); font-size: clamp(1.6rem, 3.5vw, 2.6rem); line-height: 1.3; margin-block: var(--space-4); color: var(--color-weiss); }
+  .quote cite { font-style: normal; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-hellgrau); }
+  .quote .eyebrow { color: var(--color-copper); justify-content: center; }
+  .quote .eyebrow::before { background: var(--color-copper); }
+
+  /* ---- Über André ---- */
+  .about2 { display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: center; }
+  .about2__media { position: relative; max-width: 380px; }
+  .about2__media::before { content: ""; position: absolute; left: -18px; top: -18px; width: 70%; height: 70%; background: var(--color-copper-tint); border-radius: var(--radius-md); z-index: -1; }
+  .about2__media img { border-radius: var(--radius-md); width: 100%; position: relative; }
+  .about2__text h2 { margin-block: var(--space-3) var(--space-4); }
+  .about2__text .btn { margin-top: var(--space-6); }
+
+  /* ---- Einzugsgebiet ---- */
+  .area__chips { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  .area__chip { padding: 0.6rem 1.1rem; border: 1px solid var(--color-border); border-radius: var(--radius-full); background: var(--color-bg-card); font-size: 0.9rem; transition: border-color .2s, color .2s; }
+  .area__chip:hover { border-color: var(--color-copper); color: var(--color-copper); }
+
+  /* ---- Responsive ---- */
+  @media (min-width: 768px) {
+    .stats__grid { grid-template-columns: repeat(4, 1fr); }
+    .prob__grid { grid-template-columns: repeat(3, 1fr); }
+    .svc2 { grid-template-columns: repeat(3, 1fr); }
+    .svc2__card--feat { grid-column: span 3; flex-direction: row; }
+    .svc2__card--feat .svc2__img { flex: 1.2; }
+    .svc2__card--feat .svc2__body { flex: 1; justify-content: center; }
+    .proc { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .hero2__grid { grid-template-columns: 1.05fr 1fr; gap: var(--space-16); }
+    .pos__grid { grid-template-columns: 1fr 1fr; gap: var(--space-16); }
+    .about2 { grid-template-columns: 380px 1fr; gap: var(--space-16); }
+  }
+</style>

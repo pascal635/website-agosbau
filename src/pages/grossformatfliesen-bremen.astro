@@ -1,0 +1,89 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StatBand from "../components/StatBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import CrossLinks from "../components/CrossLinks.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Großformatfliesen verlegen in Bremen | AGOS BAU";
+const description = "Großformatfliesen verlegen lassen in Bremen: XXL-Platten bis 120×270 cm, fachgerecht im Buttering-Floating-Verfahren. Spezialwerkzeug, eingespieltes Team. Jetzt anfragen.";
+
+const technik = [
+  "Professionelle Schneidsysteme und Führungsschienen",
+  "Große Arbeitstische und Saugheber-Tragesysteme",
+  "Spezielle Nivelliersysteme",
+  "Leistungsstarke Schneid- und Bohrtechnik",
+  "Mehrere Monteure für Handling und Einbau",
+  "Buttering-Floating-Verfahren für vollflächige Verklebung",
+];
+const vorteile = [
+  ["Weniger Fugen", "Ein optisch ruhigeres, hochwertigeres Raumbild an Wand und Boden."],
+  ["Leichtere Reinigung", "Weniger Fugen heißt spürbar weniger Putzaufwand."],
+  ["Vollflächig verklebt", "Kein Hohlraum unter der Platte – langlebig und stabil."],
+];
+const faq = [
+  { q: "Ab welchem Format brauche ich einen Spezialisten?", a: "Ab etwa 60×120 cm spricht man von Großformat. Je größer die Platte, desto wichtiger werden Werkzeug, Untergrund und ein eingespieltes Team. Wir verlegen bis 120×270 cm und Sonderformate." },
+  { q: "Verlegen Sie Großformat auch an der Wand?", a: "Ja, an Wand und Boden – im Bad, im Wohnbereich und im Gewerbe. Gerade großformatige Wandflächen wirken edel und modern." },
+  { q: "Was kostet das Verlegen von Großformatfliesen?", a: "Großformat ist aufwändiger als Standardformat und wird individuell kalkuliert. Nach dem Aufmaß bekommen Sie einen Festpreis ohne versteckte Kosten." },
+];
+const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Großformatfliesen verlegen", areaServed: "Bremen, Achim und Umland", provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" } };
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]} ogImage="/images/grossformat-fliesen-bremen.webp">
+  <Hero
+    eyebrow="Premiumarbeit · Bremen & Achim"
+    title="Großformatfliesen verlegen in Bremen."
+    accent="Kein Nebenbei-Produkt."
+    subline="XXL-Platten bis 120×270 cm – fachgerecht verlegt mit Spezialwerkzeug, Erfahrung und einem eingespielten Team."
+    image="grossformat-fliesen-bremen.webp"
+    imageAlt="Großformatfliesen verlegt von AGOS BAU in Bremen"
+    badge={true}
+  />
+  <StatBand />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Was ist Großformat?</span><h2>Ab 60×120 cm beginnt Präzisionsarbeit.</h2></div>
+      <p>Im Handwerk spricht man ab etwa 60×120 cm von Großformat. Alles darüber verlangt deutlich mehr Präzision, Erfahrung und Technik. Wir verarbeiten regelmäßig 120×120 cm, 120×260 cm und 120×270 cm – dazu weitere Sonderformate je nach Hersteller.</p>
+      <p class="prose-quote">„Großformat ist Premiumarbeit – kein Nebenbei-Produkt.“</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02 · Warum Spezialisten</span><h2>Was Großformat technisch braucht</h2></div>
+      <ul class="checklist">
+        {technik.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03 · Ihr Vorteil</span><h2>Warum sich Großformat lohnt</h2></div>
+      <div class="grid3">
+        {vorteile.map(([t, d]) => <div class="lcard"><h3>{t}</h3><p>{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials title="Premium-Design, sauber umgesetzt" items={[
+    { name: "Merlin Varol", text: "Die Fliesenarbeiten in unserem Badezimmer wurden sehr sauber und professionell ausgeführt. Gerade die Fischgräten-Optik war nicht ganz einfach, aber das Ergebnis ist top: edel, modern und sehr hochwertig." },
+    { name: "Christian Heinzl", text: "Unser Badezimmer sieht wirklich klasse aus, mit den großen Fliesen. Von der Beratung bis zur Ausführung hat alles wunderbar geklappt." },
+  ]} limit={2} />
+
+  <Faq title="Häufige Fragen zu Großformatfliesen" items={faq} />
+  <CrossLinks current="/grossformatfliesen-bremen/" />
+  <CtaBlock title="Planen Sie mit großen Platten?" text="Wir sagen Ihnen ehrlich, was machbar ist – und machen ein Festpreis-Angebot." ctaHref="/kontakt/" />
+</Base>
+
+<style>
+  .prose-quote { font-family: var(--font-head); font-size: 1.5rem; color: var(--color-copper); font-style: italic; }
+  .checklist { list-style: none; display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+  .checklist li { padding-left: var(--space-8); position: relative; }
+  .checklist li::before { content: "→"; position: absolute; left: 0; color: var(--color-copper); font-weight: 700; }
+  @media (min-width: 768px) { .checklist { grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-8); } }
+</style>
