@@ -102,6 +102,32 @@ const faqSchema = {
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Impressionen</span>
+      <h2 class="bs__h">So kann Ihr neues Bad aussehen</h2>
+      <div class="bs__gallery">
+        <figure>
+          <img src="/images/badezimmer-dachgeschoss-walk-in-dusche-bremen.webp" alt="Modernes Dachgeschoss-Bad mit ebenerdiger Walk-in-Dusche, Sitzbank und schwarzen Armaturen" width="1600" height="1067" loading="lazy" decoding="async" />
+          <figcaption>Dachgeschoss-Bad mit ebenerdiger Walk-in-Dusche</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/modernes-bad-ebenerdige-dusche-holz-bremen.webp" alt="Modernes Bad in warmen Sandtönen mit ebenerdiger Dusche und Holz-Waschtisch" width="1600" height="1067" loading="lazy" decoding="async" />
+          <figcaption>Warme Sandtöne, ebenerdige Dusche, Holz-Waschtisch</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/badsanierung-badewanne-gruene-fliesen-bremen.webp" alt="Helles Bad mit Badewanne und grünen vertikalen Akzentfliesen" width="1600" height="1195" loading="lazy" decoding="async" />
+          <figcaption>Badewanne mit grünen Akzentfliesen</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/badsanierung-dachbad-grossformat-grau-bremen.webp" alt="Dachbad mit großformatigen grauen Bodenfliesen, Glasdusche und Holzmöbeln" width="1600" height="1195" loading="lazy" decoding="async" />
+          <figcaption>Dachbad mit großformatigen Bodenfliesen</figcaption>
+        </figure>
+      </div>
+      <p class="muted bs__stand">Gestaltungsbeispiele. Ihr Bad planen wir individuell nach Ihren Wünschen und Ihrem Grundriss.</p>
+    </div>
+  </section>
+
   <Testimonials title="Was Kunden über ihre Badsanierung sagen" limit={3} />
 
   <section class="section section--card">
@@ -128,5 +154,12 @@ const faqSchema = {
   .bs__table td { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
   .bs__price { font-family: var(--font-mono); color: var(--color-anthrazit); text-align: right; }
   .bs__stand { margin-top: var(--space-4); font-size: 0.8rem; }
-  @media (min-width: 768px) { .bs__steps { grid-template-columns: 1fr 1fr; gap: var(--space-8); } }
+  .bs__gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-top: var(--space-8); }
+  .bs__gallery figure { margin: 0; }
+  .bs__gallery img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius-md); display: block; }
+  .bs__gallery figcaption { margin-top: var(--space-2); font-size: 0.8rem; color: var(--color-mittelgrau); }
+  @media (min-width: 768px) {
+    .bs__steps { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+    .bs__gallery { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  }
 </style>
