@@ -143,3 +143,19 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Kernpunkte des Plans:** (A) Badsanierung-Seite aufs Haupt-KW durchsetzen ohne das Kosten-#1 zu gefährden, Barrierefrei auf Seite 1. (G) Frage-Blöcke + FAQ-Schema auf allen Leistungsseiten, Entitäts-Hub Über-uns, Auswahl-Ratgeber „guten Fliesenleger erkennen" als Onpage-Antwort auf „bester Fliesenleger Bremen". (O) Offpage klar als Pflicht markiert: GBP, Bewertungs-Routine (6→25+), Verzeichnis-NAP — LLM-Nennungen kommen primär aus Drittquellen. GEO-Erfolg wird per 8 dokumentierten Testfragen an ChatGPT/Gemini/Perplexity gemessen (`intake/research/geo-audit-log.md`).
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — Plan-Schritt A1 umgesetzt: Badsanierungsseite aufs Haupt-Keyword
+
+**Decision:** Erster Schritt aus `context/seo-geo-plan.md` umgesetzt und live.
+
+**Hauptursache gefunden:** Die H1 der Badsanierungsseite enthielt das Wort „Badsanierung" **gar nicht** — sie lautete „Ihr neues Bad in Bremen – einmal richtig, zum Festpreis.". „Badsanierung Bremen" stand nur als Eyebrow-`<span>` darüber, also ohne Überschriften-Gewicht. Das erklärt, warum die Seite für `badsanierung bremen` nicht in den Top 100 rankte, obwohl sie für `badsanierung bremen kosten` auf #1 steht. H1 jetzt: „Badsanierung in Bremen – einmal richtig, zum Festpreis.".
+
+**Ausbau:** Drei neue Sektionen (Gewerke-Koordination „ohne fünf Handwerker" · Dauer mit Richtwert-Tabelle nach Umfang · Altbau in Bremen: Holzbalkendecken/Entkopplung, schiefe Wände, alte Leitungen). 946 → **1.453 Wörter**. Vier neue Frage-Blöcke à 40–60 Wörter (GEO-zitierfähig) → FAQPage-Schema von 5 auf **9 Fragen**.
+
+**Geschützt:** Kosten-H2, Preistabelle und Title/Meta blieben unverändert, damit das #1-Ranking für „badsanierung bremen kosten" nicht gefährdet wird. Live verifiziert.
+
+**Nächster Schritt:** A2 — `/barrierefreies-bad-bremen/` von Position 17 auf Seite 1 (KfW-/Pflegekasse-Zuschüsse als Fakten-Block, DIN 18040-2).
+
+**Owner:** Pascal · Kunde: André Gostomczyk.

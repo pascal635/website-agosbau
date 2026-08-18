@@ -48,9 +48,13 @@
 
 ### Phase A — Haupt-Keyword & Quick Wins (Woche 1–2)
 
-- [ ] **A1 · `/badsanierung-bremen/` auf „Badsanierung Bremen" durchsetzen.**
+- [x] **A1 · `/badsanierung-bremen/` auf „Badsanierung Bremen" durchsetzen.** ✅ 2026-08-18
+  **Hauptursache gefunden:** Die H1 enthielt das Wort „Badsanierung" überhaupt nicht („Ihr neues Bad in Bremen – einmal richtig, zum Festpreis."); „Badsanierung Bremen" stand nur als `<span>` darüber. H1 jetzt „Badsanierung in Bremen – einmal richtig, zum Festpreis.".
+  Neue Sektionen: Gewerke-Koordination · Dauer (Faktentabelle, 4 Umfänge) · Altbau/Bremen (Holzbalkendecken, schiefe Wände, alte Leitungen). 946 → **1.453 Wörter**. Kosten-Sektion + Preistabelle unangetastet (#1-Ranking geschützt).
+  <details><summary>ursprüngliche Aufgabenbeschreibung</summary>
   Google versteht die Seite aktuell primär als Kosten-Seite (rankt #1 für „…kosten", gar nicht fürs Haupt-KW). Fix: Content-Tiefe erhöhen, ohne die Kosten-Sektion zu schwächen — Sektionen ergänzen zu Ablauf im Detail (7 Schritte vertiefen), Gewerke-Koordination, Dauer, Altbau-Besonderheiten (Bremer Altbau!), Materialwahl. Ziel ~1.500+ Wörter. H2-Struktur mit KW-Varianten („Badsanierung in Bremen: Ablauf", „Was kostet eine Badsanierung in Bremen?").
   ⚠️ Nicht anfassen: bestehende Kosten-Tabelle + Title/Meta-Teile, die das #1-Ranking tragen.
+  </details>
 - [ ] **A2 · `/barrierefreies-bad-bremen/` von Pos. 17 auf Seite 1.**
   Content-Ausbau: KfW-Zuschuss 455-B / Pflegekasse-Zuschuss (4.000 €) konkret erklären (Fakten-Block mit Zahlen), DIN 18040-2, bodengleiche Dusche als eigene H2. Interne Links von Startseite + Badsanierung mit Ankertext „barrierefreies Bad Bremen".
 - [ ] **A3 · Interne Verlinkung systematisch.**
@@ -72,13 +76,13 @@
 
 **Prinzip:** LLMs zitieren Seiten, die (a) Fragen wörtlich beantworten (40–60-Wort-Antworten direkt unter der Frage), (b) harte, datierte Fakten liefern, (c) eine eindeutige, überall identische Entität haben.
 
-- [ ] **G1 · Frage-Blöcke auf jeder Leistungsseite.**
+- [~] **G1 · Frage-Blöcke auf jeder Leistungsseite.** (Badsanierung ✅ 2026-08-18: 4 neue Fragen ergänzt — Gewerke-Koordination, Ausziehen währenddessen, Altbau, Festpreis-Sinn. Rest offen.)
   Je Seite 3–6 echte Kundenfragen als H2/H3, Antwort in 40–60 Wörtern, alleinstehend verständlich (LLM kann sie ohne Kontext zitieren). Fragenliste je Seite:
   - Badsanierung: „Was kostet eine Badsanierung in Bremen?" (da, schützen) · „Wie lange dauert eine komplette Badsanierung?" · „Wer koordiniert die Gewerke bei einer Badsanierung?" · „Lohnt sich eine Badsanierung zum Festpreis?"
   - Barrierefrei: „Welche Zuschüsse gibt es für ein barrierefreies Bad?" · „Was kostet eine bodengleiche Dusche?"
   - Großformat: „Kann man Großformatfliesen auf Fußbodenheizung verlegen?" · „Was kostet das Verlegen von XXL-Fliesen?"
   - Fliesenverlegung: „Was kostet Fliesenlegen pro m² in Bremen?" ← eine der meistgestellten Fragen überhaupt, fehlt komplett.
-- [ ] **G2 · FAQPage-Schema erweitern** — jeder neue Frage-Block wandert zusätzlich ins FAQ-Schema der Seite (maschinenlesbar = zitierbar).
+- [~] **G2 · FAQPage-Schema erweitern** (Badsanierung ✅ 2026-08-18: 5 → 9 Fragen im Schema. Rest offen.) — jeder neue Frage-Block wandert zusätzlich ins FAQ-Schema der Seite (maschinenlesbar = zitierbar).
 - [ ] **G3 · Entitäts-Hub „Über uns" ausbauen.**
   Fakten-Block als Tabelle: gegründet 2019 · Inhaber André Paul Gostomczyk · HWK-eingetragen · 4 Mitarbeiter · >100 Projekte · Ø 5,0 (Google) · Einzugsgebiet · Markensysteme (Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde) · DIN 18534/18040. Sichtbares „Stand: {Monat Jahr}". LocalBusiness-Schema vervollständigen: `geo`, `openingHoursSpecification`, `areaServed` (Stadtteile einzeln), `sameAs` (GBP-URL, Instagram), `knowsAbout`.
 - [ ] **G4 · Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?"** (`/ratgeber/fliesenleger-finden-bremen/` o. ä.)
