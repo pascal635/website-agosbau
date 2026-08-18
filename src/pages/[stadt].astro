@@ -56,6 +56,16 @@ const areaSchema = { "@context": "https://schema.org", "@type": "LocalBusiness",
     </section>
   )}
 
+  {city.related && (
+    <section class="section">
+      <div class="wrap narrow prose">
+        <div class="sec-head"><span class="sec-num">Mehr dazu</span><h2>{city.related.label}</h2></div>
+        <p>{city.related.text}</p>
+        <p><a class="btn btn--ghost" href={city.related.href}>{city.related.label} ansehen →</a></p>
+      </div>
+    </section>
+  )}
+
   <Faq title={`Häufige Fragen aus ${city.ort}`} items={city.faq} />
 
   <section class="section section--card">

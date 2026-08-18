@@ -9,6 +9,8 @@ export interface City {
   proof?: { text: string; name: string };
   faq: { q: string; a: string }[];
   heroImg: string;
+  /** optionaler Verweis auf eine vertiefende Ort+Leistung-Seite */
+  related?: { label: string; href: string; text: string };
 }
 
 export const cities: City[] = [
@@ -80,6 +82,26 @@ export const cities: City[] = [
     heroImg: "bad-barrierefrei.webp",
   },
   {
+    slug: "fliesenleger-bremen-neustadt",
+    ort: "Bremen-Neustadt",
+    keyword: "Fliesenleger Bremen-Neustadt",
+    metaDesc: "Fliesenleger & Badsanierung in Bremen-Neustadt: Altbremer Häuser, Holzbalkendecken, Altbau-Bäder. Festpreis, Abdichtung nach DIN 18534. Jetzt anfragen.",
+    subline: "Altbau links der Weser hat seine eigenen Regeln. Wir sanieren Bäder in der Neustadt so, dass sie zum Haus passen und dauerhaft dicht bleiben.",
+    context:
+      "Die Neustadt ist Altbau-Land: In Buntentor, Südervorstadt und der Alten Neustadt prägen Altbremer Häuser ganze Straßenzüge. Diese Bäder sind technisch anspruchsvoller als ein Neubau-Bad. Holzbalkendecken federn unter Last und brauchen eine Entkopplung, sonst reißen Fliesen und Fugen nach wenigen Monaten. Dazu kommen schiefe Wände und alte Leitungswege, die sich erst zeigen, wenn die Wand offen ist. Genau deshalb prüfen wir den Untergrund vor dem Angebot und nicht erst auf der Baustelle.",
+    faq: [
+      {
+        q: "Können Sie ein Bad im Altbremer Haus sanieren?",
+        a: "Ja, das ist einer unserer Schwerpunkte. Entscheidend ist die Decke: Holzbalkendecken bewegen sich, deshalb bauen wir ein entkoppelndes System ein, bevor gefliest wird. Darunter kommt die Abdichtung nach DIN 18534.",
+      },
+      {
+        q: "Kommen Sie von Achim aus in die Neustadt?",
+        a: "Ja. Die Neustadt liegt im Süden Bremens und damit gut in unserem Einzugsgebiet. Für das Aufmaß kommen wir zu Ihnen, danach bekommen Sie einen Festpreis.",
+      },
+    ],
+    heroImg: "badsanierung-bremen-1243e3.webp",
+  },
+  {
     slug: "fliesenleger-achim",
     ort: "Achim",
     keyword: "Fliesenleger Achim",
@@ -90,6 +112,11 @@ export const cities: City[] = [
       { q: "Wo genau sitzen Sie in Achim?", a: "AGOS BAU, Auf den Mehren 45, 28832 Achim. Rufen Sie an oder schreiben Sie uns – wir kommen für ein Aufmaß vorbei." },
       { q: "Wie schnell bekomme ich in Achim einen Termin?", a: "Als Betrieb vor Ort sind wir schnell bei Ihnen. Den nächstmöglichen Termin nennen wir Ihnen ehrlich bei der Anfrage." },
     ],
+    related: {
+      label: "Badsanierung in Achim",
+      href: "/badsanierung-achim/",
+      text: "Sie planen ein komplettes Bad? Auf unserer Seite zur Badsanierung in Achim finden Sie Ablauf, Ortsteile und Kosten im Detail.",
+    },
     heroImg: "badsanierung-nacher-agos-bau-bremen-3ewf.webp",
   },
   {

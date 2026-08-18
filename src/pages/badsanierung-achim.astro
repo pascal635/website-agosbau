@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Faq from "../components/Faq.astro";
+import LeadFunnel from "../components/LeadFunnel.astro";
+import { site } from "../data/site";
+
+const title = "Badsanierung Achim – Festpreis vom Betrieb vor Ort | AGOS BAU";
+const description = "Badsanierung in Achim vom Fachbetrieb, der hier sitzt: Auf den Mehren 45. Kurze Wege, Festpreis, Abdichtung nach DIN 18534. Jetzt Angebot anfragen.";
+
+// Ortsteile der Stadt Achim (Landkreis Verden)
+const ortsteile = ["Achim-Mitte", "Baden", "Badenermoor", "Bierden", "Bollen", "Borstel", "Embsen", "Uesen", "Uphusen"];
+
+const faq = [
+  { q: "Wo sitzt AGOS BAU in Achim?", a: "Unser Betrieb ist Auf den Mehren 45 in 28832 Achim, im Ortsteil Bierden. Das ist kein Briefkasten, sondern unser Sitz. Für ein Aufmaß sind wir in der Regel innerhalb weniger Minuten bei Ihnen im Stadtgebiet." },
+  { q: "Was kostet eine Badsanierung in Achim?", a: "Wie in Bremen liegt eine komplette Badsanierung meist zwischen 15.000 und 55.000 Euro, je nach Größe und Ausstattung. Ortsbedingte Aufschläge gibt es bei uns nicht: Achim ist unser Heimatmarkt, die Anfahrt ist kurz. Sie bekommen vorab einen Festpreis." },
+  { q: "Wie schnell bekomme ich in Achim einen Termin?", a: "Als Betrieb vor Ort sind wir schnell beim Aufmaß. Wann wir mit der Sanierung starten können, hängt von der aktuellen Auslastung ab. Wir nennen Ihnen bei der Anfrage ehrlich den nächstmöglichen Termin statt eines Wunschdatums." },
+  { q: "Sanieren Sie auch in den Ortsteilen?", a: "Ja, im gesamten Stadtgebiet: Baden, Bierden, Uphusen, Uesen, Embsen, Bollen, Borstel und Badenermoor. Von unserem Sitz aus sind das überall kurze Wege." },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org", "@type": "Service",
+  name: "Badsanierung Achim", serviceType: "Badsanierung",
+  areaServed: { "@type": "City", name: "Achim" },
+  provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" },
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<Base title={title} description={description} schema={[serviceSchema, faqSchema]} ogImage="/images/Badsanierung-bremen-agosbau-123rdqw.webp">
+  <Hero
+    eyebrow="Betrieb vor Ort"
+    title="Badsanierung in Achim –"
+    accent="von hier, nicht von weit her."
+    subline="AGOS BAU sitzt Auf den Mehren 45. Kurze Wege, schnelles Aufmaß, ein Ansprechpartner aus der Nachbarschaft."
+    ctaHref="#angebot"
+    image="Badsanierung-bremen-agosbau-123rdqw.webp"
+    imageAlt="Saniertes Badezimmer von AGOS BAU aus Achim"
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">01 · Heimatmarkt</span><h2>Warum der kurze Weg einen Unterschied macht</h2></div>
+      <p>Die meisten Betriebe, die in Achim ein Bad sanieren, kommen aus Bremen oder Verden angefahren. Wir nicht: Unser Sitz ist Auf den Mehren 45, im Ortsteil Bierden.</p>
+      <p>Das klingt nach einem Detail, wirkt aber während der Bauzeit. Ein vergessenes Bauteil bedeutet keine halbe Tagesreise. Wenn Sie etwas besprechen wollen, kommt André vorbei statt zu telefonieren. Und wenn nach der Abnahme noch eine Kleinigkeit auffällt, sind wir schnell wieder da – das ist der Teil, den man erst nach der Baustelle zu schätzen weiß.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">02 · Einzugsgebiet</span><h2>In diesen Achimer Ortsteilen sanieren wir</h2></div>
+      <ul class="ot">{ortsteile.map((o) => <li>{o}</li>)}</ul>
+      <p>Dazu das gesamte Umland im Radius von 40 bis 60 Kilometern, von Bremen bis Verden. Ob Reihenhaus in Uphusen, Altbau in Baden oder freistehendes Haus in Embsen: Wir sehen uns Ihr Bad an und sagen Ihnen, was machbar ist.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">03 · Ablauf</span><h2>Wie Ihre Badsanierung abläuft</h2></div>
+      <p>Der Ablauf ist derselbe wie bei allen unseren Projekten: persönliches Erstgespräch mit Aufmaß, danach ein Festpreis-Angebot. Dann Rückbau, technische Vorarbeiten, Abdichtung nach DIN 18534, Fliesenarbeiten, Sanitär und Elektro über unsere festen Partnerbetriebe, Endmontage und Übergabe.</p>
+      <p>Ein durchschnittliches Bad ist in zwei bis drei Wochen fertig. Den ganzen Ablauf in sieben Schritten, die Kostenrichtwerte nach Bad-Typ und die technischen Details finden Sie auf unserer Hauptseite zur <a href="/badsanierung-bremen/">Badsanierung in Bremen</a> – die Leistung ist identisch, nur die Anfahrt ist kürzer.</p>
+      <p>Denken Sie bei der Planung gleich an später: Ein <a href="/barrierefreies-bad-bremen/">barrierefreies Bad</a> lässt sich im selben Zug deutlich günstiger umsetzen als in einem zweiten Umbau.</p>
+    </div>
+  </section>
+
+  <Testimonials title="Was Kunden aus der Region sagen" limit={3} />
+
+  <LeadFunnel variant="bad" id="angebot" />
+  <Faq title="Häufige Fragen zur Badsanierung in Achim" items={faq} />
+</Base>
+<style>
+  .ot { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2) var(--space-4); margin-block: var(--space-4) var(--space-6); padding-left: var(--space-5); }
+  .ot li { list-style: disc; }
+  @media (min-width: 640px) { .ot { grid-template-columns: repeat(3, 1fr); } }
+</style>

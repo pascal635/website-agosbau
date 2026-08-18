@@ -5,6 +5,7 @@ import Testimonials from "../components/Testimonials.astro";
 import Faq from "../components/Faq.astro";
 import CtaBlock from "../components/CtaBlock.astro";
 import { site, services, usps } from "../data/site";
+import { cities } from "../data/cities";
 
 const title = "Fliesenleger Bremen & Achim – Badsanierung | AGOS BAU";
 const description = "Fliesenleger aus Achim für Bremen & Umland: Badsanierung aus einer Hand, Festpreis, über 100 Projekte, 5,0★ bei Google. Jetzt kostenloses Angebot anfragen.";
@@ -26,17 +27,8 @@ const prozess = [
   ["Fliesen & Gewerke", "Sauber verlegt, alles koordiniert."],
   ["Übergabe", "Geprüft, gereinigt, bezugsfertig."],
 ];
-const orte = [
-  { label: "Oberneuland", href: "/fliesenleger-bremen-oberneuland/" },
-  { label: "Schwachhausen", href: "/fliesenleger-bremen-schwachhausen/" },
-  { label: "Borgfeld", href: "/fliesenleger-bremen-borgfeld/" },
-  { label: "Horn-Lehe", href: "/fliesenleger-bremen-horn-lehe/" },
-  { label: "Lilienthal", href: "/fliesenleger-bremen-lilienthal/" },
-  { label: "Achim", href: "/fliesenleger-achim/" },
-  { label: "Oyten", href: "/fliesenleger-oyten/" },
-  { label: "Stuhr", href: "/fliesenleger-stuhr/" },
-  { label: "Verden", href: "/fliesenleger-verden/" },
-];
+// aus cities.ts abgeleitet – neue Stadtteilseiten erscheinen hier automatisch
+const orte = cities.map((c) => ({ label: c.ort.replace(/^Bremen-/, ""), href: `/${c.slug}/` }));
 const faq = [
   { q: "Was kostet eine Badsanierung in Bremen?", a: "Eine komplette Badsanierung in Bremen kostet je nach Ausstattung meist zwischen 15.000 und 55.000 Euro. Sie bekommen vorab einen Festpreis, ohne versteckte Kosten." },
   { q: "Welche Gebiete deckt AGOS BAU als Fliesenleger ab?", a: "Wir arbeiten von Achim aus im Umkreis von 40 bis 60 Kilometern: in ganz Bremen, im niedersächsischen Umland und auf Anfrage auf Mallorca." },

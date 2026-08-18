@@ -119,6 +119,7 @@ const faqSchema = {
         <tbody>{preise.map(([t, p]) => <tr><td>{t}</td><td class="bs__price">{p}</td></tr>)}</tbody>
       </table>
       <p class="muted bs__stand">Stand: Juni 2026. Endpreis nach Aufmaß und Besichtigung.</p>
+      <p class="bs__local">Sie wohnen in Achim oder im Landkreis Verden? Dann ist unser Betrieb direkt um die Ecke: <a href="/badsanierung-achim/">Badsanierung in Achim</a>.</p>
     </div>
   </section>
 
@@ -202,6 +203,8 @@ const faqSchema = {
   .bs__table td { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
   .bs__price { font-family: var(--font-mono); color: var(--color-anthrazit); text-align: right; }
   .bs__stand { margin-top: var(--space-4); font-size: 0.8rem; }
+  .bs__local { margin-top: var(--space-4); font-size: 0.9rem; }
+  .bs__local a { color: var(--color-copper-ink); text-decoration: underline; }
   .bs__list { display: grid; gap: var(--space-4); margin-block: var(--space-4); padding-left: var(--space-5); }
   .bs__list li { list-style: disc; }
   .bs__list strong { color: var(--color-anthrazit); }
