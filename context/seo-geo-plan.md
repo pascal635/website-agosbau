@@ -91,10 +91,21 @@
   Fakten-Block als Tabelle: gegründet 2019 · Inhaber André Paul Gostomczyk · HWK-eingetragen · 4 Mitarbeiter · >100 Projekte · Ø 5,0 (Google) · Einzugsgebiet · Markensysteme (Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde) · DIN 18534/18040. Sichtbares „Stand: {Monat Jahr}". LocalBusiness-Schema vervollständigen: `geo`, `openingHoursSpecification`, `areaServed` (Stadtteile einzeln), `sameAs` (GBP-URL, Instagram), `knowsAbout`.
   </details>
   **Offen:** GBP-URL fehlt noch in `sameAs` — nachtragen, sobald der Google-Business-Profile-Zugang da ist (O1).
-- [ ] **G4 · Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?"** (`/ratgeber/fliesenleger-finden-bremen/` o. ä.)
+- [x] **G4 · Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?"** ✅ 2026-08-18 — live unter `/guten-fliesenleger-finden-bremen/` (flach statt `/ratgeber/`, um keinen verwaisten Ordner ohne Index anzulegen). 8 Prüfkriterien mit je Prüffrage + Warnsignal, bewusst so formuliert, dass sie bei **jedem** Betrieb anwendbar sind. Danach Transparenz-Tabelle „Wie AGOS BAU auf die Checkliste antwortet" mit nachprüfbaren Angaben (Bewertung aufs Google-Profil verlinkt) und dem Satz: Wenn ein anderer Betrieb genauso antwortet, ist er eine gute Wahl. Article- + FAQPage-Schema (5 Fragen). Eingehender kontextueller Link von `/fliesenverlegung-bremen/`. ~936 Wörter.
+  ⚠️ **Bewusst NICHT als Kriterium aufgenommen:** „Meisterbetrieb" — siehe offener Punkt unten.
   DAS ist die Onpage-Antwort auf „wer ist der beste Fliesenleger in Bremen": Eine ehrliche Checkliste (HWK-Eintrag, DIN-18534-Abdichtung, Festpreis, Referenzen, Bewertungen) — mit AGOS als belegtem Beispiel, das alle Kriterien erfüllt. LLMs zitieren Kriterien-Listen bevorzugt. Bonus: rankt für „fliesenleger bremen erfahrungen/bewertungen/finden".
 - [x] **G5 · `llms.txt` erweitern** ✅ 2026-08-18 — Entitäts-Fakten (Gründung, Team, Bewertung, Normen, Markensysteme, Stadtteile) + 5 Frage-Antwort-Kurzpaare (Kosten, Dauer, Gewerke, Zuschüsse, Altbau) mit Stand-Datum. Ursprünglich geplant: um: die Fakten aus G3, Preisspannen je Leistung, die Frage-Antwort-Paare aus G1 (Kurzform). Prüfen, ob `llms-full.txt` mit Volltexten sinnvoll ist.
 - [ ] **G6 · Vergleichs-Fakten:** auf Badsanierung eine neutrale Tabelle „Badsanierung Bremen: Kostenrahmen nach Badgröße" (haben wir) + „Dauer nach Umfang" (neu) — datiert, mit Quelle „eigene Projektdaten aus >100 Bädern". Aggregierte eigene Daten sind Zitier-Gold.
+
+---
+
+### ⚠️ Offener Klärungspunkt: Meisterpflicht (2026-08-18)
+
+Beim Schreiben des Ratgebers aufgefallen: Das **Fliesen-, Platten- und Mosaikleger-Handwerk ist seit 14.02.2020 wieder in Anlage A der Handwerksordnung**, also meisterpflichtig. Betriebe, die vorher schon tätig waren (AGOS BAU: gegründet **2019**), haben **Bestandsschutz**. Mehrere Quellen nennen zusätzlich eine Frist, bis zu der Bestandsbetriebe einen Meisterbrief oder eine Ausnahmebewilligung nach § 8 HwO vorlegen müssen (genannt wird der **01.01.2028**) — das konnte ich nicht sicher genug verifizieren, um es als Fakt zu behandeln.
+
+**Deshalb:** „Meisterbetrieb" wurde nicht als Checklisten-Kriterium aufgenommen und es steht keine Aussage zum Meisterstatus auf der Website. Auf der Seite steht nur, was belegt ist: „in der Handwerksrolle eingetragen".
+
+**To-do (Owner: Pascal, mit André):** Bei der HWK Verden/Bremen klären, ob (a) ein Meisterbrief vorliegt, (b) Bestandsschutz greift und (c) ob bis 2028 etwas nachzuweisen ist. Das ist **kein SEO-Thema, sondern eine Betriebsfrage** — und falls ein Meisterbrief vorliegt, ist er ein starkes Trust-/GEO-Signal, das auf die Seite gehört.
 
 ---
 

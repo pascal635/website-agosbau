@@ -195,3 +195,15 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Nächster Schritt:** G4 — Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?" (die Onpage-Antwort auf „bester Fliesenleger Bremen").
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — G4: Auswahl-Ratgeber live + Klärungspunkt Meisterpflicht
+
+**Decision:** Ratgeber `/guten-fliesenleger-finden-bremen/` live. Das ist die Onpage-Antwort auf die Frage, die Kunden LLMs stellen („wer ist der beste Fliesenleger in Bremen?"). Aufbau: 8 Prüfkriterien mit je Prüffrage und Warnsignal, bewusst **allgemeingültig** formuliert (Handwerksrolle, Aufmaß vor Ort, DIN 18534 im Angebot, Untergrundprüfung, Gewerke-Regelung, Nachtragsregelung, prüfbare Bewertungen, fester Ansprechpartner). Danach eine Transparenz-Tabelle, wie AGOS selbst antwortet — mit dem ausdrücklichen Satz, dass ein anderer Betrieb mit gleichen Antworten ebenso eine gute Wahl ist. Ein gerigged wirkender Kriterienkatalog hätte weder Kunden noch LLMs überzeugt. Article- + FAQPage-Schema, eingehender Link von der Fliesenverlegungsseite.
+
+**Google-Entität verknüpft (schließt G3-Lücke):** Aus dem von Pascal geteilten Link die Knowledge-Graph-ID **`/g/11s79_135l`** aufgelöst und in `sameAs` + `identifier` eingetragen — bereinigt um die Tracking-Parameter der Share-URL. Bewertung auf `/ueber-uns/` und im Ratgeber aufs Google-Profil verlinkt, damit die 5,0/25 nachprüfbar ist.
+
+**⚠️ Klärungspunkt Meisterpflicht:** Fliesenleger ist seit 14.02.2020 wieder meisterpflichtig (Anlage A HwO). AGOS BAU ist 2019 gegründet, fällt also unter Bestandsschutz. Mehrere Quellen nennen eine Nachweisfrist bis 01.01.2028 (Meisterbrief oder Ausnahmebewilligung § 8 HwO) — nicht sicher genug verifiziert, um damit zu arbeiten. Konsequenz: „Meisterbetrieb" wurde **nicht** als Kriterium aufgenommen, und die Website macht **keine** Aussage zum Meisterstatus. Auf der Seite steht nur das Belegte: Eintrag in der Handwerksrolle. **To-do für Pascal/André: bei der HWK klären** — Betriebsfrage, nicht SEO. Ein vorhandener Meisterbrief wäre ein starkes Trust-Signal für die Seite.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
