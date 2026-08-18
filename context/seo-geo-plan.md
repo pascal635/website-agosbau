@@ -85,11 +85,15 @@
   - Großformat: „Kann man Großformatfliesen auf Fußbodenheizung verlegen?" · „Was kostet das Verlegen von XXL-Fliesen?"
   - Fliesenverlegung: „Was kostet Fliesenlegen pro m² in Bremen?" ← eine der meistgestellten Fragen überhaupt, fehlt komplett.
 - [~] **G2 · FAQPage-Schema erweitern** (Badsanierung ✅ 2026-08-18: 5 → 9 Fragen im Schema. Rest offen.) — jeder neue Frage-Block wandert zusätzlich ins FAQ-Schema der Seite (maschinenlesbar = zitierbar).
-- [ ] **G3 · Entitäts-Hub „Über uns" ausbauen.**
+- [x] **G3 · Entitäts-Hub „Über uns" ausbauen.** ✅ 2026-08-18
+  Sichtbare Fakten-Tabelle (14 Zeilen) auf `/ueber-uns/` mit Stand-Datum. Schema in `Base.astro` von `LocalBusiness` auf **`HomeAndConstructionBusiness`** gehoben und vervollständigt: `@id`, `geo` (per OSM/Nominatim geokodiert, exakter Treffer inkl. Hausnummer — nicht geschätzt), `openingHoursSpecification`, `areaServed` (10 Orte, dedupliziert aus `cities.ts`), `knowsAbout` (7 Themen), `sameAs`, `founder`, `foundingDate`, `numberOfEmployees`, `legalName`, `slogan`, `logo`. JSON-Validität geprüft. AggregateRating 5,0/25 ist durch `intake/reviews.md` belegt (24 Rezensionen verbatim erfasst).
+  <details><summary>ursprüngliche Aufgabenbeschreibung</summary>
   Fakten-Block als Tabelle: gegründet 2019 · Inhaber André Paul Gostomczyk · HWK-eingetragen · 4 Mitarbeiter · >100 Projekte · Ø 5,0 (Google) · Einzugsgebiet · Markensysteme (Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde) · DIN 18534/18040. Sichtbares „Stand: {Monat Jahr}". LocalBusiness-Schema vervollständigen: `geo`, `openingHoursSpecification`, `areaServed` (Stadtteile einzeln), `sameAs` (GBP-URL, Instagram), `knowsAbout`.
+  </details>
+  **Offen:** GBP-URL fehlt noch in `sameAs` — nachtragen, sobald der Google-Business-Profile-Zugang da ist (O1).
 - [ ] **G4 · Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?"** (`/ratgeber/fliesenleger-finden-bremen/` o. ä.)
   DAS ist die Onpage-Antwort auf „wer ist der beste Fliesenleger in Bremen": Eine ehrliche Checkliste (HWK-Eintrag, DIN-18534-Abdichtung, Festpreis, Referenzen, Bewertungen) — mit AGOS als belegtem Beispiel, das alle Kriterien erfüllt. LLMs zitieren Kriterien-Listen bevorzugt. Bonus: rankt für „fliesenleger bremen erfahrungen/bewertungen/finden".
-- [ ] **G5 · `llms.txt` erweitern** um: die Fakten aus G3, Preisspannen je Leistung, die Frage-Antwort-Paare aus G1 (Kurzform). Prüfen, ob `llms-full.txt` mit Volltexten sinnvoll ist.
+- [x] **G5 · `llms.txt` erweitern** ✅ 2026-08-18 — Entitäts-Fakten (Gründung, Team, Bewertung, Normen, Markensysteme, Stadtteile) + 5 Frage-Antwort-Kurzpaare (Kosten, Dauer, Gewerke, Zuschüsse, Altbau) mit Stand-Datum. Ursprünglich geplant: um: die Fakten aus G3, Preisspannen je Leistung, die Frage-Antwort-Paare aus G1 (Kurzform). Prüfen, ob `llms-full.txt` mit Volltexten sinnvoll ist.
 - [ ] **G6 · Vergleichs-Fakten:** auf Badsanierung eine neutrale Tabelle „Badsanierung Bremen: Kostenrahmen nach Badgröße" (haben wir) + „Dauer nach Umfang" (neu) — datiert, mit Quelle „eigene Projektdaten aus >100 Bädern". Aggregierte eigene Daten sind Zitier-Gold.
 
 ---

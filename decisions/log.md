@@ -173,3 +173,25 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Nächster Schritt:** G3 — Entitäts-Hub „Über uns" + LocalBusiness-Schema vervollständigen (GEO-Fundament).
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — Plan-Schritte G3 + G5: Entitäts-Fundament für GEO
+
+**Decision:** Die Entität AGOS BAU ist jetzt maschinenlesbar und kanonisch beschrieben — Voraussetzung dafür, dass LLMs den Betrieb überhaupt als benennbare Größe erfassen.
+
+**Schema (`Base.astro`, gilt auf allen 21 Seiten):** Typ von `LocalBusiness` auf **`HomeAndConstructionBusiness`** präzisiert. Ergänzt: `@id` (stabile Entitäts-ID), `geo`, `openingHoursSpecification`, `areaServed` (10 Orte, dedupliziert aus `cities.ts`), `knowsAbout` (7 Fachthemen inkl. DIN 18534/18040-2), `sameAs`, `founder`, `foundingDate`, `numberOfEmployees`, `legalName`, `slogan`, `logo`. JSON-Validität und Live-Ausgabe geprüft.
+
+**Geo-Koordinaten nicht geschätzt:** über OSM/Nominatim geokodiert (exakter Treffer inkl. Hausnummer und PLZ: 53.0212379, 9.0033922), Quelle in `site.ts` kommentiert. Falsche Koordinaten hätten Kunden an den falschen Ort geschickt.
+
+**Sichtbar (`/ueber-uns/`):** Fakten-Tabelle mit 14 Zeilen (Firmierung, Gründung, HWK, Team, Projekte, Bewertung, Sitz, Einzugsgebiet, Leistungen, Normen, Markensysteme, Abrechnung, Kontakt) + „Stand: August 2026". LLMs zitieren bevorzugt datierte Faktenblöcke.
+
+**AggregateRating geprüft:** 5,0 / 25 Rezensionen ist durch `intake/reviews.md` belegt (24 verbatim erfasst, Quelle GBP). Keine erfundene Zahl im Schema.
+
+**G5:** `llms.txt` um dieselben Fakten + 5 Frage-Antwort-Kurzpaare erweitert (Kosten, Dauer, Gewerke, Zuschüsse, Altbau).
+
+**Offen:** GBP-URL fehlt in `sameAs` — nachtragen, sobald der Zugang vorliegt. Das ist zugleich Offpage-Punkt O1 und die wichtigste einzelne GEO-Quelle.
+
+**Nächster Schritt:** G4 — Auswahl-Ratgeber „Woran erkennt man einen guten Fliesenleger in Bremen?" (die Onpage-Antwort auf „bester Fliesenleger Bremen").
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
