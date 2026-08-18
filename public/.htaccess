@@ -1,8 +1,27 @@
 # AGOS BAU — Apache-Konfig (Hetzner Webhosting)
 
-# 301-Redirects: alte WordPress-URLs → neue Struktur
-Redirect 301 /leistungen/ /fliesenverlegung-bremen/
-Redirect 301 /fliesenleger-kosten/ /badsanierung-bremen/
+# Kanonische URL erzwingen: HTTPS + ohne www.
+# Verhindert Duplicate Content (Seite war unter 4 URL-Varianten mit Status 200 erreichbar).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTP -> HTTPS. Beide Bedingungen müssen zutreffen (AND), damit hinter
+  # einem TLS-Proxy keine Redirect-Schleife entsteht.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://agosbau.de%{REQUEST_URI} [L,R=301]
+
+  # www.agosbau.de -> agosbau.de
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://agosbau.de%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Zeichensatz im HTTP-Header (Seobility: „Es fehlen Zeichensatzangaben im HTTP Header")
+AddDefaultCharset UTF-8
+
+# 301-Redirects: alte WordPress-URLs → neue Struktur (absolut, spart einen Hop)
+Redirect 301 /leistungen/ https://agosbau.de/fliesenverlegung-bremen/
+Redirect 301 /fliesenleger-kosten/ https://agosbau.de/badsanierung-bremen/
 
 # Eigene 404-Seite
 ErrorDocument 404 /404.html
