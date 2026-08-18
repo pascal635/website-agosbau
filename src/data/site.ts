@@ -14,6 +14,8 @@ export const site = {
   instagram: "@agos_bau",
   instagramHref: "https://instagram.com/agos_bau",
   url: "https://agosbau.de",
+  // geokodiert über OSM/Nominatim (exakter Treffer inkl. Hausnummer + PLZ), 2026-08-18
+  geo: { lat: 53.0212379, lng: 9.0033922 },
   hours: "Mo–Do 08–17 Uhr, Fr 08–14 Uhr",
   rating: { value: "5.0", count: 25 },
   founded: 2019,

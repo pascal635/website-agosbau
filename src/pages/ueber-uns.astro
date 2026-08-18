@@ -17,6 +17,24 @@ const werte = [
   ["Verantwortung", "Bei Problemen finden wir mit unserem Netzwerk schnell eine Lösung."],
   ["Persönlicher Chefkontakt", "André ist erreichbar, kein Callcenter."],
 ];
+// Entitäts-Fakten — kanonisch, zitierfähig, mit sichtbarem Stand-Datum (GEO)
+const fakten: [string, string][] = [
+  ["Firmierung", `${site.name}, Inh. ${site.owner}`],
+  ["Rechtsform", "Einzelunternehmen"],
+  ["Gegründet", `${site.founded} in ${site.city}`],
+  ["Handwerksrolle", "in der Handwerkskammer eingetragen"],
+  ["Team", "Inhaber + 4 feste Mitarbeiter"],
+  ["Abgeschlossene Projekte", "über 100 Bäder und Fliesenprojekte"],
+  ["Bewertung", `${site.rating.value} ★ bei Google (${site.rating.count} Rezensionen)`],
+  ["Sitz", `${site.street}, ${site.zip} ${site.city}`],
+  ["Einzugsgebiet", "Achim, Bremen (alle Stadtteile) und Umland im Radius 40–60 km"],
+  ["Leistungen", "Badsanierung, Fliesenverlegung, Großformatfliesen, barrierefreie Bäder, Terrasse und Pool"],
+  ["Normen", "Abdichtung nach DIN 18534, barrierefreies Bauen nach DIN 18040-2"],
+  ["Markensysteme", "Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde"],
+  ["Abrechnung", "Festpreis nach Aufmaß vor Ort"],
+  ["Kontakt", `${site.phone} · ${site.email}`],
+];
+
 const personSchema = { "@context": "https://schema.org", "@type": "Person", name: "André Paul Gostomczyk", jobTitle: "Inhaber", worksFor: { "@type": "LocalBusiness", name: site.name } };
 ---
 <Base title={title} description={description} schema={[personSchema]} ogImage="/images/agos-leistung.webp">
@@ -47,6 +65,18 @@ const personSchema = { "@context": "https://schema.org", "@type": "Person", name
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">03 · Auf einen Blick</span><h2>AGOS BAU in Zahlen und Fakten</h2></div>
+      <table class="fakten">
+        <tbody>
+          {fakten.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+        </tbody>
+      </table>
+      <p class="muted fakten__stand">Stand: August 2026.</p>
+    </div>
+  </section>
+
   <Testimonials title="Auch Partnerbetriebe vertrauen uns" items={[
     { name: "Plissee-Welt Team", text: "Als Partnerbetrieb der Plissee-Welt sind wir mit der Zusammenarbeit mit Agos Bau sehr zufrieden. Die Zuverlässigkeit, Qualität und professionelle Ausführung sind hervorragend – auf Augenhöhe." },
     { name: "physioWERK Schwachhausen", text: "Top Arbeit – absolut empfehlenswert! Die Jungs waren pünktlich, freundlich und haben äußerst sauber gearbeitet. Man merkt sofort, dass hier echte Profis am Werk sind." },
@@ -55,3 +85,13 @@ const personSchema = { "@context": "https://schema.org", "@type": "Person", name
 
   <CtaBlock title="Lernen Sie uns kennen." text="Erzählen Sie uns von Ihrem Projekt – wir melden uns persönlich." ctaHref="/kontakt/" />
 </Base>
+<style>
+  .fakten { width: 100%; border-collapse: collapse; margin-top: var(--space-6); }
+  .fakten th { text-align: left; font-weight: 600; color: var(--color-anthrazit); font-size: 0.85rem; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; width: 34%; }
+  .fakten td { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .fakten__stand { font-size: 0.8rem; margin-top: var(--space-3); }
+  @media (max-width: 560px) {
+    .fakten th, .fakten td { display: block; width: auto; }
+    .fakten th { border-bottom: none; padding-bottom: 0; }
+  }
+</style>
