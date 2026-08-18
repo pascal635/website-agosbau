@@ -70,8 +70,8 @@
 
 - [ ] **B1 · City-Page „Badsanierung Achim"** (`/badsanierung-achim/`) — Keyword-Recherche Prio #6, Heimatmarkt, wir ranken schon #1 für „fliesenleger achim". Schneller Sieg.
 - [ ] **B2 · City-Page „Fliesenleger Bremen-Neustadt"** — wir ranken #12 ohne dedizierte Seite; mit Seite → Seite 1 realistisch.
-- [ ] **B3 · `/fliesenverlegung-bremen/` ausbauen** für „fliesen verlegen lassen bremen" + „zementfliesen verlegen bremen" (Pos. 6 → Top 3): eigene H2 „Zementfliesen & Mosaik", eigene H2 „Vollverfliesung".
-- [ ] **B4 · `/grossformatfliesen-bremen/` prüfen & schärfen** — Nische ohne Wettbewerb, aber kein Ranking: Indexierung in GSC prüfen (sobald Daten da), Content-Tiefe + interne Links erhöhen.
+- [x] **B3 · `/fliesenverlegung-bremen/` ausbauen** ✅ 2026-08-18 — **„Zementfliesen" kam 0× auf der Seite vor**, obwohl wir dafür #6 ranken (gleiches Muster wie die fehlende H1 bei A1). Jetzt eigene H2 „Vollverfliesung in Bremen" (rankt #9) und H2 „Zementfliesen, Naturstein und Mosaik" + Materialtabelle (5 Materialien mit Eignung/Hinweis). 560 → **959 Wörter**, FAQ 3 → 6 inkl. „Was kostet Fliesenlegen pro Quadratmeter?".
+- [x] **B4 · `/grossformatfliesen-bremen/` prüfen & schärfen** ✅ 2026-08-18 — Keyword-Dichte war nicht das Problem („Großformat" 26×), sondern **Dünne**: 503 Wörter, die dünnste Leistungsseite. Außerdem kam **„Fußbodenheizung" 0×** vor, obwohl das eine der häufigsten Fragen zum Thema ist. Neue Sektionen „Welche XXL-Formate wir verlegen" (Tabelle) und „Großformat auf Fußbodenheizung" (hohlraumfreie Verklebung, Aufheizen des Estrichs). 503 → **784 Wörter**, FAQ 3 → 5. Indexierung in GSC prüfen, sobald Daten vorliegen.
 - [ ] **B5 · Referenzen mit echten Projekten füllen** (braucht Andrés Fotos + Projektdaten: Stadtteil, Dauer, Umfang — keine Kundennamen nötig). Jede Referenz = Long-Tail-Magnet + E-E-A-T-Beweis. **Blocker: Input André.**
 
 ---
@@ -80,13 +80,13 @@
 
 **Prinzip:** LLMs zitieren Seiten, die (a) Fragen wörtlich beantworten (40–60-Wort-Antworten direkt unter der Frage), (b) harte, datierte Fakten liefern, (c) eine eindeutige, überall identische Entität haben.
 
-- [~] **G1 · Frage-Blöcke auf jeder Leistungsseite.** (Badsanierung ✅ 2026-08-18: 4 neue Fragen ergänzt — Gewerke-Koordination, Ausziehen währenddessen, Altbau, Festpreis-Sinn. Rest offen.)
+- [x] **G1 · Frage-Blöcke auf jeder Leistungsseite.** ✅ 2026-08-18 — Badsanierung (4 neu), barrierefreies Bad (3 neu), Fliesenverlegung (3 neu), Großformat (2 neu), Ratgeber (5). Alle Antworten 40–60 Wörter, alleinstehend verständlich.
   Je Seite 3–6 echte Kundenfragen als H2/H3, Antwort in 40–60 Wörtern, alleinstehend verständlich (LLM kann sie ohne Kontext zitieren). Fragenliste je Seite:
   - Badsanierung: „Was kostet eine Badsanierung in Bremen?" (da, schützen) · „Wie lange dauert eine komplette Badsanierung?" · „Wer koordiniert die Gewerke bei einer Badsanierung?" · „Lohnt sich eine Badsanierung zum Festpreis?"
   - Barrierefrei: „Welche Zuschüsse gibt es für ein barrierefreies Bad?" · „Was kostet eine bodengleiche Dusche?"
   - Großformat: „Kann man Großformatfliesen auf Fußbodenheizung verlegen?" · „Was kostet das Verlegen von XXL-Fliesen?"
   - Fliesenverlegung: „Was kostet Fliesenlegen pro m² in Bremen?" ← eine der meistgestellten Fragen überhaupt, fehlt komplett.
-- [~] **G2 · FAQPage-Schema erweitern** (Badsanierung ✅ 2026-08-18: 5 → 9 Fragen im Schema. Rest offen.) — jeder neue Frage-Block wandert zusätzlich ins FAQ-Schema der Seite (maschinenlesbar = zitierbar).
+- [x] **G2 · FAQPage-Schema erweitern** ✅ 2026-08-18 — Badsanierung 5→9, barrierefrei 3→6, Fliesenverlegung 3→6, Großformat 3→5, Ratgeber 5 neu. **31 Fragen im FAQPage-Schema gesamt.** — jeder neue Frage-Block wandert zusätzlich ins FAQ-Schema der Seite (maschinenlesbar = zitierbar).
 - [x] **G3 · Entitäts-Hub „Über uns" ausbauen.** ✅ 2026-08-18
   Sichtbare Fakten-Tabelle (14 Zeilen) auf `/ueber-uns/` mit Stand-Datum. Schema in `Base.astro` von `LocalBusiness` auf **`HomeAndConstructionBusiness`** gehoben und vervollständigt: `@id`, `geo` (per OSM/Nominatim geokodiert, exakter Treffer inkl. Hausnummer — nicht geschätzt), `openingHoursSpecification`, `areaServed` (10 Orte, dedupliziert aus `cities.ts`), `knowsAbout` (7 Themen), `sameAs`, `founder`, `foundingDate`, `numberOfEmployees`, `legalName`, `slogan`, `logo`. JSON-Validität geprüft. AggregateRating 5,0/25 ist durch `intake/reviews.md` belegt (24 Rezensionen verbatim erfasst).
   <details><summary>ursprüngliche Aufgabenbeschreibung</summary>

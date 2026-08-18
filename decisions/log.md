@@ -219,3 +219,19 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Messfehler korrigiert:** Der erste Audit meldete 13 zu lange Descriptions. Ursache: Ich hatte die Länge im HTML-Quelltext gemessen, wo `&` als `&amp;` steht (5 statt 1 Zeichen). Nach Entity-Dekodierung waren es 6. Ohne die Gegenprüfung hätte ich sieben funktionierende Descriptions ohne Grund umgeschrieben. Methodik-Hinweis im Plan vermerkt.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — B3 + B4 + G1/G2 abgeschlossen: Leistungsseiten ausgebaut
+
+**B3 Fliesenverlegung:** Gleiches Muster wie bei A1 gefunden — **„Zementfliesen" kam 0× auf der Seite vor**, obwohl agosbau.de dafür auf Position 6 rankt. Google ordnet die Seite thematisch zu, ohne dass der Begriff dasteht; mit eigener Sektion ist Top 3 realistisch. Neue H2 „Vollverfliesung in Bremen" (Ranking #9) und „Zementfliesen, Naturstein und Mosaik" plus Materialtabelle (Feinsteinzeug, Keramik, Naturstein, Zementfliesen, Mosaik — je Eignung und Praxishinweis). 560 → 959 Wörter.
+
+**B4 Großformat:** Hier war Keyword-Dichte nicht das Problem („Großformat" 26×), sondern Dünne — 503 Wörter, die dünnste Leistungsseite. Zusätzlich fehlte **„Fußbodenheizung" komplett (0×)**, obwohl das eine der häufigsten Fragen zum Thema ist. Neue Sektionen „Welche XXL-Formate wir verlegen" (Formattabelle) und „Großformat auf Fußbodenheizung" (hohlraumfreie Verklebung im Buttering-Floating-Verfahren, Aufheizen des Estrichs vor Verlegung). 503 → 784 Wörter.
+
+**G1/G2 damit abgeschlossen:** Frage-Blöcke auf allen Leistungsseiten, alle Antworten 40–60 Wörter und alleinstehend verständlich. **31 Fragen im FAQPage-Schema** über alle Seiten.
+
+**Preisfragen bewusst ohne erfundene Zahlen:** Bei „Was kostet Fliesenlegen pro m²?" und „Was kostet eine bodengleiche Dusche?" habe ich keine Beträge erfunden, sondern die Kostentreiber erklärt und auf den Festpreis nach Aufmaß verwiesen. Eine erfundene m²-Zahl auf der Website wäre eine Preisaussage, an der André gemessen würde.
+
+**Offen in Phase B:** B1 (City-Page Badsanierung Achim), B2 (City-Page Bremen-Neustadt), B5 (echte Referenzen — blockiert durch Andrés Fotos/Projektdaten).
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
