@@ -18,10 +18,28 @@ const technik = [
   "Rutschhemmende Fliesen für den Nassbereich",
   "Genügend Bewegungsfläche und saubere Anschlüsse",
 ];
+// Maße nach DIN 18040-2 (Wohnungsbau)
+const masse = [
+  ["Bewegungsfläche vor Waschtisch, WC und Dusche", "120 × 120 cm"],
+  ["Bewegungsfläche bei Rollstuhlnutzung („R“)", "150 × 150 cm"],
+  ["Schwelle der bodengleichen Dusche", "max. 2 cm"],
+  ["Lichte Türdurchgangsbreite bei Rollstuhlnutzung", "min. 90 cm"],
+  ["Rutschhemmung im Duschbereich", "R10, besser R11"],
+];
+// Förderung – Stand August 2026, an der Quelle geprüft
+const foerderung = [
+  ["Pflegekasse, § 40 Abs. 4 SGB XI", "bis 4.180 € je Maßnahme", "Pflegegrad 1–5, Antrag vor Baubeginn"],
+  ["Pflegekasse, mehrere Anspruchsberechtigte", "bis 16.720 €", "wenn mehrere Berechtigte im Haushalt leben"],
+  ["KfW-Kredit 159 „Altersgerecht Umbauen“", "bis 50.000 € Darlehen", "zinsgünstig, über Ihre Hausbank, vor Baubeginn"],
+  ["KfW-Zuschuss 455-B", "derzeit keine Antragstellung", "Bundesmittel 2026 ausgeschöpft"],
+];
 const faq = [
-  { q: "Was kostet ein barrierefreies Bad in Bremen?", a: "Ein barrierefreies Komfortbad liegt meist zwischen 25.000 und 40.000 Euro, je nach Ausstattung. Sie bekommen vorab einen Festpreis. Über Förderprogramme wie die KfW lässt sich ein Teil der Kosten reduzieren." },
+  { q: "Was kostet ein barrierefreies Bad in Bremen?", a: "Ein barrierefreies Komfortbad liegt meist zwischen 25.000 und 40.000 Euro, je nach Ausstattung. Sie bekommen vorab einen Festpreis. Mit anerkanntem Pflegegrad lässt sich ein Teil über den Zuschuss der Pflegekasse abdecken." },
+  { q: "Welche Zuschüsse gibt es für ein barrierefreies Bad?", a: "Mit anerkanntem Pflegegrad zahlt die Pflegekasse bis zu 4.180 Euro je Maßnahme nach § 40 Abs. 4 SGB XI, bei mehreren Anspruchsberechtigten im Haushalt bis zu 16.720 Euro. Der Antrag muss vor Baubeginn gestellt werden. Der KfW-Zuschuss 455-B nimmt aktuell keine neuen Anträge an. Stand: August 2026." },
   { q: "Kann jedes Bad barrierefrei umgebaut werden?", a: "In den meisten Fällen ja. Entscheidend ist die Aufbauhöhe im Boden. Wir prüfen das beim Aufmaß vor Ort und sagen Ihnen ehrlich, was machbar ist." },
-  { q: "Gibt es eine Förderung für ein barrierefreies Bad?", a: "Für altersgerechte Umbauten wie eine bodengleiche Dusche gibt es Förderprogramme, zum Beispiel der KfW. Wir bauen technisch korrekt und förderfähig; die Antragstellung läuft über Sie bzw. Ihre Bank." },
+  { q: "Wie groß muss ein barrierefreies Bad sein?", a: "Nach DIN 18040-2 ist vor Waschtisch, WC und Dusche jeweils eine Bewegungsfläche von 120 mal 120 Zentimetern vorgesehen. Diese Flächen dürfen sich überlagern, deshalb sind auch kleinere Bäder oft machbar. Für die Rollstuhlnutzung gelten 150 mal 150 Zentimeter." },
+  { q: "Was kostet eine bodengleiche Dusche?", a: "Der Preis hängt vor allem von der Aufbauhöhe im Boden ab. Ist genug Platz für Ablauf und Gefälle vorhanden, ist der Einbau unkompliziert. Muss der Estrich geöffnet oder das Gefälle neu aufgebaut werden, steigt der Aufwand. Wir prüfen das beim Aufmaß und nennen danach einen Festpreis." },
+  { q: "Was ist der Unterschied zwischen barrierefrei und barrierearm?", a: "Barrierefrei bedeutet, dass die Maße der DIN 18040-2 eingehalten werden, etwa 120 mal 120 Zentimeter Bewegungsfläche und maximal zwei Zentimeter Schwelle. Barrierearm heißt, Hindernisse wurden reduziert, ohne die Norm vollständig zu erfüllen. Für den Pflegekassen-Zuschuss zählt, dass die Maßnahme die häusliche Pflege erleichtert." },
 ];
 const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Barrierefreies Bad", areaServed: "Bremen, Achim und Umland", provider: { "@type": "LocalBusiness", name: site.name, telephone: "+4942025116131" } };
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
@@ -54,8 +72,35 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 
   <section class="section">
     <div class="wrap narrow prose">
-      <div class="sec-head"><span class="sec-num">03 · Förderung</span><h2>Förderfähig gebaut</h2></div>
-      <p>Für altersgerechte Umbauten wie eine bodengleiche Dusche gibt es Förderprogramme, zum Beispiel der KfW. Wir bauen Ihr Bad technisch korrekt und förderfähig. Die Antragstellung selbst läuft über Sie bzw. Ihre Bank – wir liefern die fachgerechte Ausführung.</p>
+      <div class="sec-head"><span class="sec-num">03 · Die Maße</span><h2>Barrierefreies Bad nach DIN 18040-2</h2></div>
+      <p>„Barrierefrei“ ist kein Gefühl, sondern eine Norm. Die DIN 18040-2 legt für Wohnungen fest, wie viel Platz vor den Sanitärobjekten bleiben muss und wie die Dusche ausgeführt wird. Diese Maße sind die Grundlage unserer Planung:</p>
+      <table class="bf__table">
+        <thead><tr><th>Anforderung</th><th>Maß</th></tr></thead>
+        <tbody>{masse.map(([a, m]) => <tr><td>{a}</td><td class="bf__val">{m}</td></tr>)}</tbody>
+      </table>
+      <p class="muted bf__note">Werte nach DIN 18040-2 für den Wohnungsbau. Ein Hinweis aus der Praxis: Eine Tür mit 90 cm Türblatt hat selten 90 cm lichte Durchgangsbreite. Wir messen die lichte Breite, nicht die Blattbreite.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">04 · Kernstück</span><h2>Die bodengleiche Dusche</h2></div>
+      <p>Die bodengleiche Dusche ist das Herzstück jedes barrierefreien Bads – und der Teil, an dem am häufigsten gespart wird. Damit sie funktioniert, müssen drei Dinge zusammenpassen: die Aufbauhöhe im Boden, das Gefälle zum Ablauf und die Abdichtung darunter.</p>
+      <p>Die Aufbauhöhe entscheidet, ob der Ablauf überhaupt untergebracht werden kann. Reicht sie nicht, gibt es Lösungen mit flachen Rinnen oder Wandabläufen. Das prüfen wir beim Aufmaß, bevor wir einen Preis nennen – nicht mitten in der Baustelle.</p>
+      <p>Unter den Fliesen liegt die Abdichtung nach DIN 18534. Sie ist der Grund, warum ein Bad nach zehn Jahren noch dicht ist. Bei uns ist sie Standard, kein Aufpreis.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">05 · Förderung</span><h2>Welche Zuschüsse gibt es für ein barrierefreies Bad?</h2></div>
+      <p>Der wichtigste Topf ist die Pflegekasse: Mit anerkanntem Pflegegrad zahlt sie bis zu 4.180 Euro je Maßnahme. Entscheidend ist, dass der Antrag <strong>vor Baubeginn</strong> gestellt wird. Wer erst nach dem Umbau fragt, geht leer aus.</p>
+      <table class="bf__table bf__table--wide">
+        <thead><tr><th>Programm</th><th>Höhe</th><th>Voraussetzung</th></tr></thead>
+        <tbody>{foerderung.map(([p, h, v]) => <tr><td>{p}</td><td class="bf__val">{h}</td><td class="bf__cond">{v}</td></tr>)}</tbody>
+      </table>
+      <p class="muted bf__note">Stand: August 2026. Der KfW-Zuschuss 455-B nimmt derzeit keine neuen Anträge an, weil die Bundesmittel für 2026 ausgeschöpft sind; bereits gestellte Anträge werden weiter bearbeitet. Eine Wiederaufnahme ist frühestens 2027 möglich. Förderbedingungen ändern sich – prüfen Sie den Stand vor der Antragstellung bei Ihrer Pflegekasse bzw. Hausbank.</p>
+      <p>Wir bauen Ihr Bad technisch korrekt und förderfähig und liefern Ihnen die Unterlagen, die Sie für den Antrag brauchen. Die Antragstellung selbst läuft über Sie, Ihre Pflegekasse oder Ihre Hausbank. Sagen Sie uns früh Bescheid, wenn Sie fördern lassen wollen – dann planen wir den Ablauf so, dass die Frist vor Baubeginn eingehalten wird.</p>
     </div>
   </section>
 
@@ -68,3 +113,15 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
   <CrossLinks current="/barrierefreies-bad-bremen/" />
   <CtaBlock title="Denken Sie an später – oder brauchen es jetzt?" text="Lassen Sie uns Ihr barrierefreies Bad gemeinsam planen." ctaHref="/kontakt/" />
 </Base>
+<style>
+  .bf__table { width: 100%; border-collapse: collapse; margin-block: var(--space-6); }
+  .bf__table th { text-align: left; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mittelgrau); border-bottom: 1px solid var(--color-anthrazit); padding: var(--space-3) var(--space-3) var(--space-3) 0; }
+  .bf__table td { padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .bf__val { color: var(--color-anthrazit); font-weight: 600; white-space: nowrap; }
+  .bf__cond { font-size: 0.85rem; color: var(--color-fg-muted); }
+  .bf__note { font-size: 0.8rem; margin-top: var(--space-3); }
+  @media (max-width: 640px) {
+    .bf__table--wide th:nth-child(3), .bf__table--wide td:nth-child(3) { display: none; }
+    .bf__val { white-space: normal; }
+  }
+</style>
