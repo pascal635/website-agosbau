@@ -115,3 +115,19 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Offen:** (1) DNS-Cutover agosbau.de → Webspace (Registrar). (2) Tracking-Einbau Matomo/Ads/Pixel + Consent — nach Live. (3) Datenschutz anwaltlich/Generator gegen reale Tool-Liste prüfen. (4) Web3Forms-Key fürs Leadformular.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — SEO-Fixes Startseite (Seobility-Report)
+
+**Decision:** Kanonische URL erzwungen. Die Seite war unter **vier** Varianten mit Status 200 erreichbar (`http://`, `http://www.`, `https://www.`, `https://`) → echter Duplicate Content. In `public/.htaccess` per mod_rewrite 301 auf `https://agosbau.de` erzwungen; HTTPS-Bedingung prüft zusätzlich `X-Forwarded-Proto`, damit hinter einem TLS-Proxy keine Redirect-Schleife entsteht. Alt-URL-Redirects auf absolute HTTPS-Ziele umgestellt (spart einen Hop). `AddDefaultCharset UTF-8` ergänzt (charset fehlte im HTTP-Header). Startseite: USP-Satz „Wer günstig baut, baut zweimal – wir machen Ihr Bad einmal richtig." ergänzt, damit die H1-Wörter im Fließtext vorkommen.
+
+**Verifiziert live:** alle 4 Varianten laufen in genau 1 Hop auf `https://agosbau.de` zusammen, keine Schleife; `content-type: text/html; charset=UTF-8`.
+
+**Deploy-Härtung:** Der lftp-Upload hing einmal >13 Min. Jetzt `timeout-minutes: 8`, expliziter Passive-Mode, `xfer:timeout`, `--parallel=3` (Deploy nun ~2,5 Min).
+
+**Bewusst NICHT gemacht:** (1) Social-Sharing-Buttons — Seobility stuft sie selbst als „nice to have" ein; sie bringen Drittanbieter-Skripte und Tracking auf eine lokale Handwerker-Leadseite bei nahezu null Nutzen. (2) Doppelte Ankertexte („Badsanierung"/„Fliesenverlegung" je 3×) — entsteht durch Navigation + Footer + Inline-Link und ist auf praktisch jeder Website normal; Google kommt damit klar.
+
+**Offen:** Backlinks/Externe Faktoren (66%) sind Off-Page — GBP pflegen, Verzeichnisse mit zeichengleicher NAP. Gehört ins `/weekly-review`.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
