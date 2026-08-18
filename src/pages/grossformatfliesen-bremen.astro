@@ -24,7 +24,16 @@ const vorteile = [
   ["Leichtere Reinigung", "Weniger Fugen heißt spürbar weniger Putzaufwand."],
   ["Vollflächig verklebt", "Kein Hohlraum unter der Platte – langlebig und stabil."],
 ];
+// Gängige Formate – Fakten-Block
+const formate = [
+  ["60 × 120 cm", "Einstieg ins Großformat, Wand und Boden"],
+  ["80 × 80 / 100 × 100 cm", "Wohnräume, ruhiges Bodenbild"],
+  ["120 × 120 cm", "großzügige Böden, offene Grundrisse"],
+  ["120 × 260 / 120 × 270 cm", "nahezu fugenlose Wandflächen, Duschrückwände"],
+];
 const faq = [
+  { q: "Kann man Großformatfliesen auf einer Fußbodenheizung verlegen?", a: "Ja, Großformat eignet sich dafür sogar besonders gut: Wenige Fugen und eine große zusammenhängende Fläche geben die Wärme gleichmäßig ab. Wichtig sind eine hohlraumfreie Verklebung im Buttering-Floating-Verfahren und ein ordnungsgemäß aufgeheizter Estrich vor Verlegebeginn." },
+  { q: "Warum reißen Großformatfliesen manchmal?", a: "Fast immer wegen Hohlstellen im Kleberbett oder eines unebenen Untergrunds. Wo die Platte nicht vollflächig aufliegt, wirkt punktuelle Last wie ein Hebel und die Platte bricht. Deshalb verlegen wir vollflächig im Buttering-Floating-Verfahren statt mit Kleberpunkten." },
   { q: "Ab welchem Format brauche ich einen Spezialisten?", a: "Ab etwa 60×120 cm spricht man von Großformat. Je größer die Platte, desto wichtiger werden Werkzeug, Untergrund und ein eingespieltes Team. Wir verlegen bis 120×270 cm und Sonderformate." },
   { q: "Verlegen Sie Großformat auch an der Wand?", a: "Ja, an Wand und Boden – im Bad, im Wohnbereich und im Gewerbe. Gerade großformatige Wandflächen wirken edel und modern." },
   { q: "Was kostet das Verlegen von Großformatfliesen?", a: "Großformat ist aufwändiger als Standardformat und wird individuell kalkuliert. Nach dem Aufmaß bekommen Sie einen Festpreis ohne versteckte Kosten." },
@@ -70,6 +79,26 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">04 · Formate</span><h2>Welche XXL-Formate wir verlegen</h2></div>
+      <table class="fmt">
+        <thead><tr><th>Format</th><th>Typischer Einsatz</th></tr></thead>
+        <tbody>{formate.map(([f, e]) => <tr><td class="fmt__name">{f}</td><td>{e}</td></tr>)}</tbody>
+      </table>
+      <p>Dazu kommen Sonderformate je nach Hersteller. Welches Format sinnvoll ist, hängt weniger vom Geschmack ab als vom Raum: In kleinen Bädern kann eine sehr große Platte durch viele Zuschnitte an Wirkung verlieren. Wir sagen Ihnen vor dem Kauf, was im konkreten Grundriss aufgeht.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">05 · Fußbodenheizung</span><h2>Großformat auf Fußbodenheizung</h2></div>
+      <p>Großformatfliesen und Fußbodenheizung passen gut zusammen. Wenige Fugen und große zusammenhängende Flächen leiten die Wärme gleichmäßig in den Raum, und Feinsteinzeug speichert sie gut.</p>
+      <p>Zwei Dinge entscheiden darüber, ob es dauerhaft hält. Erstens die <strong>hohlraumfreie Verklebung</strong>: Unter einer 120er Platte darf keine Luftblase sitzen, sonst wirkt punktuelle Last wie ein Hebel und die Platte reißt. Deshalb wird im Buttering-Floating-Verfahren gearbeitet, bei dem Kleber auf Untergrund und Plattenrückseite aufgezogen wird.</p>
+      <p>Zweitens das <strong>Aufheizen des Estrichs</strong> vor der Verlegung. Der Estrich muss sein Schwindmaß hinter sich haben, bevor gefliest wird. Wird dieser Schritt übersprungen, arbeitet der Untergrund unter der fertigen Fläche weiter.</p>
+    </div>
+  </section>
+
   <Testimonials title="Premium-Design, sauber umgesetzt" items={[
     { name: "Merlin Varol", text: "Die Fliesenarbeiten in unserem Badezimmer wurden sehr sauber und professionell ausgeführt. Gerade die Fischgräten-Optik war nicht ganz einfach, aber das Ergebnis ist top: edel, modern und sehr hochwertig." },
     { name: "Christian Heinzl", text: "Unser Badezimmer sieht wirklich klasse aus, mit den großen Fliesen. Von der Beratung bis zur Ausführung hat alles wunderbar geklappt." },
@@ -86,4 +115,8 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
   .checklist li { padding-left: var(--space-8); position: relative; }
   .checklist li::before { content: "→"; position: absolute; left: 0; color: var(--color-copper); font-weight: 700; }
   @media (min-width: 768px) { .checklist { grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-8); } }
+  .fmt { width: 100%; border-collapse: collapse; margin-block: var(--space-6); }
+  .fmt th { text-align: left; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mittelgrau); border-bottom: 1px solid var(--color-anthrazit); padding: var(--space-3) var(--space-4) var(--space-3) 0; }
+  .fmt td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .fmt__name { color: var(--color-anthrazit); font-weight: 600; white-space: nowrap; }
 </style>

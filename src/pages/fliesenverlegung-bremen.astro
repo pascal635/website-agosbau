@@ -20,8 +20,19 @@ const bereiche = [
   ["Wandreparaturen", "Innen- und Außenbereich, sauber angearbeitet."],
   ["Naturstein, Feinsteinzeug, Mosaik", "Auch anspruchsvolle Materialien fachgerecht verlegt."],
 ];
+// Materialübersicht – Fakten-Block, auch für KI-Antworten zitierfähig
+const materialien = [
+  ["Feinsteinzeug", "Bad, Wohnraum, Terrasse, Gewerbe", "Sehr hart und frostsicher, nimmt kaum Wasser auf. Der Allrounder."],
+  ["Keramik (Steingut)", "Wandflächen im Innenbereich", "Leicht zu verarbeiten, nicht frostsicher – nichts für draußen."],
+  ["Naturstein", "Wohnraum, Bad, Eingangsbereich", "Jede Platte ein Unikat. Braucht Imprägnierung, empfindlich gegen Säure."],
+  ["Zementfliesen", "Wohnraum, Küche, Flur", "Starkes Muster, entwickelt Patina. Muss imprägniert werden."],
+  ["Mosaik", "Duschböden, Rundungen, Akzentflächen", "Viele Fugen, dadurch gute Rutschhemmung im Nassbereich."],
+];
 const faq = [
+  { q: "Was kostet Fliesenlegen pro Quadratmeter in Bremen?", a: "Einen seriösen Quadratmeterpreis gibt es nicht, weil die Vorarbeiten den Preis oft stärker bestimmen als das Verlegen selbst: Zustand des Untergrunds, Aufbauhöhe, Zuschnitte, Format und Verlegemuster. Wir messen vor Ort auf und nennen danach einen Festpreis fürs ganze Projekt statt einer Zahl, die später nicht hält." },
   { q: "Was kostet das Fliesenlegen in Bremen?", a: "Der Preis hängt von Fläche, Material und Untergrund ab. Nach einem kurzen Aufmaß bekommen Sie von uns einen Festpreis, ohne versteckte Kosten." },
+  { q: "Was ist eine Vollverfliesung?", a: "Bei einer Vollverfliesung wird die gesamte Wandfläche vom Boden bis zur Decke gefliest, nicht nur ein Spritzschutz-Bereich. Das ergibt ein ruhiges, durchgehendes Bild und ist im Bad pflegeleichter, weil es keine Übergänge zwischen Fliese und Putz gibt." },
+  { q: "Können Zementfliesen im Bad verlegt werden?", a: "Ja, mit der richtigen Vorbereitung. Zementfliesen sind saugfähiger als Feinsteinzeug und müssen vor und nach dem Verfugen imprägniert werden. Darunter gehört eine normgerechte Abdichtung. Richtig ausgeführt halten sie jahrzehntelang und entwickeln eine schöne Patina." },
   { q: "Verlegen Sie auch einzelne Räume oder kleine Flächen?", a: "Ja. Vom einzelnen ausgetauschten Fliesenfeld bis zur kompletten Vollverfliesung übernehmen wir beides." },
   { q: "Welche Fliesen eignen sich für mein Projekt?", a: "Wir beraten Sie ehrlich nach Raum, Nutzung und Budget – Keramik, Feinsteinzeug, Naturstein oder Mosaik. Bevorzugte Systemmarken: Schlüter, ARDEX, Sopro, Mirage, Atlas Concorde." },
 ];
@@ -58,6 +69,27 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">03 · Vollverfliesung</span><h2>Vollverfliesung in Bremen: vom Boden bis zur Decke</h2></div>
+      <p>Bei einer Vollverfliesung wird die komplette Wandfläche gefliest, nicht nur der Spritzbereich über der Wanne. Das Ergebnis ist ein ruhiges, durchgehendes Bild ohne den typischen Absatz, an dem Fliese in Putz übergeht.</p>
+      <p>Im Bad hat das einen praktischen Vorteil: Es gibt keine Übergangskante, an der sich Feuchtigkeit und Schmutz sammeln. Gerade bei bodengleichen Duschen und offenen Grundrissen ist die Vollverfliesung deshalb die haltbarere Lösung.</p>
+      <p>Handwerklich ist sie anspruchsvoller als eine Teilverfliesung: Die Wände müssen über die volle Höhe im Lot sein, sonst laufen die Fugen sichtbar aus. Deshalb prüfen und begradigen wir vorher – das ist der Teil der Arbeit, den später niemand sieht und der über das Ergebnis entscheidet.</p>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">04 · Material</span><h2>Zementfliesen, Naturstein und Mosaik</h2></div>
+      <p>Nicht jedes Material passt in jeden Raum. Zementfliesen und Naturstein sind schön, aber saugfähiger als Feinsteinzeug und brauchen eine Imprägnierung. Wer das überspringt, hat nach dem ersten Rotweinglas ein Problem. Diese Übersicht hilft bei der Vorauswahl:</p>
+      <table class="mat">
+        <thead><tr><th>Material</th><th>Geeignet für</th><th>Worauf zu achten ist</th></tr></thead>
+        <tbody>{materialien.map(([m, e, h]) => <tr><td class="mat__name">{m}</td><td>{e}</td><td class="mat__hint">{h}</td></tr>)}</tbody>
+      </table>
+      <p>Wir verarbeiten alle fünf und beraten Sie vor dem Kauf, welches Material zu Raum, Nutzung und Budget passt. Verlegt wird mit Systemen von Schlüter, ARDEX, Sopro, Mirage und Atlas Concorde.</p>
+    </div>
+  </section>
+
   <Testimonials title="Was Kunden über unsere Fliesenarbeit sagen" items={[
     { name: "Lars D.", text: "Wir können AGOS für jeden empfehlen, der Wert auf hochwertige Fliesenlegearbeiten legt. Die Leidenschaft fürs Handwerk sieht man dem jungen Chef an. Klare Empfehlung." },
     { name: "Sven Herde", text: "Super und sehr genaues Arbeiten steht bei dieser Firma absolut im Vordergrund! Sollte ich nochmal eine Fliesenfirma brauchen, würde ich immer wieder hier anfragen!" },
@@ -81,4 +113,15 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
   .lcard { padding: var(--space-6); border-top: 2px solid var(--color-copper); background: var(--color-bg); border-radius: 0 0 var(--radius-md) var(--radius-md); }
   .lcard h3 { margin-bottom: var(--space-2); }
   @media (min-width: 768px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+  .mat { width: 100%; border-collapse: collapse; margin-block: var(--space-6); }
+  .mat th { text-align: left; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mittelgrau); border-bottom: 1px solid var(--color-anthrazit); padding: var(--space-3) var(--space-4) var(--space-3) 0; }
+  .mat td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .mat__name { color: var(--color-anthrazit); font-weight: 600; white-space: nowrap; }
+  .mat__hint { font-size: 0.85rem; color: var(--color-fg-muted); }
+  @media (max-width: 640px) {
+    .mat thead { display: none; }
+    .mat tr { display: block; padding-block: var(--space-3); border-bottom: 1px solid var(--color-border); }
+    .mat td { display: block; border: none; padding: 0 0 var(--space-1) 0; }
+    .mat__name { white-space: normal; }
+  }
 </style>
