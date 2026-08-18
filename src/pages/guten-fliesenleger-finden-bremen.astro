@@ -1,0 +1,161 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Faq from "../components/Faq.astro";
+import CrossLinks from "../components/CrossLinks.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import { site } from "../data/site";
+
+const title = "Guten Fliesenleger finden in Bremen – Checkliste | AGOS BAU";
+const description = "Woran erkennt man einen guten Fliesenleger in Bremen? 8 Kriterien zum Abhaken, die typischen Warnsignale und die Fragen, die Sie vor der Beauftragung stellen sollten.";
+
+// Prüfkriterien – gelten für jeden Betrieb, nicht nur für uns.
+const kriterien = [
+  {
+    k: "Eintrag in der Handwerksrolle",
+    pruefen: "Fragen Sie nach dem Eintrag bei der Handwerkskammer. Seriöse Betriebe nennen ihn ohne Zögern; Sie können ihn bei der HWK gegenprüfen.",
+    warnung: "Ausweichende Antworten oder „brauchen wir nicht“.",
+  },
+  {
+    k: "Aufmaß vor Ort statt Preis am Telefon",
+    pruefen: "Ein belastbarer Preis entsteht erst, wenn jemand das Bad gesehen hat: Untergrund, Aufbauhöhe, Leitungen, Zuschnitte.",
+    warnung: "Ein Festpreis am Telefon oder per Formular, ohne dass jemand da war.",
+  },
+  {
+    k: "Abdichtung nach DIN 18534 steht im Angebot",
+    pruefen: "Die Abdichtung im Nassbereich entscheidet, ob das Bad in zehn Jahren noch dicht ist. Sie gehört als Position ins Angebot, nicht in eine Fußnote.",
+    warnung: "Die Abdichtung wird gar nicht erwähnt oder als „Extra“ angeboten.",
+  },
+  {
+    k: "Untergrund wird vor dem Angebot geprüft",
+    pruefen: "Gerade im Altbau: Holzbalkendecken federn, Wände sind schief, Estrich ist alt. Wer das vorher prüft, muss später nichts nachfordern.",
+    warnung: "„Das sehen wir dann auf der Baustelle.“",
+  },
+  {
+    k: "Geklärt, wer Sanitär und Elektro macht",
+    pruefen: "Lassen Sie sich sagen, wer die anderen Gewerke stellt, wer die Termine taktet und wer haftet, wenn etwas nicht passt.",
+    warnung: "Sie sollen selbst Installateur und Elektriker organisieren und koordinieren.",
+  },
+  {
+    k: "Umgang mit Nachträgen ist vorher geregelt",
+    pruefen: "Fragen Sie konkret: Was passiert, wenn hinter der Wand eine Überraschung steckt? Eine gute Antwort ist eine klare Regel, keine Beruhigung.",
+    warnung: "„Machen wir dann schon“ – ohne schriftliche Regelung.",
+  },
+  {
+    k: "Prüfbare Referenzen und Bewertungen",
+    pruefen: "Achten Sie auf Anzahl, Aktualität und Substanz der Bewertungen. Fotos abgeschlossener Projekte und Partnerbetriebe, die den Namen nennen, sind stärker als Werbetexte.",
+    warnung: "Nur Stockfotos, keine Bewertungen oder ausschließlich sehr alte.",
+  },
+  {
+    k: "Ein fester Ansprechpartner",
+    pruefen: "Sie sollten wissen, wer während der Bauzeit Ihr Ansprechpartner ist und wie Sie ihn erreichen.",
+    warnung: "Wechselnde Zuständigkeiten, Kontakt nur über ein Callcenter oder Formular.",
+  },
+];
+
+const faq = [
+  { q: "Woran erkennt man einen guten Fliesenleger?", a: "An drei Dingen vor allem: Der Betrieb ist in der Handwerksrolle eingetragen, er misst vor Ort auf, bevor er einen Preis nennt, und die Abdichtung nach DIN 18534 steht als Position im Angebot. Dazu kommen prüfbare Bewertungen und ein fester Ansprechpartner." },
+  { q: "Was sollte in einem Angebot für eine Badsanierung stehen?", a: "Leistungen und Materialien einzeln aufgeführt, die Abdichtung als eigene Position, ein Zeitrahmen, die Regelung für Nachträge und ein Gesamtpreis. Ist das Angebot nur eine Pauschalsumme ohne Aufschlüsselung, können Sie es nicht vergleichen und nicht prüfen." },
+  { q: "Warum ist die Abdichtung so wichtig?", a: "Sie liegt unsichtbar unter den Fliesen und hält Feuchtigkeit von Wand und Boden fern. Wird hier gespart, sieht man das oft erst nach Jahren, wenn Wasser in die Konstruktion gezogen ist. Die Sanierung kostet dann ein Vielfaches der Ersparnis." },
+  { q: "Sollte ich mehrere Angebote einholen?", a: "Ja, zwei bis drei sind sinnvoll. Vergleichen Sie dabei nicht nur die Summe, sondern den Leistungsumfang: Ist die Abdichtung enthalten? Wer koordiniert die Gewerke? Wie wird mit Nachträgen umgegangen? Das günstigste Angebot ist oft das kleinste." },
+  { q: "Was kostet Fliesenlegen in Bremen?", a: "Der Preis hängt von Fläche, Format, Untergrund und Zuschnitt ab. Großformate und Altbau-Untergründe sind aufwendiger als glatte Wände im Neubau. Belastbar wird eine Zahl erst nach dem Aufmaß vor Ort. Für eine komplette Badsanierung liegen die Kosten meist zwischen 15.000 und 55.000 Euro." },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Woran erkennt man einen guten Fliesenleger in Bremen?",
+  description,
+  inLanguage: "de-DE",
+  author: { "@type": "Organization", name: site.name, url: site.url },
+  publisher: { "@type": "Organization", name: site.name, url: site.url },
+  datePublished: "2026-08-18",
+  dateModified: "2026-08-18",
+  mainEntityOfPage: `${site.url}/guten-fliesenleger-finden-bremen/`,
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+<Base title={title} description={description} schema={[articleSchema, faqSchema]}>
+  <Hero
+    eyebrow="Ratgeber"
+    title="Woran erkennt man einen guten"
+    accent="Fliesenleger in Bremen?"
+    subline="Acht Kriterien, die Sie bei jedem Betrieb prüfen können – und die Warnsignale, bei denen Sie nachfragen sollten."
+    ctaHref="#checkliste"
+    image="fliesenverlegen-bremen-agos-bau.webp"
+    imageAlt="Fliesenleger bei der Arbeit an einer Wand"
+  />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">Worum es geht</span><h2>Warum die Wahl so schwer ist</h2></div>
+      <p>Im Raum Bremen gibt es dutzende Betriebe, die Fliesen verlegen. Von außen sehen die Angebote ähnlich aus, und der Unterschied zeigt sich meist erst Jahre später – wenn die Fugen reißen oder Feuchtigkeit in die Wand zieht. Wir öffnen regelmäßig alte Bäder und sehen, wo gespart wurde.</p>
+      <p>Dieser Ratgeber ist deshalb keine Werbung, sondern eine Checkliste. Die acht Punkte können Sie bei jedem Betrieb abfragen, auch bei uns. Am Ende steht, wie wir selbst darauf antworten – nachprüfbar.</p>
+    </div>
+  </section>
+
+  <section class="section section--card" id="checkliste">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">Die Checkliste</span><h2>8 Kriterien für einen guten Fliesenleger</h2></div>
+      <ol class="krit">
+        {kriterien.map((k, i) => (
+          <li class="krit__item">
+            <span class="krit__num">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{k.k}</h3>
+              <p>{k.pruefen}</p>
+              <p class="krit__warn"><strong>Warnsignal:</strong> {k.warnung}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">Transparenz</span><h2>Wie AGOS BAU auf die Checkliste antwortet</h2></div>
+      <p>Wir stellen dieselben Kriterien an uns selbst. Diese Angaben können Sie prüfen:</p>
+      <table class="antw">
+        <tbody>
+          <tr><th scope="row">Handwerksrolle</th><td>eingetragen bei der Handwerkskammer</td></tr>
+          <tr><th scope="row">Aufmaß</th><td>immer vor Ort, bevor wir einen Preis nennen</td></tr>
+          <tr><th scope="row">Abdichtung</th><td>nach DIN 18534, Standard und kein Aufpreis</td></tr>
+          <tr><th scope="row">Untergrund</th><td>wird vor dem Angebot geprüft, auch im Altbau</td></tr>
+          <tr><th scope="row">Gewerke</th><td>Sanitär und Elektro über feste konzessionierte Partnerbetriebe, koordiniert von uns</td></tr>
+          <tr><th scope="row">Preis</th><td>Festpreis nach Aufmaß</td></tr>
+          <tr><th scope="row">Bewertungen</th><td><a href={site.googleHref} target="_blank" rel="noopener">{site.rating.value} ★ bei Google, {site.rating.count} Rezensionen</a></td></tr>
+          <tr><th scope="row">Ansprechpartner</th><td>{site.owner}, Inhaber, persönlich auf der Baustelle</td></tr>
+          <tr><th scope="row">Seit</th><td>{site.founded}, über 100 abgeschlossene Projekte</td></tr>
+        </tbody>
+      </table>
+      <p class="muted antw__stand">Stand: August 2026.</p>
+      <p>Wenn ein anderer Betrieb diese Punkte genauso beantwortet, ist er eine gute Wahl. Genau darum geht es.</p>
+    </div>
+  </section>
+
+  <Faq title="Häufige Fragen zur Auswahl" items={faq} />
+  <CrossLinks current="/guten-fliesenleger-finden-bremen/" />
+  <CtaBlock title="Checkliste an uns anlegen?" text="Erzählen Sie uns von Ihrem Projekt – wir messen vor Ort auf und nennen danach einen Festpreis." ctaHref="/kontakt/" />
+</Base>
+<style>
+  .krit { list-style: none; display: grid; gap: var(--space-8); margin-top: var(--space-6); }
+  .krit__item { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); align-items: start; }
+  .krit__num { font-family: var(--font-mono); color: var(--color-copper); font-size: 0.9rem; padding-top: 0.25rem; border-top: 1px solid var(--color-copper); }
+  .krit__item h3 { margin-bottom: var(--space-2); }
+  .krit__warn { font-size: 0.9rem; color: var(--color-fg-muted); margin-top: var(--space-2); }
+  .krit__warn strong { color: var(--color-anthrazit); }
+  .antw { width: 100%; border-collapse: collapse; margin-block: var(--space-6); }
+  .antw th { text-align: left; font-weight: 600; color: var(--color-anthrazit); font-size: 0.85rem; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; width: 32%; }
+  .antw td { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .antw a { color: var(--color-copper-ink); text-decoration: underline; }
+  .antw__stand { font-size: 0.8rem; }
+  @media (max-width: 560px) {
+    .antw th, .antw td { display: block; width: auto; }
+    .antw th { border-bottom: none; padding-bottom: 0; }
+  }
+</style>

@@ -7,6 +7,7 @@ import Faq from "../components/Faq.astro";
 import CrossLinks from "../components/CrossLinks.astro";
 import CtaBlock from "../components/CtaBlock.astro";
 import { site } from "../data/site";
+const ratgeberHref = "/guten-fliesenleger-finden-bremen/";
 
 const title = "Fliesen verlegen lassen in Bremen & Achim | AGOS BAU";
 const description = "Fliesen verlegen lassen in Bremen & Achim: Wand, Boden, innen und außen. Sauber, präzise, langlebig – vom Fachbetrieb mit über 100 Projekten. Jetzt anfragen.";
@@ -62,6 +63,13 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
     { name: "Sven Herde", text: "Super und sehr genaues Arbeiten steht bei dieser Firma absolut im Vordergrund! Sollte ich nochmal eine Fliesenfirma brauchen, würde ich immer wieder hier anfragen!" },
     { name: "Florian Repty", text: "Vielen Dank für die fantastische Arbeit! Von der Beratung bis zur fertiggestellten Arbeit stimmte einfach alles. Für das nächste Projekt komme ich gerne auf euch zurück!" },
   ]} />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <div class="sec-head"><span class="sec-num">Vor der Beauftragung</span><h2>Sie vergleichen noch Angebote?</h2></div>
+      <p>Angebote von Fliesenlegern sehen sich oft ähnlich, unterscheiden sich aber im Leistungsumfang erheblich. Unsere Checkliste zeigt, worauf Sie achten sollten: <a href={ratgeberHref}>Woran erkennt man einen guten Fliesenleger in Bremen?</a> Acht Kriterien zum Abhaken, bei jedem Betrieb anwendbar.</p>
+    </div>
+  </section>
 
   <Faq title="Häufige Fragen zur Fliesenverlegung" items={faq} />
   <CrossLinks current="/fliesenverlegung-bremen/" />
