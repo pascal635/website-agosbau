@@ -43,11 +43,10 @@ const localBusiness = {
     addressCountry: "DE",
   },
   geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-  areaServed: [
-    { "@type": "City", name: "Bremen" },
-    { "@type": "City", name: "Achim" },
-    ...cities.map((c) => ({ "@type": "Place", name: c.ort })),
-  ],
+  areaServed: [...new Set(["Bremen", "Achim", ...cities.map((c) => c.ort)])].map((name) => ({
+    "@type": "Place",
+    name,
+  })),
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
