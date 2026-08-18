@@ -131,3 +131,15 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Offen:** Backlinks/Externe Faktoren (66%) sind Off-Page — GBP pflegen, Verzeichnisse mit zeichengleicher NAP. Gehört ins `/weekly-review`.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — SEO+GEO-Onpage-Plan erstellt (Datenbasis: Sistrix)
+
+**Decision:** Onpage-Plan in `context/seo-geo-plan.md` abgelegt — wird Schritt für Schritt umgesetzt, danach Optimierungsroutine im 4-Wochen-Takt (erste Runde ~2026-09-15, wenn GSC ~4 Wochen Daten hat). GSC wurde heute verbunden (Daten ab ~19.08.).
+
+**Datenbasis (Sistrix 18.08.):** SI 0,0001 · 13 Rankings · 💎 `badsanierung bremen kosten` #1 und `fliesenleger achim` #1 · Haupt-KW `badsanierung bremen` (150 Klicks/Mon., CPC 4,40 €) rankt NICHT in Top 100 · `barrierefreies bad bremen` #17 = größter Quick Win. SERP-Befund: gutehandwerker.com + gelbeseiten.de in Top 6 → Verzeichnisse sind GEO-Pflichtquellen.
+
+**Kernpunkte des Plans:** (A) Badsanierung-Seite aufs Haupt-KW durchsetzen ohne das Kosten-#1 zu gefährden, Barrierefrei auf Seite 1. (G) Frage-Blöcke + FAQ-Schema auf allen Leistungsseiten, Entitäts-Hub Über-uns, Auswahl-Ratgeber „guten Fliesenleger erkennen" als Onpage-Antwort auf „bester Fliesenleger Bremen". (O) Offpage klar als Pflicht markiert: GBP, Bewertungs-Routine (6→25+), Verzeichnis-NAP — LLM-Nennungen kommen primär aus Drittquellen. GEO-Erfolg wird per 8 dokumentierten Testfragen an ChatGPT/Gemini/Perplexity gemessen (`intake/research/geo-audit-log.md`).
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
