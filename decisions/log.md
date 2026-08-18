@@ -207,3 +207,15 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **⚠️ Klärungspunkt Meisterpflicht:** Fliesenleger ist seit 14.02.2020 wieder meisterpflichtig (Anlage A HwO). AGOS BAU ist 2019 gegründet, fällt also unter Bestandsschutz. Mehrere Quellen nennen eine Nachweisfrist bis 01.01.2028 (Meisterbrief oder Ausnahmebewilligung § 8 HwO) — nicht sicher genug verifiziert, um damit zu arbeiten. Konsequenz: „Meisterbetrieb" wurde **nicht** als Kriterium aufgenommen, und die Website macht **keine** Aussage zum Meisterstatus. Auf der Seite steht nur das Belegte: Eintrag in der Handwerksrolle. **To-do für Pascal/André: bei der HWK klären** — Betriebsfrage, nicht SEO. Ein vorhandener Meisterbrief wäre ein starkes Trust-Signal für die Seite.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — A3 + A4: interne Ankertexte und Meta-Pass
+
+**A3 (interne Verlinkung):** Die 9 City-Pages verlinkten ihre Leistungen mit generischem Ankertext („Badsanierung", „Fliesenverlegung"). Über die Vorlage `[stadt].astro` sind die Ankertexte jetzt ortsspezifisch („Badsanierung in Bremen-Oberneuland"). Eine Änderung, neun Seiten, und sie variiert automatisch — das behebt zugleich die von Seobility monierten doppelten Ankertexte. **Bewusst nicht gemacht:** ein identischer Zusatz-Absatz auf allen 9 City-Pages. Das hätte Boilerplate über neun Seiten dupliziert und dem eigenen 60-%-Unique-Ziel widersprochen (Doorway-Risiko).
+
+**A4 (Title/Meta):** Audit über alle 22 Seiten. Ergebnis: **alle Titles waren bereits in Ordnung** (≤ 60 Zeichen, Keyword vorn) — hier war nichts zu tun. Bei den Descriptions waren 6 über 160 Zeichen und wurden gekürzt (Keyword + CTA erhalten). Jetzt 0 überlange.
+
+**Messfehler korrigiert:** Der erste Audit meldete 13 zu lange Descriptions. Ursache: Ich hatte die Länge im HTML-Quelltext gemessen, wo `&` als `&amp;` steht (5 statt 1 Zeichen). Nach Entity-Dekodierung waren es 6. Ohne die Gegenprüfung hätte ich sieben funktionierende Descriptions ohne Grund umgeschrieben. Methodik-Hinweis im Plan vermerkt.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.

@@ -59,10 +59,12 @@
   **⚠️ Faktenfehler korrigiert:** Die Seite nannte den KfW-Zuschuss als Fördermöglichkeit. Laut kfw.de nimmt **455-B seit 31.07.2026 keine Anträge mehr an** (Bundesmittel ausgeschöpft, ggf. wieder 2027). Der Hinweis war irreführend und ist ersetzt.
   Neue Förder-Tabelle mit an der Quelle geprüften Zahlen: **Pflegekasse bis 4.180 € je Maßnahme** (§ 40 Abs. 4 SGB XI, Pflegegrad 1–5, **Antrag vor Baubeginn**), bis 16.720 € bei mehreren Berechtigten, **KfW-Kredit 159 bis 50.000 €**; 455-B offen als „derzeit keine Antragstellung" ausgewiesen — mit Stand-Datum + Prüfhinweis.
   Dazu: DIN-18040-2-Maßtabelle (120×120, max. 2 cm Schwelle, 90 cm lichte Breite, R10/R11) · eigene H2 „Die bodengleiche Dusche" (Sekundär-KW) · FAQ 3 → 6 Fragen à 40–60 Wörter · kontextueller interner Link von der Badsanierungsseite mit Ankertext „barrierefreies Bad in Bremen". Umfang ~1.089 Wörter.
-- [ ] **A3 · Interne Verlinkung systematisch.**
-  Jede City-Page verlinkt auf Badsanierung + passende Nischenseite (kontextuell, differenzierte Ankertexte: „Badsanierung in Bremen-Oberneuland" statt 3× „Badsanierung"). Leistungsseiten untereinander verlinken. Startseite → alle Leistungsseiten mit KW-Ankern.
-- [ ] **A4 · Title/Meta-CTR-Pass über alle 21 Seiten.**
-  Jeder Title: KW vorn + Differenzierung (Festpreis / 5,0★ / HWK). Meta-Description mit CTA. Einmal systematisch durchgehen.
+- [x] **A3 · Interne Verlinkung systematisch.** ✅ 2026-08-18
+  City-Pages verlinkten die Leistungen mit generischem Ankertext („Badsanierung"). Jetzt ortsspezifisch über die Vorlage `[stadt].astro`: „Badsanierung in Bremen-Oberneuland" usw. — variiert automatisch je Seite und behebt zugleich die von Seobility monierten doppelten Ankertexte. Dazu kontextuelle Links: Badsanierung → barrierefreies Bad (A2), Fliesenverlegung → Ratgeber (G4).
+  **Bewusst nicht gemacht:** identischer Zusatz-Absatz auf allen 9 City-Pages — das hätte Boilerplate über 9 Seiten dupliziert und dem 60-%-Unique-Ziel widersprochen.
+- [x] **A4 · Title/Meta-CTR-Pass über alle 21 Seiten.** ✅ 2026-08-18
+  Audit über alle 22 Seiten: **alle Titles bereits ≤ 60 Zeichen**, Keyword vorn — kein Handlungsbedarf. Bei den Descriptions waren **6** über 160 Zeichen (nicht 13; die erste Messung hatte HTML-Entities mitgezählt, `&amp;` = 5 statt 1 Zeichen) und wurden gekürzt, Keyword und CTA erhalten. Ergebnis: **0 überlange Titles/Descriptions**.
+  *Methodik-Lehre: Meta-Längen immer nach Entity-Dekodierung messen, sonst produziert man Arbeit an Nicht-Problemen.*
 
 ### Phase B — Content-Lücken (Woche 2–4)
 
