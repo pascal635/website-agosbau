@@ -159,3 +159,17 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Nächster Schritt:** A2 — `/barrierefreies-bad-bremen/` von Position 17 auf Seite 1 (KfW-/Pflegekasse-Zuschüsse als Fakten-Block, DIN 18040-2).
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — Plan-Schritt A2: barrierefreies Bad + Korrektur einer falschen Förderangabe
+
+**Decision:** A2 umgesetzt und live. **Wichtigster Punkt ist kein SEO-Punkt:** Die Seite nannte den KfW-Zuschuss als Fördermöglichkeit („Förderprogramme, zum Beispiel der KfW"). An der Quelle (kfw.de) geprüft: **455-B nimmt seit 31.07.2026 keine neuen Anträge an**, die Bundesmittel für 2026 sind ausgeschöpft; Wiederaufnahme frühestens 2027. Ein Interessent hätte mit Geld gerechnet, das es nicht gibt. Ersetzt durch eine Förder-Tabelle mit geprüften Zahlen: Pflegekasse bis 4.180 € je Maßnahme (§ 40 Abs. 4 SGB XI, alle Pflegegrade, **Antrag vor Baubeginn**), bis 16.720 € bei mehreren Anspruchsberechtigten, KfW-Kredit 159 bis 50.000 €. 455-B bleibt offen als „derzeit keine Antragstellung" ausgewiesen — mit Stand-Datum und Prüfhinweis.
+
+**SEO/GEO-Ausbau:** DIN-18040-2-Maßtabelle (120×120 cm, max. 2 cm Schwelle, min. 90 cm lichte Türbreite, R10/R11) · eigene H2 „Die bodengleiche Dusche" fürs Sekundär-Keyword · FAQ von 3 auf 6 Fragen à 40–60 Wörter (FAQPage-Schema) · kontextueller interner Link von der Badsanierungsseite mit Ankertext „barrierefreies Bad in Bremen".
+
+**Grundsatz daraus:** Förderbeträge nie aus dem Gedächtnis schreiben. In die 4-Wochen-Routine als fester Prüfpunkt aufgenommen.
+
+**Nächster Schritt:** G3 — Entitäts-Hub „Über uns" + LocalBusiness-Schema vervollständigen (GEO-Fundament).
+
+**Owner:** Pascal · Kunde: André Gostomczyk.

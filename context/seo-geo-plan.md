@@ -55,8 +55,10 @@
   Google versteht die Seite aktuell primär als Kosten-Seite (rankt #1 für „…kosten", gar nicht fürs Haupt-KW). Fix: Content-Tiefe erhöhen, ohne die Kosten-Sektion zu schwächen — Sektionen ergänzen zu Ablauf im Detail (7 Schritte vertiefen), Gewerke-Koordination, Dauer, Altbau-Besonderheiten (Bremer Altbau!), Materialwahl. Ziel ~1.500+ Wörter. H2-Struktur mit KW-Varianten („Badsanierung in Bremen: Ablauf", „Was kostet eine Badsanierung in Bremen?").
   ⚠️ Nicht anfassen: bestehende Kosten-Tabelle + Title/Meta-Teile, die das #1-Ranking tragen.
   </details>
-- [ ] **A2 · `/barrierefreies-bad-bremen/` von Pos. 17 auf Seite 1.**
-  Content-Ausbau: KfW-Zuschuss 455-B / Pflegekasse-Zuschuss (4.000 €) konkret erklären (Fakten-Block mit Zahlen), DIN 18040-2, bodengleiche Dusche als eigene H2. Interne Links von Startseite + Badsanierung mit Ankertext „barrierefreies Bad Bremen".
+- [x] **A2 · `/barrierefreies-bad-bremen/` von Pos. 17 auf Seite 1.** ✅ 2026-08-18
+  **⚠️ Faktenfehler korrigiert:** Die Seite nannte den KfW-Zuschuss als Fördermöglichkeit. Laut kfw.de nimmt **455-B seit 31.07.2026 keine Anträge mehr an** (Bundesmittel ausgeschöpft, ggf. wieder 2027). Der Hinweis war irreführend und ist ersetzt.
+  Neue Förder-Tabelle mit an der Quelle geprüften Zahlen: **Pflegekasse bis 4.180 € je Maßnahme** (§ 40 Abs. 4 SGB XI, Pflegegrad 1–5, **Antrag vor Baubeginn**), bis 16.720 € bei mehreren Berechtigten, **KfW-Kredit 159 bis 50.000 €**; 455-B offen als „derzeit keine Antragstellung" ausgewiesen — mit Stand-Datum + Prüfhinweis.
+  Dazu: DIN-18040-2-Maßtabelle (120×120, max. 2 cm Schwelle, 90 cm lichte Breite, R10/R11) · eigene H2 „Die bodengleiche Dusche" (Sekundär-KW) · FAQ 3 → 6 Fragen à 40–60 Wörter · kontextueller interner Link von der Badsanierungsseite mit Ankertext „barrierefreies Bad in Bremen". Umfang ~1.089 Wörter.
 - [ ] **A3 · Interne Verlinkung systematisch.**
   Jede City-Page verlinkt auf Badsanierung + passende Nischenseite (kontextuell, differenzierte Ankertexte: „Badsanierung in Bremen-Oberneuland" statt 3× „Badsanierung"). Leistungsseiten untereinander verlinken. Startseite → alle Leistungsseiten mit KW-Ankern.
 - [ ] **A4 · Title/Meta-CTR-Pass über alle 21 Seiten.**
@@ -119,7 +121,8 @@ Jede Runde = `/weekly-review`-Aufruf mit diesem Ablauf, Ergebnis in `decisions/l
    - „Badsanierung Bremen Festpreis — welche Firma?"
    - „Wie finde ich einen guten Fliesenleger in Bremen?"
    → Die von den LLMs zitierten Quellen sind die nächsten Offpage-Ziele (O3 erweitern).
-4. **Entscheiden:** die *eine* wichtigste Maßnahme der nächsten 4 Wochen festlegen, umsetzen, loggen.
+4. **Förderzahlen gegenprüfen:** Die Beträge auf `/barrierefreies-bad-bremen/` (Pflegekasse 4.180 €, KfW 455-B Status, KfW 159) an der Quelle verifizieren — Förderprogramme ändern sich mehrmals jährlich, und falsche Beträge auf der Seite schaden Kunden konkret. **455-B war Stand 08/2026 geschlossen; bei Wiederaufnahme 2027 Seite aktualisieren.**
+5. **Entscheiden:** die *eine* wichtigste Maßnahme der nächsten 4 Wochen festlegen, umsetzen, loggen.
 
 **Erste Routine-Runde:** ~2026-09-15 (4 Wochen nach Plan-Start, GSC hat dann ~4 Wochen Daten).
 
