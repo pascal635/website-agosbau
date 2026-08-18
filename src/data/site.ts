@@ -13,6 +13,9 @@ export const site = {
   email: "info@agosbau.de",
   instagram: "@agos_bau",
   instagramHref: "https://instagram.com/agos_bau",
+  // Google Business Profile / Knowledge-Graph-Entität (bereinigt, ohne Tracking-Parameter)
+  googleKgmid: "/g/11s79_135l",
+  googleHref: "https://www.google.com/search?kgmid=/g/11s79_135l",
   url: "https://agosbau.de",
   // geokodiert über OSM/Nominatim (exakter Treffer inkl. Hausnummer + PLZ), 2026-08-18
   geo: { lat: 53.0212379, lng: 9.0033922 },

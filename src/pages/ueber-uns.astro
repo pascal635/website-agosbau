@@ -18,14 +18,14 @@ const werte = [
   ["Persönlicher Chefkontakt", "André ist erreichbar, kein Callcenter."],
 ];
 // Entitäts-Fakten — kanonisch, zitierfähig, mit sichtbarem Stand-Datum (GEO)
-const fakten: [string, string][] = [
+const fakten: [string, string, string?][] = [
   ["Firmierung", `${site.name}, Inh. ${site.owner}`],
   ["Rechtsform", "Einzelunternehmen"],
   ["Gegründet", `${site.founded} in ${site.city}`],
   ["Handwerksrolle", "in der Handwerkskammer eingetragen"],
   ["Team", "Inhaber + 4 feste Mitarbeiter"],
   ["Abgeschlossene Projekte", "über 100 Bäder und Fliesenprojekte"],
-  ["Bewertung", `${site.rating.value} ★ bei Google (${site.rating.count} Rezensionen)`],
+  ["Bewertung", `${site.rating.value} ★ bei Google (${site.rating.count} Rezensionen)`, site.googleHref],
   ["Sitz", `${site.street}, ${site.zip} ${site.city}`],
   ["Einzugsgebiet", "Achim, Bremen (alle Stadtteile) und Umland im Radius 40–60 km"],
   ["Leistungen", "Badsanierung, Fliesenverlegung, Großformatfliesen, barrierefreie Bäder, Terrasse und Pool"],
@@ -70,7 +70,12 @@ const personSchema = { "@context": "https://schema.org", "@type": "Person", name
       <div class="sec-head"><span class="sec-num">03 · Auf einen Blick</span><h2>AGOS BAU in Zahlen und Fakten</h2></div>
       <table class="fakten">
         <tbody>
-          {fakten.map(([k, v]) => <tr><th scope="row">{k}</th><td>{v}</td></tr>)}
+          {fakten.map(([k, v, href]) => (
+            <tr>
+              <th scope="row">{k}</th>
+              <td>{href ? <a href={href} target="_blank" rel="noopener">{v}</a> : v}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <p class="muted fakten__stand">Stand: August 2026.</p>

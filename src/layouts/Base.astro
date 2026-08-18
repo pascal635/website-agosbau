@@ -65,7 +65,12 @@ const localBusiness = {
     "Abdichtung nach DIN 18534",
     "Barrierefreies Bauen nach DIN 18040-2",
   ],
-  sameAs: [site.instagramHref],
+  sameAs: [site.googleHref, site.instagramHref],
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "Google Knowledge Graph ID",
+    value: site.googleKgmid,
+  },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: site.rating.value,
