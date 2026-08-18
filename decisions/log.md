@@ -235,3 +235,21 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Offen in Phase B:** B1 (City-Page Badsanierung Achim), B2 (City-Page Bremen-Neustadt), B5 (echte Referenzen — blockiert durch Andrés Fotos/Projektdaten).
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-08-18 — B1 + B2: zwei neue Ortsseiten, Verlinkungsfehler behoben
+
+**B1 `/badsanierung-achim/` (866 Wörter):** Heimatmarkt-Seite. Wichtig war die Abgrenzung: Die Seite trägt den **lokalen** Bezug (Sitz Auf den Mehren 45 im Ortsteil Bierden, alle 9 Achimer Ortsteile, kurze Wege, schnelles Aufmaß) und verweist für die Leistungstiefe auf `/badsanierung-bremen/`, statt Ablauf, Kosten und Technik zu duplizieren. Eine Kopie der Bremen-Seite mit ausgetauschtem Ortsnamen wäre eine Doorway-Page gewesen.
+
+**B2 `/fliesenleger-bremen-neustadt/`:** Statt Boilerplate ein echter lokaler Winkel — die Neustadt ist geprägt von **Altbremer Häusern** (Buntentor, Südervorstadt, Alte Neustadt), also Holzbalkendecken, Entkopplung, schiefe Wände. Das knüpft direkt an die Altbau-Sektion der Badsanierungsseite an. Ortsteile und Baucharakter vorab verifiziert, statt sie zu vermuten — bei einer Ortsseite wäre ein falscher Ortsteil besonders peinlich.
+
+**Zwei Verlinkungsfehler gefunden und behoben:**
+1. Die Ortsliste auf der Startseite war **hartcodiert**. Neustadt wäre unverlinkt geblieben, obwohl die Seite existiert. Sie wird jetzt aus `cities.ts` abgeleitet — künftige Stadtteilseiten erscheinen automatisch.
+2. `/badsanierung-achim/` war nach dem Anlegen **verwaist** (keine eingehenden Links). Behoben über ein neues optionales `related`-Feld in `cities.ts` (Link von `/fliesenleger-achim/`) plus einen kontextuellen Link von `/badsanierung-bremen/`.
+
+**Stand:** 24 URLs in der Sitemap. Onpage-Plan bis auf B5 abgearbeitet.
+
+**Offen:** B5 (echte Referenzen) — blockiert durch Andrés Projektfotos und -daten. Offpage O1–O4. Klärung Meisterpflicht.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.
