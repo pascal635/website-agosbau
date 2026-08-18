@@ -26,6 +26,7 @@ jobs:
       - run: npm run build
 
       - name: FTPS Deploy (lftp)
+        timeout-minutes: 8   # hängender Upload soll fehlschlagen, nicht ewig laufen
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -36,8 +37,11 @@ jobs:
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             set ssl:verify-certificate no;
+            set ftp:passive-mode true;
             set net:max-retries 2;
-            set net:timeout 20;
+            set net:timeout 15;
+            set net:reconnect-interval-base 5;
+            set xfer:timeout 60;
             open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
-            mirror -R --delete --verbose --exclude-glob .git* ./dist/ ./;
+            mirror -R --delete --parallel=3 --verbose --exclude-glob .git* ./dist/ ./;
           "
