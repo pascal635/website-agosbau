@@ -40,7 +40,7 @@ const areaSchema = { "@context": "https://schema.org", "@type": "LocalBusiness",
       <div class="city-svc">
         {services.map((s) => (
           <a class="city-svc__item" href={s.href}>
-            <span>{s.title}</span><span class="city-svc__arrow">→</span>
+            <span>{s.title} <em class="city-svc__ort">in {city.ort}</em></span><span class="city-svc__arrow">→</span>
           </a>
         ))}
       </div>
@@ -72,7 +72,8 @@ const areaSchema = { "@context": "https://schema.org", "@type": "LocalBusiness",
   .city-svc { display: grid; grid-template-columns: 1fr; gap: var(--space-2); }
   .city-svc__item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) var(--space-6); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-head); font-size: 1.15rem; transition: border-color .2s, color .2s; }
   .city-svc__item:hover { border-color: var(--color-copper); color: var(--color-copper); }
-  .city-svc__arrow { color: var(--color-copper); }
+  .city-svc__arrow { color: var(--color-copper); flex: none; margin-left: var(--space-3); }
+  .city-svc__ort { font-style: normal; color: var(--color-mittelgrau); font-size: 0.85rem; white-space: nowrap; }
   .cityquote { border-left: 3px solid var(--color-copper); padding-left: var(--space-6); font-family: var(--font-head); font-style: italic; font-size: 1.4rem; color: var(--color-fg); }
   .cityquote cite { display: block; margin-top: var(--space-3); font-family: var(--font-sans); font-style: normal; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mittelgrau); }
   @media (min-width: 768px) { .city-svc { grid-template-columns: 1fr 1fr; gap: var(--space-3); } }
