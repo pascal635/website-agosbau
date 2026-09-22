@@ -1,16 +1,8 @@
 ---
 import { site, nav, services } from "../data/site";
-const stadtteile = [
-  { label: "Bremen-Oberneuland", href: "/fliesenleger-bremen-oberneuland/" },
-  { label: "Bremen-Schwachhausen", href: "/fliesenleger-bremen-schwachhausen/" },
-  { label: "Bremen-Borgfeld", href: "/fliesenleger-bremen-borgfeld/" },
-  { label: "Bremen-Horn-Lehe", href: "/fliesenleger-bremen-horn-lehe/" },
-  { label: "Lilienthal", href: "/fliesenleger-bremen-lilienthal/" },
-  { label: "Achim", href: "/fliesenleger-achim/" },
-  { label: "Oyten", href: "/fliesenleger-oyten/" },
-  { label: "Stuhr", href: "/fliesenleger-stuhr/" },
-  { label: "Verden", href: "/fliesenleger-verden/" },
-];
+import { cities } from "../data/cities";
+// aus cities.ts abgeleitet – neue Stadtteilseiten erscheinen automatisch (war hartcodiert, Neustadt fehlte)
+const stadtteile = cities.map((c) => ({ label: c.ort, href: `/${c.slug}/` }));
 const year = 2026;
 ---
 <footer class="ft">
@@ -23,7 +15,11 @@ const year = 2026;
 
     <div>
       <div class="ft__col-title">Leistungen</div>
-      <ul>{services.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+      <ul>
+        {services.map((s) => <li><a href={s.href}>{s.title}</a></li>)}
+        <li><a href="/badsanierung-achim/">Badsanierung Achim</a></li>
+        <li><a href="/guten-fliesenleger-finden-bremen/">Ratgeber: Fliesenleger finden</a></li>
+      </ul>
     </div>
 
     <div>

@@ -277,3 +277,26 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Nächste Runde:** ~2026-10-20.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-09-22 — Routine Runde 1, Nachtrag: GSC-Daten liegen vor — Discovery-Lücke gefunden
+
+**GSC verbunden** (Pascal hat den MCP-Account als Nutzer eingetragen). Daten ab 18.08. (Property-Anlage); ältere Daten existieren nicht, ein GSC-Vorher/Nachher zum 18.08. ist deshalb nicht möglich — der Vorher/Nachher-Vergleich bleibt Sistrix.
+
+**Zahlen 19.08.–19.09. (32 Tage):** ~2.190 Impressionen (~68/Tag, **flach, kein Trend**), **54 Klicks** (11 davon Brand „agos bau"), CTR 2,5 %, Ø Position ~11. Mobil 59 %. Non-Brand-Klicks: ~43 im Monat.
+
+**Top-Queries:** `fliesenleger bremen` **247 Impr., Pos. 20,5**, 1 Klick — impressionsstärkste Query; **Sistrix-Korrektur:** dort „nicht in Top 100", real Seite 2/3 · `badsanierung bremen` 172 Impr., Pos. 14,4, **0 Klicks** · `badsanierung festpreis` 92 Impr., Pos. 12,7, 0 Klicks (USP-Query, nicht gezielt bearbeitet) · `fliesenleger verden` 51/9,7/0 · `badsanierung bremen günstig` 37/8,5/1 · `badsanierung achim` 13/7,6/1.
+**Seiten:** `/badsanierung-bremen/` **630 Impr.** (meiste), 8 Klicks, CTR 1,3 % — 264 Impressionen für Haupt-KW + Festpreis auf Seite 2 ohne einen Klick · Startseite 593/29 · City-Pages: Achim 192/1, Verden 175/1, Stuhr 139/0, Neustadt 139/0, Oyten 122/0.
+**Kannibalisierung:** 7 Seiten bekommen Impressionen für „fliesenleger bremen" (Startseite 184 @21,7 · Neustadt 54 @23,8 · Schwachhausen 16 @12,6 mit dem einzigen Klick). Google hat kein eindeutiges Ziel für die Query.
+**`fliesenleger achim`:** Startseite Ø Pos. 2,7, 17 Impr., **0 Klicks** → Local-Pack (Maps) nimmt die Klicks. Datenpunkt für GBP; Offpage bleibt geparkt.
+**searchAppearance leer:** keine Rich Results. FAQ-Rich-Results sind seit Googles Einschränkung 2023 für Handwerkerseiten nicht zu erwarten — der Wert der 31 FAQ-Schema-Fragen liegt in GEO/Entität, nicht im SERP-Snippet. Erwartung korrigiert.
+**Alte URL `/leistungen/`:** noch 67 Impr. @2,4 (Brand-Sitelink) — 301 greift, Konsolidierung läuft.
+
+**⚠️ Discovery-Lücke (der eigentliche Fund):** `/guten-fliesenleger-finden-bremen/` und `/badsanierung-achim/` sind nach 35 Tagen **„URL ist Google nicht bekannt"** — nicht entdeckt. Neustadt (dritte neue Seite) ist indexiert, weil sie in der Startseiten-Ortsliste hängt. Ursachen: **keine Sitemap in GSC eingereicht** (robots.txt verweist zwar darauf, aber ohne Einreichung kein Status, keine Fehleranzeige) · Sitemap **ohne `lastmod`** (Google priorisiert Recrawl nach Änderungsdatum) · nur 1 bzw. 2 interne Links · **Footer-Stadtteilliste hartcodiert** (Neustadt fehlte — dritte Instanz dieses Musters nach Startseite und Achim-Seite).
+
+**Die eine Maßnahme dieser Runde: Indexierung sicherstellen.** Umgesetzt: Footer aus `cities.ts` abgeleitet + Links auf Ratgeber und Badsanierung Achim (**jede Seite verlinkt jetzt beide**) · `lastmod` aus dem Git-Commit-Datum der Quelldatei in der Sitemap (ehrlich, kein Build-Datum; Deploy holt volle Historie) · Sitemap-Einreichung per API (Freigabe Pascal) · manuelles „Indexierung beantragen" für beide URLs in der GSC-Oberfläche (Pascal, API bietet das nicht).
+
+**GSC-Baseline für Runde 2 (~20.10.):** Impressionen/Tag 68 · Klicks/Monat 54 (43 non-brand) · `badsanierung bremen` 14,4 → Ziel Top 10 · `fliesenleger bremen` 20,5 → Ziel Top 15 · beide neuen Seiten indexiert · Sitemap-Status in GSC „Erfolgreich, 24 URLs".
+
+**Owner:** Pascal · Kunde: André Gostomczyk.

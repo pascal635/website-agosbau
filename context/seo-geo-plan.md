@@ -37,7 +37,9 @@
 
 | Ziel | Messgröße | Zielwert (12 Wochen) |
 |---|---|---|
-| SEO: Haupt-Keyword | `badsanierung bremen` Position | Top 100 → Top 20 → Top 10 |
+| SEO: Haupt-Keyword | `badsanierung bremen` Position | Top 100 → Top 20 → Top 10 *(GSC 22.09.: 14,4, 172 Impr./Monat, 0 Klicks)* |
+| SEO: Volumen-Keyword | `fliesenleger bremen` Position | *(GSC 22.09.: 20,5 bei 247 Impr./Monat — impressionsstärkste Query)* → Top 15 |
+| Traffic | GSC Klicks/Monat non-brand | 43 (Sept 2026) → 100+ |
 | SEO: Quick Wins | `barrierefreies bad bremen`, `zementfliesen`, `vollverfliesung` | alle Top 10 |
 | SEO: Breite | Anzahl Rankings (Sistrix kwcount) | 13 → 50+ |
 | GEO: Nennung | Sistrix AI Check (Abschnitt 6) | **neu kalibriert 22.09.:** Runde 2 → ≥1 Prompt mit Nennung (Kategorie-Benchmark: kein lokaler Betrieb wird für Badthemen genannt, auch Google #1 nicht) |
@@ -144,7 +146,8 @@ Jede Runde = `/weekly-review`-Aufruf mit diesem Ablauf, Ergebnis in `decisions/l
 5. **Entscheiden:** die *eine* wichtigste Maßnahme der nächsten 4 Wochen festlegen, umsetzen, loggen.
 
 **Runde 1: 2026-09-22 ✅** — Ergebnis in `decisions/log.md` und `intake/research/geo-audit-log.md`. Kurz: Keywords 11 → 16, Neustadt-Seite #1, Zementfliesen #2, Haupt-KW 19 → 17, Barrierefrei stagniert 17; GEO-Baseline AGOS 0 = Kategorie 0. **Entscheidung: steigende Seiten nicht anfassen.**
-**⚠️ GSC blockiert:** Property für den MCP-Account `siteUnverifiedUser` → keine Daten. Fix: HTML-Tag-Token an mich (→ `Base.astro`) oder MCP-Account als Nutzer eintragen. Bis dahin ersetzt Sistrix `opportunities` die GSC-Quick-Win-Suche.
+**GSC verbunden (22.09., Nachtrag):** 32 Tage: ~2.190 Impr. (68/Tag, flach), 54 Klicks (43 non-brand), CTR 2,5 %. `fliesenleger bremen` 247 Impr. @20,5 (Sistrix-Korrektur: rankt doch) · `badsanierung bremen` 172 Impr. @14,4, 0 Klicks · `badsanierung festpreis` 92 @12,7. **Discovery-Lücke:** Ratgeber + Badsanierung Achim „Google nicht bekannt", keine Sitemap eingereicht, kein lastmod, Footer-Stadtteilliste hartcodiert → alles behoben/eingeleitet (Details `decisions/log.md`). Keine FAQ-Rich-Results (seit 2023 erwartbar) — Schema-Wert liegt in GEO/Entität.
+**GSC-Baseline Runde 2:** 68 Impr./Tag · 54 Klicks/Monat · `badsanierung bremen` 14,4 → Top 10 · `fliesenleger bremen` 20,5 → Top 15 · beide neuen Seiten indexiert.
 **Kandidaten Runde 2:** Ratgeber „Fugenloses Bad vs. Fliesen" (11.300 Vol. im KI-Kontext, Lücke) · FAQ „Was kann ich selbst machen?" · Ratgeber-Verlinkung Navigation/Footer.
 **Runde 2:** ~2026-10-20.
 
