@@ -300,3 +300,5 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **GSC-Baseline für Runde 2 (~20.10.):** Impressionen/Tag 68 · Klicks/Monat 54 (43 non-brand) · `badsanierung bremen` 14,4 → Ziel Top 10 · `fliesenleger bremen` 20,5 → Ziel Top 15 · beide neuen Seiten indexiert · Sitemap-Status in GSC „Erfolgreich, 24 URLs".
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+**Nachtrag 22.09.:** Sitemap-Einreichung per API scheitert mit „Insufficient Permission“ — der MCP-Account ist *Full User*, `sitemaps.submit` verlangt Inhaber-Rechte (oder der API-Zugang ist nur lesend autorisiert). **GSC per MCP = lesen + URL-Prüfung, nicht schreiben.** Sitemap reicht Pascal in der GSC-Oberfläche ein (Sitemaps → `sitemap-index.xml` → Senden), zusammen mit „Indexierung beantragen“ für die zwei URLs.
