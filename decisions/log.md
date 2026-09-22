@@ -253,3 +253,27 @@ Terse halten. Das *Warum* festhalten, nicht nur das *Was*.
 **Offen:** B5 (echte Referenzen) — blockiert durch Andrés Projektfotos und -daten. Offpage O1–O4. Klärung Meisterpflicht.
 
 **Owner:** Pascal · Kunde: André Gostomczyk.
+
+---
+
+## 2026-09-22 — Optimierungsroutine Runde 1: erste Wirkung messbar, GSC blockiert, GEO-Benchmark = 0
+
+**GSC nicht abrufbar.** Die Property `agosbau.de` steht für den Google-Account des MCP auf `siteUnverifiedUser`; die API verweigert Search-Analytics mit „insufficient permission". Im Code liegt weder ein `google-site-verification`-Meta-Tag noch eine Verifizierungs-HTML. Ohne GSC laufen alle künftigen Runden halbblind (keine Impressionen, keine CTR, keine Indexierungsprüfung der neuen Seiten). **Wichtigste Maßnahme dieser Runde: Verifizierung herstellen** — entweder Pascal gibt mir den HTML-Tag-Token (ich baue ihn in `Base.astro` ein, ein Deploy, dann „Bestätigen"), oder der bereits verifizierte Inhaber-Account trägt den MCP-Account unter „Nutzer und Berechtigungen" ein.
+
+**Rankings (Sistrix, 17.08. → 21.09.):** Keywords 11 → **16** (wöchentlich 11, 13, 14, 14, 15, 16 — stetig). Konkrete Wirkung der Onpage-Arbeit: `zementfliesen verlegen bremen` 6 → **2** (B3) · `fliesenleger bremen neustadt` 12 (Startseite) → **1 mit der neuen Seite** (B2, in vier Wochen) · neu auf Seite 1: `fliesenleger bremen preise` #9 (m²-FAQ), `badsanierung kosten bremen` #10 · `badsanierung bremen kosten` weiterhin **#1** (geschützt) · `badsanierung bremen` 19 → **17** · `barrierefreies bad bremen` 17 → 17 · `fliesenleger bremen` weiterhin nicht in Top 100 (SERP: 6 von 10 Treffern sind Portale/Kleinanzeigen/Jobbörsen — gemischter Intent, härtestes Ziel, wie im Plan erwartet).
+
+**Zwei Korrekturen an der eigenen Baseline vom 18.08.:** (1) `badsanierung bremen` stand laut datierter Sistrix-Abfrage am 17.08. auf **Position 19**, nicht „nicht in Top 100". Der H1-Fix war richtig, seine gemessene Wirkung ist bisher +2 Positionen — die Formulierung „Hauptursache gefunden" war zu stark. (2) Der Sichtbarkeitsindex-Baseline-Wert 0,0001 war das Allzeit-Minimum aus der Übersicht, nicht der Wert vom 17.08. (0,0008). Der SI ist bei dieser Domaingröße Rauschen (17.08. 0,0008 → 0,0003 → 0,0006) und taugt nicht als KPI; Steuergröße sind Keyword-Anzahl und benannte Rankings.
+
+**Analyse zur Seite-2-Grenze:** Zwei unterschiedliche, beide neu ausgebaute Seiten stehen exakt auf 17 (Badsanierung, Barrierefrei; Wettbewerb 42 bzw. nur 20). Gleiche Decke auf verschiedenen Seiten deutet auf den gemeinsamen Faktor Domain (Autorität, Alter, Links), nicht auf Seiteninhalt. Das ist eine Hypothese, kein Beweis — aber weiterer Onpage-Umbau dieser Seiten wäre Churn ohne Hebel. **Entscheidung: die steigenden und stabilen Seiten nicht anfassen.**
+
+**GEO-Baseline (Sistrix AI Check, ersetzt den manuellen 8-Fragen-Audit):** AGOS **0 Prompts**. Benchmark der Google-Top-5 für „Badsanierung Bremen": 13 Prompts, fast alle Peinemann zu Heizungsthemen; **bad-/fliesenbezogen genau 1** (badsanierung-bremen.com in einer Gäste-WC-Kostenfrage). Die Olligs (Google #1) ohne Bad-Nennung. **Kein lokaler Betrieb wird für Badthemen von KI genannt — die Kategorie steht bei null.** Topic Research „badsanierung": 206 Themen, 96 % Learning, keine kommerziellen — Menschen lassen sich erklären, nicht empfehlen; der realistische Weg ist, als zitierte Quelle für Lernfragen aufzutauchen. Inhaltliche Lücke mit hohem Volumen: fugenloses Bad/Mikrozement (11.300). KPI neu kalibriert: Runde 2 → ≥1 Prompt. Details: `intake/research/geo-audit-log.md`.
+
+**Förderzahlen (Routine-Punkt 4):** KfW 455-B weiterhin geschlossen (Stand September 2026, bestätigt) — Seitenaussage bleibt korrekt. Pflegekasse 4.180 € ist gesetzlich fixiert; nächste mögliche Änderung 01.01.2027 → im Januar prüfen.
+
+**Offpage bleibt auf Pascals Wunsch geparkt.** Der GEO-Befund ist als Datenpunkt festgehalten, nicht als Empfehlung.
+
+**Kandidaten für Runde 2 (nicht jetzt):** Ratgeber „Fugenloses Bad vs. Fliesen" (11.300 Suchvolumen im KI-Kontext, Lücke) · FAQ „Was kann ich bei der Badsanierung selbst machen?" (Abdichtung als Grenze) · Ratgeber-Verlinkung aus Navigation/Footer prüfen.
+
+**Nächste Runde:** ~2026-10-20.
+
+**Owner:** Pascal · Kunde: André Gostomczyk.

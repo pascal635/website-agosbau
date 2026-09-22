@@ -21,7 +21,7 @@ Platzhalter — Werte und Auth-Details trägt `/onboard` pro Kunde ein. Default-
 | 4 | Build | Git-Repo | Single Source of Truth der Seite | git (lokal, Klon `agosbau-site`, Branch `main`) | — | 2026-06-24 |
 | 5 | Build | Hosting | Auslieferung der Seite | not yet connected (Default: Hetzner statisch) | → offen | — |
 | 6 | Build | Domain / Registrar | DNS, Go-Live-Records | **agosbau.de** (Bestand, aktuell WordPress) — Registrar/DNS-Zugang offen | → offen | — |
-| 7 | Monitor | Google Search Console | Impressions, Klicks, Rankings, Indexierung | not yet connected | → offen | — |
+| 7 | Monitor | Google Search Console | Impressions, Klicks, Rankings, Indexierung | **mcp (`mcp__gsc__*`)** — Property vorhanden, aber für den MCP-Account `siteUnverifiedUser` → API verweigert Daten | → **Verifizierung offen** (HTML-Tag in `Base.astro` oder MCP-Account als Nutzer eintragen) | 2026-09-22 |
 | 8 | Monitor | Google Ads | Kosten, Conversions, Suchbegriffe | not yet connected | → offen | — |
 | 9 | Monitor | Meta Ads | Reichweite, Lead-Kosten, Creatives | not yet connected | → offen | — |
 | 10 | Monitor | Matomo | Traffic, Conversions (Privacy-first) | not yet connected | → offen (aufsetzen) | — |

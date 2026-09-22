@@ -8,6 +8,7 @@
 ## 1. Ist-Zustand (Sistrix, 2026-08-18)
 
 **Sichtbarkeitsindex:** 0,0001 (praktisch null; Peak der alten WP-Seite: 0,0025 im Feb 2025).
+> **Korrektur 22.09.:** 0,0001 war das Allzeit-Minimum, der Wert am 17.08. lag bei 0,0008. Der SI ist bei dieser Domaingröße Rauschen und wird nicht mehr als KPI geführt — Steuergrößen sind Keyword-Anzahl (Sistrix kwcount) und benannte Rankings.
 **Rankings gesamt:** 13 Keywords. Relaunch ist ~8 Wochen live — Google indexiert noch.
 
 | Keyword | Position | URL | Bewertung |
@@ -22,7 +23,7 @@
 | barrierefreies bad bremen | **17** | /barrierefreies-bad-bremen/ | wichtigster Quick Win (Seite 2 → 1) |
 
 **Kritische Lücken (ranken nicht in Top 100):**
-- `badsanierung bremen` — 150 Klicks/Mon., CPC 4,40 €, Wettbewerb 42/100. **Das Haupt-Keyword.**
+- `badsanierung bremen` — 150 Klicks/Mon., CPC 4,40 €, Wettbewerb 42/100. **Das Haupt-Keyword.** *(Korrektur 22.09.: laut datierter Abfrage am 17.08. auf Position 19, nicht außerhalb der Top 100. Am 21.09.: 17.)*
 - `fliesenleger bremen` — 150 Suchen/Mon., Wettbewerb 29/100.
 - `großformatfliesen verlegen bremen` — Nische, kaum Wettbewerb, trotzdem kein Ranking.
 
@@ -39,7 +40,7 @@
 | SEO: Haupt-Keyword | `badsanierung bremen` Position | Top 100 → Top 20 → Top 10 |
 | SEO: Quick Wins | `barrierefreies bad bremen`, `zementfliesen`, `vollverfliesung` | alle Top 10 |
 | SEO: Breite | Anzahl Rankings (Sistrix kwcount) | 13 → 50+ |
-| GEO: Nennung | Testfragen an ChatGPT/Gemini/Perplexity (Abschnitt 6) | AGOS wird bei ≥3 von 8 Fragen genannt |
+| GEO: Nennung | Sistrix AI Check (Abschnitt 6) | **neu kalibriert 22.09.:** Runde 2 → ≥1 Prompt mit Nennung (Kategorie-Benchmark: kein lokaler Betrieb wird für Badthemen genannt, auch Google #1 nicht) |
 | Leads | Formular-Anfragen (GSC + Web3Forms) | messbarer organischer Lead-Fluss |
 
 ---
@@ -129,7 +130,7 @@ Jede Runde = `/weekly-review`-Aufruf mit diesem Ablauf, Ergebnis in `decisions/l
 
 1. **GSC ziehen:** Impressionen/Klicks/Ø-Position je Cluster (Badsanierung, Fliesenleger, City, Nischen). Quick Wins = Keywords auf Pos. 5–15 mit Impressionen → gezielt stärken.
 2. **Sistrix ziehen:** SI-Trend, kwcount (Ziel-Kurve: 13 → 50+), neue Rankings, Wettbewerber-Bewegung.
-3. **GEO-Audit (manuell, dokumentiert):** dieselben 8 Testfragen an ChatGPT, Gemini und Perplexity stellen, Antworten in `intake/research/geo-audit-log.md` protokollieren (Datum, Tool, wird AGOS genannt? welche Quellen zitiert das Tool?):
+3. **GEO-Audit — seit Runde 1 per Sistrix AI Check** (overview/prompts/sources für AGOS + Wettbewerber-Batch; reproduzierbar, datiert). Die 8 Testfragen bleiben inhaltlicher Rahmen, manuelle Stichproben optional. Ursprünglich: dieselben 8 Testfragen an ChatGPT, Gemini und Perplexity stellen, Antworten in `intake/research/geo-audit-log.md` protokollieren (Datum, Tool, wird AGOS genannt? welche Quellen zitiert das Tool?):
    - „Wer ist der beste Fliesenleger in Bremen?"
    - „Wer bietet Badsanierung in Bremen an?"
    - „Was kostet eine Badsanierung in Bremen?"
@@ -142,7 +143,10 @@ Jede Runde = `/weekly-review`-Aufruf mit diesem Ablauf, Ergebnis in `decisions/l
 4. **Förderzahlen gegenprüfen:** Die Beträge auf `/barrierefreies-bad-bremen/` (Pflegekasse 4.180 €, KfW 455-B Status, KfW 159) an der Quelle verifizieren — Förderprogramme ändern sich mehrmals jährlich, und falsche Beträge auf der Seite schaden Kunden konkret. **455-B war Stand 08/2026 geschlossen; bei Wiederaufnahme 2027 Seite aktualisieren.**
 5. **Entscheiden:** die *eine* wichtigste Maßnahme der nächsten 4 Wochen festlegen, umsetzen, loggen.
 
-**Erste Routine-Runde:** ~2026-09-15 (4 Wochen nach Plan-Start, GSC hat dann ~4 Wochen Daten).
+**Runde 1: 2026-09-22 ✅** — Ergebnis in `decisions/log.md` und `intake/research/geo-audit-log.md`. Kurz: Keywords 11 → 16, Neustadt-Seite #1, Zementfliesen #2, Haupt-KW 19 → 17, Barrierefrei stagniert 17; GEO-Baseline AGOS 0 = Kategorie 0. **Entscheidung: steigende Seiten nicht anfassen.**
+**⚠️ GSC blockiert:** Property für den MCP-Account `siteUnverifiedUser` → keine Daten. Fix: HTML-Tag-Token an mich (→ `Base.astro`) oder MCP-Account als Nutzer eintragen. Bis dahin ersetzt Sistrix `opportunities` die GSC-Quick-Win-Suche.
+**Kandidaten Runde 2:** Ratgeber „Fugenloses Bad vs. Fliesen" (11.300 Vol. im KI-Kontext, Lücke) · FAQ „Was kann ich selbst machen?" · Ratgeber-Verlinkung Navigation/Footer.
+**Runde 2:** ~2026-10-20.
 
 ---
 
